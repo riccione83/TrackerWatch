@@ -288,7 +288,7 @@ namespace TrackerWatchServer
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSetAPN_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
             {
@@ -296,7 +296,7 @@ namespace TrackerWatchServer
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSetSOS1_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
             {
@@ -304,15 +304,15 @@ namespace TrackerWatchServer
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnSetSOS2_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
             {
                 command.setSOSNumber_2(cbSOS2.Text, currentDevice);
             }
         }
-
-        private void button4_Click(object sender, EventArgs e)
+  
+        private void btnSetSOS3_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
             {
@@ -320,7 +320,7 @@ namespace TrackerWatchServer
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnSetMonitorNumber_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
             {
@@ -328,7 +328,7 @@ namespace TrackerWatchServer
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnSetIMEINumber_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
             {
@@ -336,11 +336,51 @@ namespace TrackerWatchServer
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnGetPosition_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
             {
                 command.getPosition(currentDevice);
+            }
+        }
+
+        private void BtnGetParameters_Click(object sender, EventArgs e)
+        {
+            if (currentDevice != null)
+            {
+                command.getParameters(currentDevice);
+            }
+        }
+
+        private void btnResetDevice_Click(object sender, EventArgs e)
+        {
+            if (currentDevice != null)
+            {
+                command.resetDevice(currentDevice);
+            }
+        }
+
+        private void btnGetVersion_Click(object sender, EventArgs e)
+        {
+            if (currentDevice != null)
+            {
+                command.getVersion(currentDevice);
+            }
+        }
+
+        private void btnRestoreFactorySettings_Click(object sender, EventArgs e)
+        {
+            if (currentDevice != null)
+            {
+                command.restoreFactorySettings(currentDevice);
+            }
+        }
+
+        private void btnSetIPandPort_Click(object sender, EventArgs e)
+        {
+            if (currentDevice != null)
+            {
+                command.setIPandPort(tbIP.Text, tbPort.Text,currentDevice);
             }
         }
 
@@ -352,11 +392,51 @@ namespace TrackerWatchServer
                 command = null;
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void btnSetCenterNumber_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
             {
-                command.getParameters(currentDevice);
+                command.setCenterNumber( tbCenterNumber.Text, currentDevice);
+            }
+        }
+
+        private void btnSetAssistantCenterNumber_Click(object sender, EventArgs e)
+        {
+            if (currentDevice != null)
+            {
+                command.setAssistantCenterNumber(tbAssistantCenterNumber.Text, currentDevice);
+            }
+        }
+
+        private void btnSetUploadTimeInterval_Click(object sender, EventArgs e)
+        {
+            if (currentDevice != null)
+            {
+                command.setUploadTimeInterval(tbUploadTimeInterval.Text, currentDevice);
+            }
+        }
+
+        private void btnSetLanguageAndTimezone_Click(object sender, EventArgs e)
+        {
+            if (currentDevice != null)
+            {
+                command.setLanguageAndTimezone(cbLanguage.Text,cbTimezone.Text, currentDevice);
+            }
+        }
+
+        private void DeleteSOSNumber_Click(object sender, EventArgs e)
+        {
+            if (currentDevice != null)
+            {
+                command.deleteteSOSNumber(cbSOSNumberToDelete.Text, currentDevice);
+            }
+        }
+
+        private void btnSetThreeSOSNumbers_Click(object sender, EventArgs e)
+        {
+            if (currentDevice != null)
+            {
+                command.setThreeSOSNumbers(cbSOS1.Text,cbSOS2.Text,cbSOS3.Text, currentDevice);
             }
         }
     }
