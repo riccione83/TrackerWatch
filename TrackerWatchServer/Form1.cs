@@ -11,6 +11,9 @@ using ElzeKool.Devices;
 using System.IO;
 using System.Xml.Serialization;
 using System.Xml;
+using System.Net.Sockets;
+using System.Threading;
+using System.Net;
 
 namespace TrackerWatchServer
 {
@@ -18,11 +21,18 @@ namespace TrackerWatchServer
     {
         private delegate void SetTextCallback(string log_string);
 
-        GM862GPS modem = null;
-        List<Device> devices = new List<Device>();
-        Device currentDevice = null;
-        TrackerCommand command = null;
-        string SMSMessage = "";
+        private GM862GPS modem = null;
+        private List<Device> devices = new List<Device>();
+        private Device currentDevice = null;
+        private  TrackerCommand command = null;
+        private string SMSMessage = "";
+
+        //*******  VARIABILI UTILIZZATE PER LA CONNESSIONE IN TCP
+        private string IP_SERVER = "127.0.0.1";
+        private int IP_PORT = 8001;
+
+        public Dictionary<string, NetworkStream> Connessioni = new Dictionary<string, NetworkStream>();
+
 
         public Form1()
         {
@@ -133,9 +143,73 @@ namespace TrackerWatchServer
             
         }
 
+        string fixDataTimeString(string data, char separator)
+        {
+            String[] dataString = data.Split(separator);
+            string[] newData = new string[3];
+
+            int c = 0;
+            foreach(string s in dataString)
+            {
+                if (s.Length == 1)
+                    newData[c] = "0" + s;
+                else
+                    newData[c] = s;
+                c++;
+            }
+
+            return newData[0] + separator + newData[1] + separator + newData[2];
+        }
+
+
+        /*Valori di ritorno: Tupla
+         * ID,Messaggio,GoogleURL,Data e Ora
+         * ID e Messaggio potrebbero essere vuoti nel caso ria una riposta al comando
+         * getPosition
+         * */
+        Tuple<String,String,String,DateTime> test(String smsMessage)
+        {
+            smsMessage = smsMessage.Replace(" ", "");     //puliamo la stringa da spazi inutili...
+            smsMessage = smsMessage.Replace("\n", "");    //..e da eventuali caratteri newline
+            String[] message = smsMessage.Split('\r');    //Verificare se realmente viene inviato dall'sms
+
+            if (message.Length > 4)
+            {
+                int start = message[0].IndexOf("ID:");
+                int comma = message[0].IndexOf(",");
+                int urlPos = message[0].IndexOf("url:");
+                string id = message[0].Substring(start + 3, start + (comma - 3));
+                string alarmMessage = message[0].Split(',')[1];
+                string url = message[2];
+                string locateData = fixDataTimeString(message[3].Split(':')[1].ToString(), '-');
+                string locateTime = fixDataTimeString(message[4].Split(':')[1] + ":" + message[4].Split(':')[2] + ":" + message[4].Split(':')[3], ':');
+
+                DateTime date = DateTime.ParseExact(locateData + " " + locateTime, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+
+                return new Tuple<string, string, string, DateTime>(id, alarmMessage, url, date);
+            }
+            else
+            {
+                string url = message[1];
+                string locateData = fixDataTimeString(message[2].Split(':')[1].ToString(), '-');
+                string locateTime = fixDataTimeString(message[3].Split(':')[1] + ":" + message[3].Split(':')[2] + ":" + message[3].Split(':')[3], ':');
+
+                DateTime date = DateTime.ParseExact(locateData + " " + locateTime, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+
+                return new Tuple<string, string, string, DateTime>("", "", url, date);
+            }
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
+              
             devices = loadDevices();
+            command = new TrackerCommand(modem);
+            command.mainForm = this;
+
+            log("Command ready");
+
             if (devices == null)
             {
                 devices = importDevice();
@@ -151,9 +225,6 @@ namespace TrackerWatchServer
                 modem = new GM862GPS("COM5");
                 log("Modem active on COM5");
 
-                command = new TrackerCommand(modem);
-                log("Command ready");
-
                 modem.InitializeBasicGSM();
                 log("GSM Initialized success");
 
@@ -163,9 +234,12 @@ namespace TrackerWatchServer
             }
             catch
             {
+                log("Unable to open GSM on port");
                 modem = null;
-                command = null;
             }
+
+            Thread listen = new Thread(listenClient);
+            listen.Start();
         }
 
         public static byte[] FromHex(string hex)
@@ -211,6 +285,14 @@ namespace TrackerWatchServer
 
         private void checkForCommand(String smsMessage)
         {
+            /* Se arriva una string contenente 'url:' probabilmente è un messaggio di allarme*/
+
+            if(smsMessage.IndexOf("url:") > -1)
+            {
+                int start = smsMessage.IndexOf("ID:");
+                int end = smsMessage.IndexOf(",");
+                string id = smsMessage.Substring(start, start + end);
+            } 
             if(smsMessage.IndexOf("ID:") > -1)
             {
                 String[] listCommand = smsMessage.Split(';');
@@ -438,6 +520,180 @@ namespace TrackerWatchServer
             {
                 command.setThreeSOSNumbers(cbSOS1.Text,cbSOS2.Text,cbSOS3.Text, currentDevice);
             }
+        }
+
+        private void listenClient()
+        {
+            Thread.CurrentThread.Name = "TCP Thread";
+            TcpListener tcpListener = new TcpListener(IPAddress.Any, IP_PORT);
+            try
+            {
+                tcpListener.Start();
+                while (this.Visible == true)
+                {
+                    if (tcpListener.Pending())
+                    {
+                        Socket soTcp = tcpListener.AcceptSocket();
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(acceptClientConnection), soTcp);
+                        tcpListener.Stop();
+                        tcpListener.Start();
+                    }
+                    else
+                        Thread.Sleep(500);
+                }
+                tcpListener.Stop();
+            }
+            catch (SocketException se)
+            {
+                Console.WriteLine("A Socket Exception has occurred!" + se.ToString());
+            }
+        }
+
+        bool SocketConnected(Socket s)
+        {
+            bool part1 = s.Poll(1000, SelectMode.SelectRead);
+            bool part2 = (s.Available == 0);
+            if (part1 && part2)
+                return false;
+            else
+                return true;
+        }
+
+        /*
+         * Accetta una nuova connessione via TCP e legge i dati del nuovo Host
+         */
+        public void acceptClientConnection(Object sock)
+        {
+            acceptClientConnection((Socket)sock);
+        }
+
+       public void acceptClientConnection(Socket oldsock)
+        {
+            string sEndPoint = "";
+            //CLIENT_COUNT++;
+            Socket sock = new Socket(oldsock.DuplicateAndClose(System.Diagnostics.Process.GetCurrentProcess().Id));
+            sEndPoint = sock.RemoteEndPoint.ToString();
+            sock.ReceiveTimeout = 1000;
+            NetworkStream st = new NetworkStream(sock);
+            StreamReader rd = null;
+            int base_cnt = 0;
+            string currentID = "";
+            string rcvString = "";
+            while (SocketConnected(sock)) // sock.Connected)
+            {
+                if (st.DataAvailable)
+                {
+                    rd = new StreamReader(st);
+
+                    char c = (char)rd.Read();   // rd.ReadLine();
+                    rcvString = "";
+                    while (c != ']')
+                    {
+                        if (c > -1)
+                        {
+                            rcvString += c;
+                        }
+                        else
+                        {
+                            // No work to do sleep some
+                            Thread.Sleep(10);
+                        }
+                        c = (char)rd.Read();
+                    }
+
+                    log("DEBUG: TCP_RCV ->" + rcvString);
+
+                   // rcvString = rcvString.Replace("[", "");
+                 //   rcvString = rcvString.Replace("]", "");
+
+                    /*Separiamo la stringa:
+                    [0] = CS/3G/GS
+                    [1] = ID Dispositivo
+                    [2] = Lunghezza comando
+                    [3] = Comando */
+                    string[] rcvData = rcvString.Split('*');
+
+                    if (rcvString.IndexOf("TKQ2") > -1)
+                    {
+                        log("Received TKQ2 command.");
+                        currentID = rcvData[1];
+                        if (!Connessioni.ContainsKey(currentID))
+                        {
+                            log("L'ID: " + currentID + " si è connesso.");
+                            Connessioni.Add(currentID, st);
+                        }
+                        else
+                            Connessioni[currentID] = st;
+
+                        command.sendTKQ2_ACK(currentID);
+                    }
+
+                    if (rcvString.IndexOf("TKQ") > -1)
+                    {
+                        log("Received TKQ command.");
+                        currentID = rcvData[1];
+                        if (!Connessioni.ContainsKey(currentID))
+                        {
+                            log("L'ID: " + currentID + " si è connesso.");
+                            Connessioni.Add(currentID, st);
+                        }
+                        else
+                            Connessioni[currentID] = st;
+
+                        command.sendTKQ_ACK(currentID);
+                    }
+
+                    if (rcvString.IndexOf("*LK") > -1)                              
+                    {
+                        log("Received LK command.");
+                        currentID = rcvData[1];
+                        if (!Connessioni.ContainsKey(currentID))
+                        {
+                            log("L'ID: " + currentID + " si è connesso.");
+                            Connessioni.Add(currentID, st);
+                        }
+                        else
+                            Connessioni[currentID] = st;
+
+                        command.sendACK(currentID);
+                    }
+                }
+                else
+                {
+                    Thread.Sleep(100);
+                    base_cnt++;
+                    if (base_cnt >= 100)
+                    {
+                        base_cnt = 0;
+                    }
+                }
+            }
+            //  Alla Disconnessione
+            Connessioni.Remove(currentID);
+            log("L'ID: " + currentID + " si è disconnesso.");
+        }
+
+        private void comunicazioneùToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gPRSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gPRSToolStripMenuItem.Checked = true;
+            sMSToolStripMenuItem.Checked = false;
+
+            if (command != null)
+                command.useGPRS = true;
+        }
+
+        private void sMSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gPRSToolStripMenuItem.Checked = false;
+            sMSToolStripMenuItem.Checked = true;
+
+            if (command != null)
+                command.useGPRS = false;
         }
     }
 }
