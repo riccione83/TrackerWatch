@@ -8,3 +8,4 @@ c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\Track
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.exe
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.pdb
 C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\devices.txt
+C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.UserControl1.resources

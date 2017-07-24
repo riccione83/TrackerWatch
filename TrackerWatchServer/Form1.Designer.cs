@@ -38,7 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pnlProgrammazione = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnGetParameters = new System.Windows.Forms.Button();
             this.btnGetPosition = new System.Windows.Forms.Button();
@@ -90,9 +90,15 @@
             this.comunicazioneùToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gPRSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlServer = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.azioniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programmazioneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.pnlProgrammazione.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.pnlServer.SuspendLayout();
             this.SuspendLayout();
             // 
             // deviceList
@@ -192,40 +198,64 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "IMEI:";
             // 
-            // groupBox1
+            // pnlProgrammazione
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.btnGetParameters);
-            this.groupBox1.Controls.Add(this.btnGetPosition);
-            this.groupBox1.Controls.Add(this.btnSetIMEI);
-            this.groupBox1.Controls.Add(this.cbIMEI);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.btnSetMonitor);
-            this.groupBox1.Controls.Add(this.btnSetSOS3);
-            this.groupBox1.Controls.Add(this.cbMonitor);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.cbSOS3);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.btnSetSOS2);
-            this.groupBox1.Controls.Add(this.cbSOS2);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.btnSetSOS1);
-            this.groupBox1.Controls.Add(this.cbSOS1);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.btnSetAPN);
-            this.groupBox1.Controls.Add(this.cbAPN);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(195, 38);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(289, 471);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Programmazione";
+            this.pnlProgrammazione.Controls.Add(this.button1);
+            this.pnlProgrammazione.Controls.Add(this.btnDeleteSOSNumber);
+            this.pnlProgrammazione.Controls.Add(this.btnGetParameters);
+            this.pnlProgrammazione.Controls.Add(this.cbSOSNumberToDelete);
+            this.pnlProgrammazione.Controls.Add(this.btnGetPosition);
+            this.pnlProgrammazione.Controls.Add(this.cbTimezone);
+            this.pnlProgrammazione.Controls.Add(this.btnSetIMEI);
+            this.pnlProgrammazione.Controls.Add(this.cbLanguage);
+            this.pnlProgrammazione.Controls.Add(this.cbIMEI);
+            this.pnlProgrammazione.Controls.Add(this.label19);
+            this.pnlProgrammazione.Controls.Add(this.label10);
+            this.pnlProgrammazione.Controls.Add(this.label18);
+            this.pnlProgrammazione.Controls.Add(this.btnSetMonitor);
+            this.pnlProgrammazione.Controls.Add(this.btnSetLanguageAndTimezone);
+            this.pnlProgrammazione.Controls.Add(this.btnSetSOS3);
+            this.pnlProgrammazione.Controls.Add(this.btnSetIPandPort);
+            this.pnlProgrammazione.Controls.Add(this.cbMonitor);
+            this.pnlProgrammazione.Controls.Add(this.tbPort);
+            this.pnlProgrammazione.Controls.Add(this.label9);
+            this.pnlProgrammazione.Controls.Add(this.label17);
+            this.pnlProgrammazione.Controls.Add(this.cbSOS3);
+            this.pnlProgrammazione.Controls.Add(this.tbIP);
+            this.pnlProgrammazione.Controls.Add(this.label8);
+            this.pnlProgrammazione.Controls.Add(this.label16);
+            this.pnlProgrammazione.Controls.Add(this.btnSetSOS2);
+            this.pnlProgrammazione.Controls.Add(this.btnRestoreFactorySettings);
+            this.pnlProgrammazione.Controls.Add(this.btnResetDevice);
+            this.pnlProgrammazione.Controls.Add(this.cbSOS2);
+            this.pnlProgrammazione.Controls.Add(this.btnGetVersion);
+            this.pnlProgrammazione.Controls.Add(this.label7);
+            this.pnlProgrammazione.Controls.Add(this.tbUploadTimeInterval);
+            this.pnlProgrammazione.Controls.Add(this.btnSetSOS1);
+            this.pnlProgrammazione.Controls.Add(this.label15);
+            this.pnlProgrammazione.Controls.Add(this.cbSOS1);
+            this.pnlProgrammazione.Controls.Add(this.btnSetTimeInterval);
+            this.pnlProgrammazione.Controls.Add(this.label6);
+            this.pnlProgrammazione.Controls.Add(this.btnSetAPN);
+            this.pnlProgrammazione.Controls.Add(this.btnSetAssistantCenterNumber);
+            this.pnlProgrammazione.Controls.Add(this.tbAssistantCenterNumber);
+            this.pnlProgrammazione.Controls.Add(this.cbAPN);
+            this.pnlProgrammazione.Controls.Add(this.label14);
+            this.pnlProgrammazione.Controls.Add(this.tbCenterNumber);
+            this.pnlProgrammazione.Controls.Add(this.label13);
+            this.pnlProgrammazione.Controls.Add(this.btnSetCenterNumber);
+            this.pnlProgrammazione.Controls.Add(this.label5);
+            this.pnlProgrammazione.Location = new System.Drawing.Point(195, 38);
+            this.pnlProgrammazione.Name = "pnlProgrammazione";
+            this.pnlProgrammazione.Size = new System.Drawing.Size(289, 471);
+            this.pnlProgrammazione.TabIndex = 2;
+            this.pnlProgrammazione.TabStop = false;
+            this.pnlProgrammazione.Text = "Programmazione";
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(58, 133);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 19);
             this.button1.TabIndex = 17;
@@ -235,7 +265,7 @@
             // 
             // btnGetParameters
             // 
-            this.btnGetParameters.Location = new System.Drawing.Point(8, 225);
+            this.btnGetParameters.Location = new System.Drawing.Point(11, 225);
             this.btnGetParameters.Name = "btnGetParameters";
             this.btnGetParameters.Size = new System.Drawing.Size(75, 23);
             this.btnGetParameters.TabIndex = 16;
@@ -245,7 +275,7 @@
             // 
             // btnGetPosition
             // 
-            this.btnGetPosition.Location = new System.Drawing.Point(207, 223);
+            this.btnGetPosition.Location = new System.Drawing.Point(206, 223);
             this.btnGetPosition.Name = "btnGetPosition";
             this.btnGetPosition.Size = new System.Drawing.Size(75, 23);
             this.btnGetPosition.TabIndex = 15;
@@ -443,8 +473,8 @@
             // 
             // btnSetCenterNumber
             // 
-            this.btnSetCenterNumber.Location = new System.Drawing.Point(422, 289);
-            this.btnSetCenterNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetCenterNumber.Location = new System.Drawing.Point(227, 251);
+            this.btnSetCenterNumber.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetCenterNumber.Name = "btnSetCenterNumber";
             this.btnSetCenterNumber.Size = new System.Drawing.Size(56, 19);
             this.btnSetCenterNumber.TabIndex = 5;
@@ -454,8 +484,8 @@
             // 
             // btnSetAssistantCenterNumber
             // 
-            this.btnSetAssistantCenterNumber.Location = new System.Drawing.Point(422, 318);
-            this.btnSetAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetAssistantCenterNumber.Location = new System.Drawing.Point(228, 280);
+            this.btnSetAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetAssistantCenterNumber.Name = "btnSetAssistantCenterNumber";
             this.btnSetAssistantCenterNumber.Size = new System.Drawing.Size(56, 19);
             this.btnSetAssistantCenterNumber.TabIndex = 6;
@@ -466,7 +496,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(199, 289);
+            this.label13.Location = new System.Drawing.Point(8, 251);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(81, 13);
@@ -476,7 +506,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(202, 318);
+            this.label14.Location = new System.Drawing.Point(9, 280);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(126, 13);
@@ -485,24 +515,24 @@
             // 
             // tbCenterNumber
             // 
-            this.tbCenterNumber.Location = new System.Drawing.Point(290, 289);
-            this.tbCenterNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbCenterNumber.Location = new System.Drawing.Point(96, 250);
+            this.tbCenterNumber.Margin = new System.Windows.Forms.Padding(2);
             this.tbCenterNumber.Name = "tbCenterNumber";
             this.tbCenterNumber.Size = new System.Drawing.Size(126, 20);
             this.tbCenterNumber.TabIndex = 9;
             // 
             // tbAssistantCenterNumber
             // 
-            this.tbAssistantCenterNumber.Location = new System.Drawing.Point(334, 315);
-            this.tbAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbAssistantCenterNumber.Location = new System.Drawing.Point(138, 277);
+            this.tbAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2);
             this.tbAssistantCenterNumber.Name = "tbAssistantCenterNumber";
             this.tbAssistantCenterNumber.Size = new System.Drawing.Size(82, 20);
             this.tbAssistantCenterNumber.TabIndex = 10;
             // 
             // btnSetTimeInterval
             // 
-            this.btnSetTimeInterval.Location = new System.Drawing.Point(422, 344);
-            this.btnSetTimeInterval.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetTimeInterval.Location = new System.Drawing.Point(230, 306);
+            this.btnSetTimeInterval.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetTimeInterval.Name = "btnSetTimeInterval";
             this.btnSetTimeInterval.Size = new System.Drawing.Size(56, 19);
             this.btnSetTimeInterval.TabIndex = 11;
@@ -513,7 +543,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(204, 347);
+            this.label15.Location = new System.Drawing.Point(12, 309);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(107, 13);
@@ -522,16 +552,16 @@
             // 
             // tbUploadTimeInterval
             // 
-            this.tbUploadTimeInterval.Location = new System.Drawing.Point(334, 344);
-            this.tbUploadTimeInterval.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbUploadTimeInterval.Location = new System.Drawing.Point(142, 306);
+            this.tbUploadTimeInterval.Margin = new System.Windows.Forms.Padding(2);
             this.tbUploadTimeInterval.Name = "tbUploadTimeInterval";
             this.tbUploadTimeInterval.Size = new System.Drawing.Size(82, 20);
             this.tbUploadTimeInterval.TabIndex = 13;
             // 
             // btnGetVersion
             // 
-            this.btnGetVersion.Location = new System.Drawing.Point(204, 484);
-            this.btnGetVersion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGetVersion.Location = new System.Drawing.Point(12, 446);
+            this.btnGetVersion.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetVersion.Name = "btnGetVersion";
             this.btnGetVersion.Size = new System.Drawing.Size(56, 19);
             this.btnGetVersion.TabIndex = 14;
@@ -541,8 +571,8 @@
             // 
             // btnResetDevice
             // 
-            this.btnResetDevice.Location = new System.Drawing.Point(265, 484);
-            this.btnResetDevice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnResetDevice.Location = new System.Drawing.Point(73, 446);
+            this.btnResetDevice.Margin = new System.Windows.Forms.Padding(2);
             this.btnResetDevice.Name = "btnResetDevice";
             this.btnResetDevice.Size = new System.Drawing.Size(56, 19);
             this.btnResetDevice.TabIndex = 15;
@@ -552,8 +582,8 @@
             // 
             // btnRestoreFactorySettings
             // 
-            this.btnRestoreFactorySettings.Location = new System.Drawing.Point(330, 484);
-            this.btnRestoreFactorySettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRestoreFactorySettings.Location = new System.Drawing.Point(138, 446);
+            this.btnRestoreFactorySettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnRestoreFactorySettings.Name = "btnRestoreFactorySettings";
             this.btnRestoreFactorySettings.Size = new System.Drawing.Size(148, 19);
             this.btnRestoreFactorySettings.TabIndex = 16;
@@ -564,7 +594,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(204, 375);
+            this.label16.Location = new System.Drawing.Point(12, 337);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(20, 13);
@@ -573,8 +603,8 @@
             // 
             // tbIP
             // 
-            this.tbIP.Location = new System.Drawing.Point(253, 373);
-            this.tbIP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbIP.Location = new System.Drawing.Point(61, 335);
+            this.tbIP.Margin = new System.Windows.Forms.Padding(2);
             this.tbIP.Name = "tbIP";
             this.tbIP.Size = new System.Drawing.Size(163, 20);
             this.tbIP.TabIndex = 18;
@@ -582,7 +612,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(202, 399);
+            this.label17.Location = new System.Drawing.Point(10, 361);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(29, 13);
@@ -591,16 +621,16 @@
             // 
             // tbPort
             // 
-            this.tbPort.Location = new System.Drawing.Point(253, 399);
-            this.tbPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbPort.Location = new System.Drawing.Point(61, 361);
+            this.tbPort.Margin = new System.Windows.Forms.Padding(2);
             this.tbPort.Name = "tbPort";
             this.tbPort.Size = new System.Drawing.Size(163, 20);
             this.tbPort.TabIndex = 20;
             // 
             // btnSetIPandPort
             // 
-            this.btnSetIPandPort.Location = new System.Drawing.Point(422, 394);
-            this.btnSetIPandPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetIPandPort.Location = new System.Drawing.Point(230, 356);
+            this.btnSetIPandPort.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetIPandPort.Name = "btnSetIPandPort";
             this.btnSetIPandPort.Size = new System.Drawing.Size(56, 19);
             this.btnSetIPandPort.TabIndex = 21;
@@ -610,8 +640,8 @@
             // 
             // btnSetLanguageAndTimezone
             // 
-            this.btnSetLanguageAndTimezone.Location = new System.Drawing.Point(422, 422);
-            this.btnSetLanguageAndTimezone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetLanguageAndTimezone.Location = new System.Drawing.Point(230, 384);
+            this.btnSetLanguageAndTimezone.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetLanguageAndTimezone.Name = "btnSetLanguageAndTimezone";
             this.btnSetLanguageAndTimezone.Size = new System.Drawing.Size(56, 19);
             this.btnSetLanguageAndTimezone.TabIndex = 22;
@@ -622,7 +652,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(204, 427);
+            this.label18.Location = new System.Drawing.Point(12, 389);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(58, 13);
@@ -632,7 +662,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(314, 427);
+            this.label19.Location = new System.Drawing.Point(122, 389);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(56, 13);
@@ -642,8 +672,8 @@
             // cbLanguage
             // 
             this.cbLanguage.FormattingEnabled = true;
-            this.cbLanguage.Location = new System.Drawing.Point(265, 422);
-            this.cbLanguage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbLanguage.Location = new System.Drawing.Point(73, 384);
+            this.cbLanguage.Margin = new System.Windows.Forms.Padding(2);
             this.cbLanguage.Name = "cbLanguage";
             this.cbLanguage.Size = new System.Drawing.Size(40, 21);
             this.cbLanguage.TabIndex = 25;
@@ -651,8 +681,8 @@
             // cbTimezone
             // 
             this.cbTimezone.FormattingEnabled = true;
-            this.cbTimezone.Location = new System.Drawing.Point(374, 422);
-            this.cbTimezone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbTimezone.Location = new System.Drawing.Point(182, 384);
+            this.cbTimezone.Margin = new System.Windows.Forms.Padding(2);
             this.cbTimezone.Name = "cbTimezone";
             this.cbTimezone.Size = new System.Drawing.Size(43, 21);
             this.cbTimezone.TabIndex = 26;
@@ -660,16 +690,16 @@
             // cbSOSNumberToDelete
             // 
             this.cbSOSNumberToDelete.FormattingEnabled = true;
-            this.cbSOSNumberToDelete.Location = new System.Drawing.Point(206, 453);
-            this.cbSOSNumberToDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSOSNumberToDelete.Location = new System.Drawing.Point(14, 415);
+            this.cbSOSNumberToDelete.Margin = new System.Windows.Forms.Padding(2);
             this.cbSOSNumberToDelete.Name = "cbSOSNumberToDelete";
             this.cbSOSNumberToDelete.Size = new System.Drawing.Size(41, 21);
             this.cbSOSNumberToDelete.TabIndex = 27;
             // 
             // btnDeleteSOSNumber
             // 
-            this.btnDeleteSOSNumber.Location = new System.Drawing.Point(253, 453);
-            this.btnDeleteSOSNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteSOSNumber.Location = new System.Drawing.Point(61, 415);
+            this.btnDeleteSOSNumber.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteSOSNumber.Name = "btnDeleteSOSNumber";
             this.btnDeleteSOSNumber.Size = new System.Drawing.Size(117, 19);
             this.btnDeleteSOSNumber.TabIndex = 28;
@@ -680,7 +710,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.comunicazioneùToolStripMenuItem});
+            this.comunicazioneùToolStripMenuItem,
+            this.azioniToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(988, 24);
@@ -715,41 +746,63 @@
             this.sMSToolStripMenuItem.Text = "&SMS";
             this.sMSToolStripMenuItem.Click += new System.EventHandler(this.sMSToolStripMenuItem_Click);
             // 
+            // pnlServer
+            // 
+            this.pnlServer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlServer.Controls.Add(this.flowLayoutPanel1);
+            this.pnlServer.Location = new System.Drawing.Point(195, 38);
+            this.pnlServer.Name = "pnlServer";
+            this.pnlServer.Size = new System.Drawing.Size(791, 471);
+            this.pnlServer.TabIndex = 30;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(769, 442);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // azioniToolStripMenuItem
+            // 
+            this.azioniToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.programmazioneToolStripMenuItem,
+            this.serverToolStripMenuItem});
+            this.azioniToolStripMenuItem.Name = "azioniToolStripMenuItem";
+            this.azioniToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.azioniToolStripMenuItem.Text = "Azioni";
+            // 
+            // programmazioneToolStripMenuItem
+            // 
+            this.programmazioneToolStripMenuItem.Name = "programmazioneToolStripMenuItem";
+            this.programmazioneToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.programmazioneToolStripMenuItem.Text = "Programmazione";
+            this.programmazioneToolStripMenuItem.Click += new System.EventHandler(this.programmazioneToolStripMenuItem_Click);
+            // 
+            // serverToolStripMenuItem
+            // 
+            this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.serverToolStripMenuItem.Text = "Server";
+            this.serverToolStripMenuItem.Click += new System.EventHandler(this.serverToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(988, 617);
-            this.Controls.Add(this.btnDeleteSOSNumber);
-            this.Controls.Add(this.cbSOSNumberToDelete);
-            this.Controls.Add(this.cbTimezone);
-            this.Controls.Add(this.cbLanguage);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.btnSetLanguageAndTimezone);
-            this.Controls.Add(this.btnSetIPandPort);
-            this.Controls.Add(this.tbPort);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.tbIP);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.btnRestoreFactorySettings);
-            this.Controls.Add(this.btnResetDevice);
-            this.Controls.Add(this.btnGetVersion);
-            this.Controls.Add(this.tbUploadTimeInterval);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.btnSetTimeInterval);
-            this.Controls.Add(this.tbAssistantCenterNumber);
-            this.Controls.Add(this.tbCenterNumber);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.btnSetAssistantCenterNumber);
-            this.Controls.Add(this.btnSetCenterNumber);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.webBrowser);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pnlProgrammazione);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.deviceList);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlServer);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -757,10 +810,11 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.pnlProgrammazione.ResumeLayout(false);
+            this.pnlProgrammazione.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnlServer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -774,7 +828,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox pnlProgrammazione;
         private System.Windows.Forms.Button btnSetAPN;
         private System.Windows.Forms.ComboBox cbAPN;
         private System.Windows.Forms.Label label5;
@@ -830,6 +884,11 @@
         private System.Windows.Forms.ToolStripMenuItem comunicazioneùToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gPRSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sMSToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlServer;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ToolStripMenuItem azioniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem programmazioneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serverToolStripMenuItem;
     }
 }
 

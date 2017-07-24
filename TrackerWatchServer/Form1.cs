@@ -20,6 +20,9 @@ namespace TrackerWatchServer
     public partial class Form1 : Form
     {
         private delegate void SetTextCallback(string log_string);
+        private delegate void CreateCompomentCallback(string deviceID);
+        private delegate void DeleteCompomentCallback(string deviceID);
+        private delegate void SetGPRSTextCallback(string deviceID, string text);
 
         private GM862GPS modem = null;
         private List<Device> devices = new List<Device>();
@@ -39,6 +42,78 @@ namespace TrackerWatchServer
             InitializeComponent();
         }
 
+        public void setGPRSText(string deviceID, string text)
+        {
+            /*  if (this.flowLayoutPanel1.InvokeRequired)
+              {
+                  SetGPRSTextCallback stc = new SetGPRSTextCallback(setGPRSText);
+                  this.Invoke(stc, new object[] { deviceID });
+              }
+              else
+              {*/
+            
+
+            System.Windows.Forms.Control ctrl = flowLayoutPanel1.Controls.Find(deviceID, true)[0];
+            UserControl1 ct = (UserControl1)ctrl;
+            if (ctrl.Name == deviceID)
+                {
+                    
+                    ct.txtGprsComm.Text += text;
+                }
+         //   }
+        }
+
+        private void setGPRSText(string deviceID, string text, params object[] args)
+        {
+           // string msg = string.Format(deviceID, args);
+            setGPRSText(deviceID, text);
+        }
+
+        public void deleteCompoment(string deviceID)
+        {
+            if (this.flowLayoutPanel1.InvokeRequired)
+            {
+                DeleteCompomentCallback stc = new DeleteCompomentCallback(deleteCompoment);
+                this.Invoke(stc, new object[] { deviceID });
+            }
+            else
+            {
+                System.Windows.Forms.Control[] ctrl = flowLayoutPanel1.Controls.Find(deviceID, true);
+                if (ctrl[0].Name == deviceID)
+                {
+                    flowLayoutPanel1.Controls.Remove(ctrl[0]);
+                }
+            }
+        }
+
+        private void deleteCompoment(string deviceID, params object[] args)
+        {
+            string msg = string.Format(deviceID, args);
+            deleteCompoment(msg);
+        }
+
+
+        public void createCompoment(string deviceID)
+        {
+            if (this.flowLayoutPanel1.InvokeRequired)
+            {
+                CreateCompomentCallback stc = new CreateCompomentCallback(createCompoment);
+                this.Invoke(stc, new object[] { deviceID });
+            }
+            else
+            {
+                UserControl1 ctrl = new UserControl1();
+                ctrl.txtID.Text = deviceID;
+                ctrl.Name = deviceID;
+                flowLayoutPanel1.Controls.Add(ctrl);
+            }
+        }
+
+        private void createCompoment(string deviceID, params object[] args)
+        {
+            string msg = string.Format(deviceID, args);
+            createCompoment(msg);
+        }
 
         public void log(string log_string)
         {
@@ -200,10 +275,32 @@ namespace TrackerWatchServer
             }
         }
 
+        private void newConnection(String deviceID, NetworkStream st)
+        {
+            if (!Connessioni.ContainsKey(deviceID))
+            {
+                log("L'ID: " + deviceID + " si è connesso.");
+                Connessioni.Add(deviceID, st);
+                createCompoment(deviceID);
+            }
+            else
+                Connessioni[deviceID] = st;
+        }
+
+        private void deleteConnection(String deviceID)
+        {
+            Connessioni.Remove(deviceID);
+            log("L'ID: " + deviceID + " si è disconnesso.");
+            if (deviceID != "")
+            {
+                deleteCompoment(deviceID);
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-              
+            pnlServer.Visible = false;
+
             devices = loadDevices();
             command = new TrackerCommand(modem);
             command.mainForm = this;
@@ -617,14 +714,8 @@ namespace TrackerWatchServer
                     {
                         log("Received TKQ2 command.");
                         currentID = rcvData[1];
-                        if (!Connessioni.ContainsKey(currentID))
-                        {
-                            log("L'ID: " + currentID + " si è connesso.");
-                            Connessioni.Add(currentID, st);
-                        }
-                        else
-                            Connessioni[currentID] = st;
 
+                        newConnection(currentID, st);
                         command.sendTKQ2_ACK(currentID);
                     }
 
@@ -632,14 +723,7 @@ namespace TrackerWatchServer
                     {
                         log("Received TKQ command.");
                         currentID = rcvData[1];
-                        if (!Connessioni.ContainsKey(currentID))
-                        {
-                            log("L'ID: " + currentID + " si è connesso.");
-                            Connessioni.Add(currentID, st);
-                        }
-                        else
-                            Connessioni[currentID] = st;
-
+                        newConnection(currentID, st);
                         command.sendTKQ_ACK(currentID);
                     }
 
@@ -647,14 +731,9 @@ namespace TrackerWatchServer
                     {
                         log("Received LK command.");
                         currentID = rcvData[1];
-                        if (!Connessioni.ContainsKey(currentID))
-                        {
-                            log("L'ID: " + currentID + " si è connesso.");
-                            Connessioni.Add(currentID, st);
-                        }
-                        else
-                            Connessioni[currentID] = st;
 
+                        setGPRSText(currentID, rcvString);
+                        newConnection(currentID, st);
                         command.sendACK(currentID);
                     }
                 }
@@ -669,8 +748,8 @@ namespace TrackerWatchServer
                 }
             }
             //  Alla Disconnessione
-            Connessioni.Remove(currentID);
-            log("L'ID: " + currentID + " si è disconnesso.");
+            deleteConnection(currentID);
+
         }
 
         private void comunicazioneùToolStripMenuItem_Click(object sender, EventArgs e)
@@ -694,6 +773,20 @@ namespace TrackerWatchServer
 
             if (command != null)
                 command.useGPRS = false;
+        }
+
+        private void programmazioneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlServer.Visible = false;
+            webBrowser.Visible = true;
+            pnlProgrammazione.Visible = true;
+        }
+
+        private void serverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlServer.Visible = true;
+            webBrowser.Visible = false;
+            pnlProgrammazione.Visible = false;
         }
     }
 }

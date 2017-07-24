@@ -82,9 +82,7 @@ namespace TrackerWatchServer
             DateTime now = new DateTime();
             String command = "";
         }
-
-
-        
+                
         public void sendTKQ_ACK(String deviceID)
         {
             NetworkStream deviceStream = mainForm.Connessioni[deviceID];
