@@ -695,7 +695,7 @@
             this.comunicazioneùToolStripMenuItem.Name = "comunicazioneùToolStripMenuItem";
             this.comunicazioneùToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
             this.comunicazioneùToolStripMenuItem.Text = "&Comunicazione";
-            this.comunicazioneùToolStripMenuItem.Click += new System.EventHandler(this.comunicazioneùToolStripMenuItem_Click);
+            this.comunicazioneùToolStripMenuItem.Click += new System.EventHandler(this.comunicazioneToolStripMenuItem_Click);
             // 
             // gPRSToolStripMenuItem
             // 

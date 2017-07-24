@@ -205,8 +205,7 @@ namespace TrackerWatchServer
         {
               
             devices = loadDevices();
-            command = new TrackerCommand(modem);
-            command.mainForm = this;
+            
 
             log("Command ready");
 
@@ -222,8 +221,8 @@ namespace TrackerWatchServer
             }
             try
             {
-                modem = new GM862GPS("COM5");
-                log("Modem active on COM5");
+                modem = new GM862GPS("COM3");
+                log("Modem active on COM3");
 
                 modem.InitializeBasicGSM();
                 log("GSM Initialized success");
@@ -237,6 +236,9 @@ namespace TrackerWatchServer
                 log("Unable to open GSM on port");
                 modem = null;
             }
+
+            command = new TrackerCommand(modem);
+            command.mainForm = this;
 
             Thread listen = new Thread(listenClient);
             listen.Start();
@@ -604,7 +606,7 @@ namespace TrackerWatchServer
                     log("DEBUG: TCP_RCV ->" + rcvString);
 
                    // rcvString = rcvString.Replace("[", "");
-                 //   rcvString = rcvString.Replace("]", "");
+                   //   rcvString = rcvString.Replace("]", "");
 
                     /*Separiamo la stringa:
                     [0] = CS/3G/GS
@@ -612,51 +614,9 @@ namespace TrackerWatchServer
                     [2] = Lunghezza comando
                     [3] = Comando */
                     string[] rcvData = rcvString.Split('*');
-
-                    if (rcvString.IndexOf("TKQ2") > -1)
-                    {
-                        log("Received TKQ2 command.");
-                        currentID = rcvData[1];
-                        if (!Connessioni.ContainsKey(currentID))
-                        {
-                            log("L'ID: " + currentID + " si è connesso.");
-                            Connessioni.Add(currentID, st);
-                        }
-                        else
-                            Connessioni[currentID] = st;
-
-                        command.sendTKQ2_ACK(currentID);
-                    }
-
-                    if (rcvString.IndexOf("TKQ") > -1)
-                    {
-                        log("Received TKQ command.");
-                        currentID = rcvData[1];
-                        if (!Connessioni.ContainsKey(currentID))
-                        {
-                            log("L'ID: " + currentID + " si è connesso.");
-                            Connessioni.Add(currentID, st);
-                        }
-                        else
-                            Connessioni[currentID] = st;
-
-                        command.sendTKQ_ACK(currentID);
-                    }
-
-                    if (rcvString.IndexOf("*LK") > -1)                              
-                    {
-                        log("Received LK command.");
-                        currentID = rcvData[1];
-                        if (!Connessioni.ContainsKey(currentID))
-                        {
-                            log("L'ID: " + currentID + " si è connesso.");
-                            Connessioni.Add(currentID, st);
-                        }
-                        else
-                            Connessioni[currentID] = st;
-
-                        command.sendACK(currentID);
-                    }
+                    
+                    //gestiamo la risposta
+                    manageResponse(currentID, rcvString, rcvData, st);
                 }
                 else
                 {
@@ -673,7 +633,212 @@ namespace TrackerWatchServer
             log("L'ID: " + currentID + " si è disconnesso.");
         }
 
-        private void comunicazioneùToolStripMenuItem_Click(object sender, EventArgs e)
+        //Check the kind of response and handle it
+        private void manageResponse(string currentID, string rcvString, string[] rcvData, NetworkStream st) {
+
+            //[CS*YYYYYYYYYY*LEN*UD, the position data]
+            if (rcvString.IndexOf("UD") > -1) {
+                log("Received UD command.");
+
+
+                currentID = rcvData[1];
+                if (!Connessioni.ContainsKey(currentID))
+                {
+                    log("L'ID: " + currentID + " si è connesso.");
+                    Connessioni.Add(currentID, st);
+                }
+                else
+                {
+                    Connessioni[currentID] = st;
+                }
+
+                string[] positionData = rcvData[3].Split(',');
+
+                string date = positionData[1];
+                string time = positionData[2];
+                if (positionData[3] == "A")
+                {
+                    log("GpsPositioning is valid");
+                }
+                else if (positionData[3] == "V")
+                {
+                    log("No positioning");
+                }
+
+                string latitude = positionData[4];
+                string markOfLatitude = positionData[5];  //N or S
+                string longitude = positionData[6];
+                string markOfLongitude = positionData[7]; //E OR W
+                string speed = positionData[8];
+                string direction = positionData[9];
+                string altitude = positionData[10];
+                string satelliteNumbers = positionData[11];
+                string gsmSignalStrenght = positionData[12];
+                string batteryStatus = positionData[13];
+                string pedometer = positionData[14];
+                string tumblingTimes = positionData[15];
+                string terminalStatus = String.Join("", positionData[16].Select(x => Convert.ToString(Convert.ToInt32(x + "", 16), 2).PadLeft(4, '0')));
+                string highTerminalStatus = terminalStatus.Substring(0, 16);
+                int highTerminalStatusValue = Convert.ToInt32(highTerminalStatus, 2);
+                string lowTerminalStatus = terminalStatus.Substring(16, 16);
+                int lowTerminalStatusValue = Convert.ToInt32(lowTerminalStatus, 2);
+                string baseStationInformation = positionData[17]; //più i seguenti 23 con , in mezzo
+                                                                  //string wifiNumber = positionData[41];
+                                                                  //string positionAccuracy = positionData[42];
+            }
+            // [CS*YYYYYYYYYY*LEN*UD2, the position data]
+            else if (rcvString.IndexOf("UD2") > -1) {
+                log("Received UD2 command.");
+
+                currentID = rcvData[1];
+                if (!Connessioni.ContainsKey(currentID))
+                {
+                    log("L'ID: " + currentID + " si è connesso.");
+                    Connessioni.Add(currentID, st);
+                }
+                else
+                {
+                    Connessioni[currentID] = st;
+                }
+
+                string[] positionData = rcvData[3].Split(',');
+
+                string date = positionData[1];
+                string time = positionData[2];
+                if (positionData[3] == "A")
+                {
+                    log("GpsPositioning is valid");
+                }
+                else if (positionData[3] == "V")
+                {
+                    log("No positioning");
+                }
+
+                string latitude = positionData[4];
+                string markOfLatitude = positionData[5];  //N or S
+                string longitude = positionData[6];
+                string markOfLongitude = positionData[7]; //E OR W
+                string speed = positionData[8];
+                string direction = positionData[9];
+                string altitude = positionData[10];
+                string satelliteNumbers = positionData[11];
+                string gsmSignalStrenght = positionData[12];
+                string batteryStatus = positionData[13];
+                string pedometer = positionData[14];
+                string tumblingTimes = positionData[15];
+                string terminalStatus = String.Join("", positionData[16].Select(x => Convert.ToString(Convert.ToInt32(x + "", 16), 2).PadLeft(4, '0')));
+                string highTerminalStatus = terminalStatus.Substring(0, 16);
+                int highTerminalStatusValue = Convert.ToInt32(highTerminalStatus, 2);
+                string lowTerminalStatus = terminalStatus.Substring(16, 16);
+                int lowTerminalStatusValue = Convert.ToInt32(lowTerminalStatus, 2);
+                string baseStationInformation = positionData[17]; //più i seguenti 23 con , in mezzo
+                                                                  //string wifiNumber = positionData[41];
+                                                                  //string positionAccuracy = positionData[42];
+
+            }
+            //[CS*YYYYYYYYYY*LEN*AL, the position data] 
+            else if (rcvString.IndexOf("AL") > -1)
+            {
+                log("Received AL command.");
+
+                currentID = rcvData[1];
+                if (!Connessioni.ContainsKey(currentID))
+                {
+                    log("L'ID: " + currentID + " si è connesso.");
+                    Connessioni.Add(currentID, st);
+                }
+                else
+                    Connessioni[currentID] = st;
+
+                string[] positionData = rcvData[3].Split(',');
+
+                string date = positionData[1];
+                string time = positionData[2];
+                if (positionData[3] == "A")
+                {
+                    log("GpsPositioning is valid");
+                }
+                else if (positionData[3] == "V")
+                {
+                    log("No positioning");
+                }
+
+                string latitude = positionData[4];
+                string markOfLatitude = positionData[5];  //N or S
+                string longitude = positionData[6];
+                string markOfLongitude = positionData[7]; //E OR W
+                string speed = positionData[8];
+                string direction = positionData[9];
+                string altitude = positionData[10];
+                string satelliteNumbers = positionData[11];
+                string gsmSignalStrenght = positionData[12];
+                string batteryStatus = positionData[13];
+                string pedometer = positionData[14];
+                string tumblingTimes = positionData[15];
+
+                string terminalStatus = String.Join("", positionData[16].Select(x => Convert.ToString(Convert.ToInt32(x + "", 16), 2).PadLeft(4, '0')));
+                string test = terminalStatus.Substring(0, 16);
+                int b = Convert.ToInt32(test, 2);
+                string test2 = terminalStatus.Substring(16, 16);
+                int b2 = Convert.ToInt32(test2, 2);
+                
+                string baseStationInformation = positionData[17]; //più i seguenti 23 con , in mezzo
+                                                                  //string wifiNumber = positionData[41];
+                                                                  //string positionAccuracy = positionData[42];
+
+                //command.sendGPRSCommand(st,TrackerCommand.gprsCmdConfirmAlarm);
+
+            }
+
+
+            if (rcvString.IndexOf("TKQ2") > -1)
+            {
+                log("Received TKQ2 command.");
+                currentID = rcvData[1];
+                if (!Connessioni.ContainsKey(currentID))
+                {
+                    log("L'ID: " + currentID + " si è connesso.");
+                    Connessioni.Add(currentID, st);
+                }
+                else
+                    Connessioni[currentID] = st;
+
+                command.sendTKQ2_ACK(currentID);
+            }
+
+            if (rcvString.IndexOf("TKQ") > -1)
+            {
+                log("Received TKQ command.");
+                currentID = rcvData[1];
+                if (!Connessioni.ContainsKey(currentID))
+                {
+                    log("L'ID: " + currentID + " si è connesso.");
+                    Connessioni.Add(currentID, st);
+                }
+                else
+                    Connessioni[currentID] = st;
+
+                command.sendTKQ_ACK(currentID);
+            }
+
+            if (rcvString.IndexOf("*LK") > -1)
+            {
+                log("Received LK command.");
+                currentID = rcvData[1];
+                if (!Connessioni.ContainsKey(currentID))
+                {
+                    log("L'ID: " + currentID + " si è connesso.");
+                    Connessioni.Add(currentID, st);
+                }
+                else
+                    Connessioni[currentID] = st;
+
+                command.sendACK(currentID);
+            }
+        }
+
+
+        private void comunicazioneToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
