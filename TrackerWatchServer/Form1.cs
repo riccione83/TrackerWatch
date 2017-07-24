@@ -44,23 +44,23 @@ namespace TrackerWatchServer
 
         public void setGPRSText(string deviceID, string text)
         {
-            /*  if (this.flowLayoutPanel1.InvokeRequired)
+              if (this.flowLayoutPanel1.InvokeRequired)
               {
                   SetGPRSTextCallback stc = new SetGPRSTextCallback(setGPRSText);
-                  this.Invoke(stc, new object[] { deviceID });
+                  this.Invoke(stc, new object[] { deviceID, text });
               }
               else
-              {*/
-            
+              {
+                    System.Windows.Forms.Control ctrl = flowLayoutPanel1.Controls.Find(deviceID, true)[0];
+                    UserControl1 ct = (UserControl1)ctrl;
+                    if (ctrl.Name == deviceID)
+                    {
+                        if (ct.txtGprsComm.Text.Length >= 500)   //Pulisce la lista di comunicazioni
+                            ct.txtGprsComm.Text = "";
+                        ct.txtGprsComm.Text += text;
+                    }
 
-            System.Windows.Forms.Control ctrl = flowLayoutPanel1.Controls.Find(deviceID, true)[0];
-            UserControl1 ct = (UserControl1)ctrl;
-            if (ctrl.Name == deviceID)
-                {
-                    
-                    ct.txtGprsComm.Text += text;
-                }
-         //   }
+               }
         }
 
         private void setGPRSText(string deviceID, string text, params object[] args)
@@ -735,8 +735,8 @@ namespace TrackerWatchServer
                         log("Received LK command.");
                         currentID = rcvData[1];
 
-                        setGPRSText(currentID, rcvString);
                         newConnection(currentID, st);
+                        setGPRSText(currentID, rcvString);
                         command.sendACK(currentID);
                     }
 
