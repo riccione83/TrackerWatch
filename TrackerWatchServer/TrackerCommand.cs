@@ -284,7 +284,7 @@ namespace TrackerWatchServer
         {
             if (!useGPRS)
             {
-                String command = cmdSetUploadTimeInterval.Replace("x", uploadTimeInterval);
+                String command = cmdSetUploadTimeInterval.Replace("xxxx", uploadTimeInterval);
                 modem.SendSMSMessage(device.TelephoneNumber, command);
             }
             else

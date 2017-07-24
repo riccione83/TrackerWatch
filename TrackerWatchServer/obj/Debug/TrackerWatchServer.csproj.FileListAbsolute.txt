@@ -8,4 +8,17 @@ c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\Track
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.exe
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.pdb
 C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\devices.txt
+<<<<<<< HEAD
 C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.UserControl1.resources
+=======
+D:\2858\Repository\trackerwatchserver\TrackerWatchServer\obj\Debug\TrackerWatchServer.csprojResolveAssemblyReference.cache
+D:\2858\Repository\trackerwatchserver\TrackerWatchServer\obj\Debug\TrackerWatchServer.Form1.resources
+D:\2858\Repository\trackerwatchserver\TrackerWatchServer\obj\Debug\TrackerWatchServer.Properties.Resources.resources
+D:\2858\Repository\trackerwatchserver\TrackerWatchServer\obj\Debug\TrackerWatchServer.csproj.GenerateResource.Cache
+D:\2858\Repository\trackerwatchserver\TrackerWatchServer\obj\Debug\TrackerWatchServer.exe
+D:\2858\Repository\trackerwatchserver\TrackerWatchServer\obj\Debug\TrackerWatchServer.pdb
+D:\2858\Repository\trackerwatchserver\TrackerWatchServer\bin\Debug\devices.txt
+D:\2858\Repository\trackerwatchserver\TrackerWatchServer\bin\Debug\TrackerWatchServer.exe.config
+D:\2858\Repository\trackerwatchserver\TrackerWatchServer\bin\Debug\TrackerWatchServer.exe
+D:\2858\Repository\trackerwatchserver\TrackerWatchServer\bin\Debug\TrackerWatchServer.pdb
+>>>>>>> d5471161596d16980b7aaf34fa74dcd7535fdfa7

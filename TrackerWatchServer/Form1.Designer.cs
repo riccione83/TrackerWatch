@@ -40,61 +40,61 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pnlProgrammazione = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnDeleteSOSNumber = new System.Windows.Forms.Button();
             this.btnGetParameters = new System.Windows.Forms.Button();
+            this.cbSOSNumberToDelete = new System.Windows.Forms.ComboBox();
             this.btnGetPosition = new System.Windows.Forms.Button();
+            this.cbTimezone = new System.Windows.Forms.ComboBox();
             this.btnSetIMEI = new System.Windows.Forms.Button();
+            this.cbLanguage = new System.Windows.Forms.ComboBox();
             this.cbIMEI = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.btnSetMonitor = new System.Windows.Forms.Button();
+            this.btnSetLanguageAndTimezone = new System.Windows.Forms.Button();
             this.btnSetSOS3 = new System.Windows.Forms.Button();
+            this.btnSetIPandPort = new System.Windows.Forms.Button();
             this.cbMonitor = new System.Windows.Forms.ComboBox();
+            this.tbPort = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.cbSOS3 = new System.Windows.Forms.ComboBox();
+            this.tbIP = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.btnSetSOS2 = new System.Windows.Forms.Button();
+            this.btnRestoreFactorySettings = new System.Windows.Forms.Button();
+            this.btnResetDevice = new System.Windows.Forms.Button();
             this.cbSOS2 = new System.Windows.Forms.ComboBox();
+            this.btnGetVersion = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.tbUploadTimeInterval = new System.Windows.Forms.TextBox();
             this.btnSetSOS1 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             this.cbSOS1 = new System.Windows.Forms.ComboBox();
+            this.btnSetTimeInterval = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSetAPN = new System.Windows.Forms.Button();
+            this.btnSetAssistantCenterNumber = new System.Windows.Forms.Button();
+            this.tbAssistantCenterNumber = new System.Windows.Forms.TextBox();
             this.cbAPN = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tbCenterNumber = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnSetCenterNumber = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.txtLog = new System.Windows.Forms.TextBox();
-            this.btnSetCenterNumber = new System.Windows.Forms.Button();
-            this.btnSetAssistantCenterNumber = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.tbCenterNumber = new System.Windows.Forms.TextBox();
-            this.tbAssistantCenterNumber = new System.Windows.Forms.TextBox();
-            this.btnSetTimeInterval = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.tbUploadTimeInterval = new System.Windows.Forms.TextBox();
-            this.btnGetVersion = new System.Windows.Forms.Button();
-            this.btnResetDevice = new System.Windows.Forms.Button();
-            this.btnRestoreFactorySettings = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.tbIP = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.tbPort = new System.Windows.Forms.TextBox();
-            this.btnSetIPandPort = new System.Windows.Forms.Button();
-            this.btnSetLanguageAndTimezone = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.cbLanguage = new System.Windows.Forms.ComboBox();
-            this.cbTimezone = new System.Windows.Forms.ComboBox();
-            this.cbSOSNumberToDelete = new System.Windows.Forms.ComboBox();
-            this.btnDeleteSOSNumber = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.comunicazioneùToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gPRSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlServer = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.azioniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programmazioneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlServer = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.pnlProgrammazione.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -263,6 +263,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnSetThreeSOSNumbers_Click);
             // 
+            // btnDeleteSOSNumber
+            // 
+            this.btnDeleteSOSNumber.Location = new System.Drawing.Point(61, 415);
+            this.btnDeleteSOSNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteSOSNumber.Name = "btnDeleteSOSNumber";
+            this.btnDeleteSOSNumber.Size = new System.Drawing.Size(117, 19);
+            this.btnDeleteSOSNumber.TabIndex = 28;
+            this.btnDeleteSOSNumber.Text = "Delete SOS Number";
+            this.btnDeleteSOSNumber.UseVisualStyleBackColor = true;
+            this.btnDeleteSOSNumber.Click += new System.EventHandler(this.DeleteSOSNumber_Click);
+            // 
             // btnGetParameters
             // 
             this.btnGetParameters.Location = new System.Drawing.Point(11, 225);
@@ -272,6 +283,15 @@
             this.btnGetParameters.Text = "Parameters";
             this.btnGetParameters.UseVisualStyleBackColor = true;
             this.btnGetParameters.Click += new System.EventHandler(this.BtnGetParameters_Click);
+            // 
+            // cbSOSNumberToDelete
+            // 
+            this.cbSOSNumberToDelete.FormattingEnabled = true;
+            this.cbSOSNumberToDelete.Location = new System.Drawing.Point(14, 415);
+            this.cbSOSNumberToDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.cbSOSNumberToDelete.Name = "cbSOSNumberToDelete";
+            this.cbSOSNumberToDelete.Size = new System.Drawing.Size(41, 21);
+            this.cbSOSNumberToDelete.TabIndex = 27;
             // 
             // btnGetPosition
             // 
@@ -283,6 +303,15 @@
             this.btnGetPosition.UseVisualStyleBackColor = true;
             this.btnGetPosition.Click += new System.EventHandler(this.btnGetPosition_Click);
             // 
+            // cbTimezone
+            // 
+            this.cbTimezone.FormattingEnabled = true;
+            this.cbTimezone.Location = new System.Drawing.Point(182, 384);
+            this.cbTimezone.Margin = new System.Windows.Forms.Padding(2);
+            this.cbTimezone.Name = "cbTimezone";
+            this.cbTimezone.Size = new System.Drawing.Size(43, 21);
+            this.cbTimezone.TabIndex = 26;
+            // 
             // btnSetIMEI
             // 
             this.btnSetIMEI.Location = new System.Drawing.Point(226, 185);
@@ -293,6 +322,15 @@
             this.btnSetIMEI.UseVisualStyleBackColor = true;
             this.btnSetIMEI.Click += new System.EventHandler(this.btnSetIMEINumber_Click);
             // 
+            // cbLanguage
+            // 
+            this.cbLanguage.FormattingEnabled = true;
+            this.cbLanguage.Location = new System.Drawing.Point(73, 384);
+            this.cbLanguage.Margin = new System.Windows.Forms.Padding(2);
+            this.cbLanguage.Name = "cbLanguage";
+            this.cbLanguage.Size = new System.Drawing.Size(40, 21);
+            this.cbLanguage.TabIndex = 25;
+            // 
             // cbIMEI
             // 
             this.cbIMEI.FormattingEnabled = true;
@@ -300,6 +338,16 @@
             this.cbIMEI.Name = "cbIMEI";
             this.cbIMEI.Size = new System.Drawing.Size(163, 21);
             this.cbIMEI.TabIndex = 13;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(122, 389);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(56, 13);
+            this.label19.TabIndex = 24;
+            this.label19.Text = "Timezone:";
             // 
             // label10
             // 
@@ -309,6 +357,16 @@
             this.label10.Size = new System.Drawing.Size(32, 13);
             this.label10.TabIndex = 12;
             this.label10.Text = "IMEI:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(12, 389);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(58, 13);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "Language:";
             // 
             // btnSetMonitor
             // 
@@ -320,6 +378,17 @@
             this.btnSetMonitor.UseVisualStyleBackColor = true;
             this.btnSetMonitor.Click += new System.EventHandler(this.btnSetMonitorNumber_Click);
             // 
+            // btnSetLanguageAndTimezone
+            // 
+            this.btnSetLanguageAndTimezone.Location = new System.Drawing.Point(230, 384);
+            this.btnSetLanguageAndTimezone.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetLanguageAndTimezone.Name = "btnSetLanguageAndTimezone";
+            this.btnSetLanguageAndTimezone.Size = new System.Drawing.Size(56, 19);
+            this.btnSetLanguageAndTimezone.TabIndex = 22;
+            this.btnSetLanguageAndTimezone.Text = "Set";
+            this.btnSetLanguageAndTimezone.UseVisualStyleBackColor = true;
+            this.btnSetLanguageAndTimezone.Click += new System.EventHandler(this.btnSetLanguageAndTimezone_Click);
+            // 
             // btnSetSOS3
             // 
             this.btnSetSOS3.Location = new System.Drawing.Point(227, 106);
@@ -330,6 +399,17 @@
             this.btnSetSOS3.UseVisualStyleBackColor = true;
             this.btnSetSOS3.Click += new System.EventHandler(this.btnSetSOS3_Click);
             // 
+            // btnSetIPandPort
+            // 
+            this.btnSetIPandPort.Location = new System.Drawing.Point(230, 356);
+            this.btnSetIPandPort.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetIPandPort.Name = "btnSetIPandPort";
+            this.btnSetIPandPort.Size = new System.Drawing.Size(56, 19);
+            this.btnSetIPandPort.TabIndex = 21;
+            this.btnSetIPandPort.Text = "Set";
+            this.btnSetIPandPort.UseVisualStyleBackColor = true;
+            this.btnSetIPandPort.Click += new System.EventHandler(this.btnSetIPandPort_Click);
+            // 
             // cbMonitor
             // 
             this.cbMonitor.FormattingEnabled = true;
@@ -337,6 +417,14 @@
             this.cbMonitor.Name = "cbMonitor";
             this.cbMonitor.Size = new System.Drawing.Size(163, 21);
             this.cbMonitor.TabIndex = 7;
+            // 
+            // tbPort
+            // 
+            this.tbPort.Location = new System.Drawing.Point(61, 361);
+            this.tbPort.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPort.Name = "tbPort";
+            this.tbPort.Size = new System.Drawing.Size(163, 20);
+            this.tbPort.TabIndex = 20;
             // 
             // label9
             // 
@@ -347,6 +435,16 @@
             this.label9.TabIndex = 6;
             this.label9.Text = "Monitor:";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(10, 361);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(29, 13);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "Port:";
+            // 
             // cbSOS3
             // 
             this.cbSOS3.FormattingEnabled = true;
@@ -354,6 +452,14 @@
             this.cbSOS3.Name = "cbSOS3";
             this.cbSOS3.Size = new System.Drawing.Size(163, 21);
             this.cbSOS3.TabIndex = 10;
+            // 
+            // tbIP
+            // 
+            this.tbIP.Location = new System.Drawing.Point(61, 335);
+            this.tbIP.Margin = new System.Windows.Forms.Padding(2);
+            this.tbIP.Name = "tbIP";
+            this.tbIP.Size = new System.Drawing.Size(163, 20);
+            this.tbIP.TabIndex = 18;
             // 
             // label8
             // 
@@ -363,6 +469,16 @@
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 9;
             this.label8.Text = "SOS3:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(12, 337);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(20, 13);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "IP:";
             // 
             // btnSetSOS2
             // 
@@ -374,6 +490,28 @@
             this.btnSetSOS2.UseVisualStyleBackColor = true;
             this.btnSetSOS2.Click += new System.EventHandler(this.btnSetSOS2_Click);
             // 
+            // btnRestoreFactorySettings
+            // 
+            this.btnRestoreFactorySettings.Location = new System.Drawing.Point(138, 446);
+            this.btnRestoreFactorySettings.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRestoreFactorySettings.Name = "btnRestoreFactorySettings";
+            this.btnRestoreFactorySettings.Size = new System.Drawing.Size(148, 19);
+            this.btnRestoreFactorySettings.TabIndex = 16;
+            this.btnRestoreFactorySettings.Text = "Restore Factory Settings";
+            this.btnRestoreFactorySettings.UseVisualStyleBackColor = true;
+            this.btnRestoreFactorySettings.Click += new System.EventHandler(this.btnRestoreFactorySettings_Click);
+            // 
+            // btnResetDevice
+            // 
+            this.btnResetDevice.Location = new System.Drawing.Point(73, 446);
+            this.btnResetDevice.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetDevice.Name = "btnResetDevice";
+            this.btnResetDevice.Size = new System.Drawing.Size(56, 19);
+            this.btnResetDevice.TabIndex = 15;
+            this.btnResetDevice.Text = "Reset Device";
+            this.btnResetDevice.UseVisualStyleBackColor = true;
+            this.btnResetDevice.Click += new System.EventHandler(this.btnResetDevice_Click);
+            // 
             // cbSOS2
             // 
             this.cbSOS2.FormattingEnabled = true;
@@ -381,6 +519,17 @@
             this.cbSOS2.Name = "cbSOS2";
             this.cbSOS2.Size = new System.Drawing.Size(163, 21);
             this.cbSOS2.TabIndex = 7;
+            // 
+            // btnGetVersion
+            // 
+            this.btnGetVersion.Location = new System.Drawing.Point(12, 446);
+            this.btnGetVersion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGetVersion.Name = "btnGetVersion";
+            this.btnGetVersion.Size = new System.Drawing.Size(56, 19);
+            this.btnGetVersion.TabIndex = 14;
+            this.btnGetVersion.Text = "Version";
+            this.btnGetVersion.UseVisualStyleBackColor = true;
+            this.btnGetVersion.Click += new System.EventHandler(this.btnGetVersion_Click);
             // 
             // label7
             // 
@@ -390,6 +539,14 @@
             this.label7.Size = new System.Drawing.Size(38, 13);
             this.label7.TabIndex = 6;
             this.label7.Text = "SOS2:";
+            // 
+            // tbUploadTimeInterval
+            // 
+            this.tbUploadTimeInterval.Location = new System.Drawing.Point(142, 306);
+            this.tbUploadTimeInterval.Margin = new System.Windows.Forms.Padding(2);
+            this.tbUploadTimeInterval.Name = "tbUploadTimeInterval";
+            this.tbUploadTimeInterval.Size = new System.Drawing.Size(82, 20);
+            this.tbUploadTimeInterval.TabIndex = 13;
             // 
             // btnSetSOS1
             // 
@@ -401,6 +558,16 @@
             this.btnSetSOS1.UseVisualStyleBackColor = true;
             this.btnSetSOS1.Click += new System.EventHandler(this.btnSetSOS1_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(12, 309);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(107, 13);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "Upload Time interval:";
+            // 
             // cbSOS1
             // 
             this.cbSOS1.FormattingEnabled = true;
@@ -408,6 +575,17 @@
             this.cbSOS1.Name = "cbSOS1";
             this.cbSOS1.Size = new System.Drawing.Size(163, 21);
             this.cbSOS1.TabIndex = 4;
+            // 
+            // btnSetTimeInterval
+            // 
+            this.btnSetTimeInterval.Location = new System.Drawing.Point(230, 306);
+            this.btnSetTimeInterval.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetTimeInterval.Name = "btnSetTimeInterval";
+            this.btnSetTimeInterval.Size = new System.Drawing.Size(56, 19);
+            this.btnSetTimeInterval.TabIndex = 11;
+            this.btnSetTimeInterval.Text = "Set";
+            this.btnSetTimeInterval.UseVisualStyleBackColor = true;
+            this.btnSetTimeInterval.Click += new System.EventHandler(this.btnSetUploadTimeInterval_Click);
             // 
             // label6
             // 
@@ -428,6 +606,25 @@
             this.btnSetAPN.UseVisualStyleBackColor = true;
             this.btnSetAPN.Click += new System.EventHandler(this.btnSetAPN_Click);
             // 
+            // btnSetAssistantCenterNumber
+            // 
+            this.btnSetAssistantCenterNumber.Location = new System.Drawing.Point(228, 280);
+            this.btnSetAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetAssistantCenterNumber.Name = "btnSetAssistantCenterNumber";
+            this.btnSetAssistantCenterNumber.Size = new System.Drawing.Size(56, 19);
+            this.btnSetAssistantCenterNumber.TabIndex = 6;
+            this.btnSetAssistantCenterNumber.Text = "Set";
+            this.btnSetAssistantCenterNumber.UseVisualStyleBackColor = true;
+            this.btnSetAssistantCenterNumber.Click += new System.EventHandler(this.btnSetAssistantCenterNumber_Click);
+            // 
+            // tbAssistantCenterNumber
+            // 
+            this.tbAssistantCenterNumber.Location = new System.Drawing.Point(138, 277);
+            this.tbAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.tbAssistantCenterNumber.Name = "tbAssistantCenterNumber";
+            this.tbAssistantCenterNumber.Size = new System.Drawing.Size(82, 20);
+            this.tbAssistantCenterNumber.TabIndex = 10;
+            // 
             // cbAPN
             // 
             this.cbAPN.FormattingEnabled = true;
@@ -440,6 +637,45 @@
             this.cbAPN.Size = new System.Drawing.Size(163, 21);
             this.cbAPN.TabIndex = 1;
             this.cbAPN.Text = "internet.wind";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 280);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(126, 13);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Assistant Center Number:";
+            // 
+            // tbCenterNumber
+            // 
+            this.tbCenterNumber.Location = new System.Drawing.Point(96, 250);
+            this.tbCenterNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.tbCenterNumber.Name = "tbCenterNumber";
+            this.tbCenterNumber.Size = new System.Drawing.Size(126, 20);
+            this.tbCenterNumber.TabIndex = 9;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(8, 251);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(81, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Center Number:";
+            // 
+            // btnSetCenterNumber
+            // 
+            this.btnSetCenterNumber.Location = new System.Drawing.Point(227, 251);
+            this.btnSetCenterNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetCenterNumber.Name = "btnSetCenterNumber";
+            this.btnSetCenterNumber.Size = new System.Drawing.Size(56, 19);
+            this.btnSetCenterNumber.TabIndex = 5;
+            this.btnSetCenterNumber.Text = "Set";
+            this.btnSetCenterNumber.UseVisualStyleBackColor = true;
+            this.btnSetCenterNumber.Click += new System.EventHandler(this.btnSetCenterNumber_Click);
             // 
             // label5
             // 
@@ -471,242 +707,6 @@
             this.txtLog.Size = new System.Drawing.Size(791, 99);
             this.txtLog.TabIndex = 4;
             // 
-            // btnSetCenterNumber
-            // 
-            this.btnSetCenterNumber.Location = new System.Drawing.Point(227, 251);
-            this.btnSetCenterNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetCenterNumber.Name = "btnSetCenterNumber";
-            this.btnSetCenterNumber.Size = new System.Drawing.Size(56, 19);
-            this.btnSetCenterNumber.TabIndex = 5;
-            this.btnSetCenterNumber.Text = "Set";
-            this.btnSetCenterNumber.UseVisualStyleBackColor = true;
-            this.btnSetCenterNumber.Click += new System.EventHandler(this.btnSetCenterNumber_Click);
-            // 
-            // btnSetAssistantCenterNumber
-            // 
-            this.btnSetAssistantCenterNumber.Location = new System.Drawing.Point(228, 280);
-            this.btnSetAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetAssistantCenterNumber.Name = "btnSetAssistantCenterNumber";
-            this.btnSetAssistantCenterNumber.Size = new System.Drawing.Size(56, 19);
-            this.btnSetAssistantCenterNumber.TabIndex = 6;
-            this.btnSetAssistantCenterNumber.Text = "Set";
-            this.btnSetAssistantCenterNumber.UseVisualStyleBackColor = true;
-            this.btnSetAssistantCenterNumber.Click += new System.EventHandler(this.btnSetAssistantCenterNumber_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 251);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "Center Number:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 280);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(126, 13);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Assistant Center Number:";
-            // 
-            // tbCenterNumber
-            // 
-            this.tbCenterNumber.Location = new System.Drawing.Point(96, 250);
-            this.tbCenterNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.tbCenterNumber.Name = "tbCenterNumber";
-            this.tbCenterNumber.Size = new System.Drawing.Size(126, 20);
-            this.tbCenterNumber.TabIndex = 9;
-            // 
-            // tbAssistantCenterNumber
-            // 
-            this.tbAssistantCenterNumber.Location = new System.Drawing.Point(138, 277);
-            this.tbAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.tbAssistantCenterNumber.Name = "tbAssistantCenterNumber";
-            this.tbAssistantCenterNumber.Size = new System.Drawing.Size(82, 20);
-            this.tbAssistantCenterNumber.TabIndex = 10;
-            // 
-            // btnSetTimeInterval
-            // 
-            this.btnSetTimeInterval.Location = new System.Drawing.Point(230, 306);
-            this.btnSetTimeInterval.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetTimeInterval.Name = "btnSetTimeInterval";
-            this.btnSetTimeInterval.Size = new System.Drawing.Size(56, 19);
-            this.btnSetTimeInterval.TabIndex = 11;
-            this.btnSetTimeInterval.Text = "Set";
-            this.btnSetTimeInterval.UseVisualStyleBackColor = true;
-            this.btnSetTimeInterval.Click += new System.EventHandler(this.btnSetUploadTimeInterval_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(12, 309);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(107, 13);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "Upload Time interval:";
-            // 
-            // tbUploadTimeInterval
-            // 
-            this.tbUploadTimeInterval.Location = new System.Drawing.Point(142, 306);
-            this.tbUploadTimeInterval.Margin = new System.Windows.Forms.Padding(2);
-            this.tbUploadTimeInterval.Name = "tbUploadTimeInterval";
-            this.tbUploadTimeInterval.Size = new System.Drawing.Size(82, 20);
-            this.tbUploadTimeInterval.TabIndex = 13;
-            // 
-            // btnGetVersion
-            // 
-            this.btnGetVersion.Location = new System.Drawing.Point(12, 446);
-            this.btnGetVersion.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGetVersion.Name = "btnGetVersion";
-            this.btnGetVersion.Size = new System.Drawing.Size(56, 19);
-            this.btnGetVersion.TabIndex = 14;
-            this.btnGetVersion.Text = "Version";
-            this.btnGetVersion.UseVisualStyleBackColor = true;
-            this.btnGetVersion.Click += new System.EventHandler(this.btnGetVersion_Click);
-            // 
-            // btnResetDevice
-            // 
-            this.btnResetDevice.Location = new System.Drawing.Point(73, 446);
-            this.btnResetDevice.Margin = new System.Windows.Forms.Padding(2);
-            this.btnResetDevice.Name = "btnResetDevice";
-            this.btnResetDevice.Size = new System.Drawing.Size(56, 19);
-            this.btnResetDevice.TabIndex = 15;
-            this.btnResetDevice.Text = "Reset Device";
-            this.btnResetDevice.UseVisualStyleBackColor = true;
-            this.btnResetDevice.Click += new System.EventHandler(this.btnResetDevice_Click);
-            // 
-            // btnRestoreFactorySettings
-            // 
-            this.btnRestoreFactorySettings.Location = new System.Drawing.Point(138, 446);
-            this.btnRestoreFactorySettings.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRestoreFactorySettings.Name = "btnRestoreFactorySettings";
-            this.btnRestoreFactorySettings.Size = new System.Drawing.Size(148, 19);
-            this.btnRestoreFactorySettings.TabIndex = 16;
-            this.btnRestoreFactorySettings.Text = "Restore Factory Settings";
-            this.btnRestoreFactorySettings.UseVisualStyleBackColor = true;
-            this.btnRestoreFactorySettings.Click += new System.EventHandler(this.btnRestoreFactorySettings_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(12, 337);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(20, 13);
-            this.label16.TabIndex = 17;
-            this.label16.Text = "IP:";
-            // 
-            // tbIP
-            // 
-            this.tbIP.Location = new System.Drawing.Point(61, 335);
-            this.tbIP.Margin = new System.Windows.Forms.Padding(2);
-            this.tbIP.Name = "tbIP";
-            this.tbIP.Size = new System.Drawing.Size(163, 20);
-            this.tbIP.TabIndex = 18;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 361);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(29, 13);
-            this.label17.TabIndex = 19;
-            this.label17.Text = "Port:";
-            // 
-            // tbPort
-            // 
-            this.tbPort.Location = new System.Drawing.Point(61, 361);
-            this.tbPort.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPort.Name = "tbPort";
-            this.tbPort.Size = new System.Drawing.Size(163, 20);
-            this.tbPort.TabIndex = 20;
-            // 
-            // btnSetIPandPort
-            // 
-            this.btnSetIPandPort.Location = new System.Drawing.Point(230, 356);
-            this.btnSetIPandPort.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetIPandPort.Name = "btnSetIPandPort";
-            this.btnSetIPandPort.Size = new System.Drawing.Size(56, 19);
-            this.btnSetIPandPort.TabIndex = 21;
-            this.btnSetIPandPort.Text = "Set";
-            this.btnSetIPandPort.UseVisualStyleBackColor = true;
-            this.btnSetIPandPort.Click += new System.EventHandler(this.btnSetIPandPort_Click);
-            // 
-            // btnSetLanguageAndTimezone
-            // 
-            this.btnSetLanguageAndTimezone.Location = new System.Drawing.Point(230, 384);
-            this.btnSetLanguageAndTimezone.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetLanguageAndTimezone.Name = "btnSetLanguageAndTimezone";
-            this.btnSetLanguageAndTimezone.Size = new System.Drawing.Size(56, 19);
-            this.btnSetLanguageAndTimezone.TabIndex = 22;
-            this.btnSetLanguageAndTimezone.Text = "Set";
-            this.btnSetLanguageAndTimezone.UseVisualStyleBackColor = true;
-            this.btnSetLanguageAndTimezone.Click += new System.EventHandler(this.btnSetLanguageAndTimezone_Click);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(12, 389);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(58, 13);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "Language:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(122, 389);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(56, 13);
-            this.label19.TabIndex = 24;
-            this.label19.Text = "Timezone:";
-            // 
-            // cbLanguage
-            // 
-            this.cbLanguage.FormattingEnabled = true;
-            this.cbLanguage.Location = new System.Drawing.Point(73, 384);
-            this.cbLanguage.Margin = new System.Windows.Forms.Padding(2);
-            this.cbLanguage.Name = "cbLanguage";
-            this.cbLanguage.Size = new System.Drawing.Size(40, 21);
-            this.cbLanguage.TabIndex = 25;
-            // 
-            // cbTimezone
-            // 
-            this.cbTimezone.FormattingEnabled = true;
-            this.cbTimezone.Location = new System.Drawing.Point(182, 384);
-            this.cbTimezone.Margin = new System.Windows.Forms.Padding(2);
-            this.cbTimezone.Name = "cbTimezone";
-            this.cbTimezone.Size = new System.Drawing.Size(43, 21);
-            this.cbTimezone.TabIndex = 26;
-            // 
-            // cbSOSNumberToDelete
-            // 
-            this.cbSOSNumberToDelete.FormattingEnabled = true;
-            this.cbSOSNumberToDelete.Location = new System.Drawing.Point(14, 415);
-            this.cbSOSNumberToDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.cbSOSNumberToDelete.Name = "cbSOSNumberToDelete";
-            this.cbSOSNumberToDelete.Size = new System.Drawing.Size(41, 21);
-            this.cbSOSNumberToDelete.TabIndex = 27;
-            // 
-            // btnDeleteSOSNumber
-            // 
-            this.btnDeleteSOSNumber.Location = new System.Drawing.Point(61, 415);
-            this.btnDeleteSOSNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeleteSOSNumber.Name = "btnDeleteSOSNumber";
-            this.btnDeleteSOSNumber.Size = new System.Drawing.Size(117, 19);
-            this.btnDeleteSOSNumber.TabIndex = 28;
-            this.btnDeleteSOSNumber.Text = "Delete SOS Number";
-            this.btnDeleteSOSNumber.UseVisualStyleBackColor = true;
-            this.btnDeleteSOSNumber.Click += new System.EventHandler(this.DeleteSOSNumber_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -726,7 +726,7 @@
             this.comunicazioneùToolStripMenuItem.Name = "comunicazioneùToolStripMenuItem";
             this.comunicazioneùToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
             this.comunicazioneùToolStripMenuItem.Text = "&Comunicazione";
-            this.comunicazioneùToolStripMenuItem.Click += new System.EventHandler(this.comunicazioneùToolStripMenuItem_Click);
+            this.comunicazioneùToolStripMenuItem.Click += new System.EventHandler(this.comunicazioneToolStripMenuItem_Click);
             // 
             // gPRSToolStripMenuItem
             // 
@@ -734,7 +734,7 @@
             this.gPRSToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.gPRSToolStripMenuItem.Name = "gPRSToolStripMenuItem";
             this.gPRSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.gPRSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gPRSToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.gPRSToolStripMenuItem.Text = "&GPRS";
             this.gPRSToolStripMenuItem.Click += new System.EventHandler(this.gPRSToolStripMenuItem_Click);
             // 
@@ -742,9 +742,33 @@
             // 
             this.sMSToolStripMenuItem.Name = "sMSToolStripMenuItem";
             this.sMSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.sMSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sMSToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.sMSToolStripMenuItem.Text = "&SMS";
             this.sMSToolStripMenuItem.Click += new System.EventHandler(this.sMSToolStripMenuItem_Click);
+            // 
+            // azioniToolStripMenuItem
+            // 
+            this.azioniToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.programmazioneToolStripMenuItem,
+            this.serverToolStripMenuItem});
+            this.azioniToolStripMenuItem.Name = "azioniToolStripMenuItem";
+            this.azioniToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.azioniToolStripMenuItem.Text = "Visualizza";
+            this.azioniToolStripMenuItem.Click += new System.EventHandler(this.azioniToolStripMenuItem_Click);
+            // 
+            // programmazioneToolStripMenuItem
+            // 
+            this.programmazioneToolStripMenuItem.Name = "programmazioneToolStripMenuItem";
+            this.programmazioneToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.programmazioneToolStripMenuItem.Text = "Programmazione";
+            this.programmazioneToolStripMenuItem.Click += new System.EventHandler(this.programmazioneToolStripMenuItem_Click);
+            // 
+            // serverToolStripMenuItem
+            // 
+            this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.serverToolStripMenuItem.Text = "Server";
+            this.serverToolStripMenuItem.Click += new System.EventHandler(this.serverToolStripMenuItem_Click);
             // 
             // pnlServer
             // 
@@ -767,29 +791,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(769, 442);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // azioniToolStripMenuItem
-            // 
-            this.azioniToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.programmazioneToolStripMenuItem,
-            this.serverToolStripMenuItem});
-            this.azioniToolStripMenuItem.Name = "azioniToolStripMenuItem";
-            this.azioniToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.azioniToolStripMenuItem.Text = "Azioni";
-            // 
-            // programmazioneToolStripMenuItem
-            // 
-            this.programmazioneToolStripMenuItem.Name = "programmazioneToolStripMenuItem";
-            this.programmazioneToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.programmazioneToolStripMenuItem.Text = "Programmazione";
-            this.programmazioneToolStripMenuItem.Click += new System.EventHandler(this.programmazioneToolStripMenuItem_Click);
-            // 
-            // serverToolStripMenuItem
-            // 
-            this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
-            this.serverToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.serverToolStripMenuItem.Text = "Server";
-            this.serverToolStripMenuItem.Click += new System.EventHandler(this.serverToolStripMenuItem_Click);
             // 
             // Form1
             // 
