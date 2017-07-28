@@ -21,3 +21,4 @@ D:\2858\Repository\trackerwatchserver\TrackerWatchServer\bin\Debug\TrackerWatchS
 C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\MySql.Data.dll
 C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\MySql.Data.xml
 C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\AppSupport\devices.txt
+C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.frmAlarm.resources

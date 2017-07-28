@@ -305,6 +305,9 @@ namespace TrackerWatchServer
                 Console.WriteLine(cmd);
            }
 
+            frmAlarm alarm = new frmAlarm();
+            alarm.Show();
+
             pnlServer.Visible = false;
 
             devices = loadDevices();           

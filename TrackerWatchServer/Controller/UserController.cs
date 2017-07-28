@@ -15,6 +15,8 @@ namespace TrackerWatchServer
         private const string cmdInsertNewUser = "INSERT INTO users (users.Name, users.References, users.Note, users.Address, users.City) VALUES('{0}','{1}','{2}','{3}','{4}')";
         private const string cmdCheckIfUserExist = "SELECT Count(*) FROM users WHERE id= {0}";                          //ok
 
+        private const string cmdGetUserByDeviceID = "SELECT users.* FROM users,devices WHERE devices.UserID = users.id AND devices.ID = '{0}'";
+
         private static UserController sharedInstance;
         private UserController() { }
 
@@ -31,6 +33,25 @@ namespace TrackerWatchServer
         }
 
         
+        public User getUserByDeviceId(String deviceID)
+        {
+            String cmd = cmdGetUserByDeviceID.Replace("{0}", deviceID);
+            User _user = null;
+            List<Dictionary<String, Object>> returnedData = Database.SharedInstance.getData(cmd);
+            if (returnedData.Count > 0)
+            {
+                Dictionary<String, Object> user = returnedData[0];
+                _user = new User();
+                _user.Id = user["id"].ToString();
+                _user.Name = user["Name"].ToString();
+                _user.Note = user["Note"].ToString();
+                _user.References = user["References"].ToString();
+                _user.City = user["City"].ToString();
+                _user.Address = user["Address"].ToString();
+            }
+            return _user;
+        }
+
          // (users.Name, users.References, users.Note, users.Address, users.City)
          // Facciamo un controllo sulla id. Se non è presente è un nuovo record da inserire, altrimenti lo aggiorniamo.
         public bool updateUser(User user)
@@ -119,8 +140,6 @@ namespace TrackerWatchServer
 
                 users.Add(_user);
             }
-
-
             return users;
         }
 

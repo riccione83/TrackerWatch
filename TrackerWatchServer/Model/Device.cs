@@ -30,6 +30,8 @@ namespace TrackerWatchServer
         private String gps = "";
         private String gprs = "";
         private String lastComunicationTime = "";
+        private String lastPositionLatitude = "";
+        private String lastPositionLongitude = "";
 
         public string TelephoneNumber
         {
@@ -300,7 +302,33 @@ namespace TrackerWatchServer
 
             set
             {
-                lastComunicationTime = value;
+               lastComunicationTime = value;
+            }
+        }
+
+        public string LastPositionLatitude
+        {
+            get
+            {
+                return lastPositionLatitude;
+            }
+
+            set
+            {
+                lastPositionLatitude = value;
+            }
+        }
+
+        public string LastPositionLongitude
+        {
+            get
+            {
+                return lastPositionLongitude;
+            }
+
+            set
+            {
+                lastPositionLongitude = value;
             }
         }
 
