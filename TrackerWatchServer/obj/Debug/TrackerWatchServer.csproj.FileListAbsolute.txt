@@ -7,7 +7,6 @@ c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\Track
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.csproj.GenerateResource.Cache
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.exe
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.pdb
-C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\devices.txt
 C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.UserControl1.resources
 D:\2858\Repository\trackerwatchserver\TrackerWatchServer\obj\Debug\TrackerWatchServer.csprojResolveAssemblyReference.cache
 D:\2858\Repository\trackerwatchserver\TrackerWatchServer\obj\Debug\TrackerWatchServer.Form1.resources
@@ -19,3 +18,6 @@ D:\2858\Repository\trackerwatchserver\TrackerWatchServer\bin\Debug\devices.txt
 D:\2858\Repository\trackerwatchserver\TrackerWatchServer\bin\Debug\TrackerWatchServer.exe.config
 D:\2858\Repository\trackerwatchserver\TrackerWatchServer\bin\Debug\TrackerWatchServer.exe
 D:\2858\Repository\trackerwatchserver\TrackerWatchServer\bin\Debug\TrackerWatchServer.pdb
+C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\MySql.Data.dll
+C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\MySql.Data.xml
+C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\AppSupport\devices.txt

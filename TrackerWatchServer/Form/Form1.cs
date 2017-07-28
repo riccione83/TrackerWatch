@@ -299,10 +299,15 @@ namespace TrackerWatchServer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           if(CommandController.SharedInstance.commandAvailable())
+           {
+                Command cmd = CommandController.SharedInstance.getLastCommand();
+                Console.WriteLine(cmd);
+           }
+
             pnlServer.Visible = false;
 
-            devices = loadDevices();
-            
+            devices = loadDevices();           
 
             log("Command ready");
 
