@@ -22,3 +22,5 @@ C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\Track
 C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\MySql.Data.xml
 C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\AppSupport\devices.txt
 C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.frmAlarm.resources
+C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\Support\map.htm
+C:\Users\Riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\Support\Images\pushpin_blue.png
