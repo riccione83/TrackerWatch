@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,11 @@ namespace TrackerWatchServer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            
+            if(!File.Exists(Application.StartupPath + "\\server.txt"))
+                Application.Run(new frmAlarm()); 
+            else
+                Application.Run(new Form1());
         }
     }
 }

@@ -189,7 +189,7 @@
         var locs = new Array; // An array for store locations
         var loc;
         //To add the Pushpin object on the map.
-        function AddPushPinOnMap(lat, lng, description,imei,icon_path,center)
+        function AddPushPinOnMap(lat, lng, title,description,icon_path,centered)
         {
 
                 loc = new VELatLong(parseFloat(lat),parseFloat(lng));
@@ -199,8 +199,8 @@
 
                 var shape = new VEShape(VEShapeType.Pushpin, loc );
                 // Set custom icon for the pushpin.
-                shape.SetTitle(description);
-                shape.SetDescription(imei);
+                shape.SetTitle(title);
+                shape.SetDescription(description);
                 //if(icon_path)
                // {
                	shape.SetCustomIcon("<span style='font-family:Arial; font-size:x-small;" +
@@ -211,13 +211,13 @@
                 // Add shape to the map.
                 map.AddShape(shape);
 
-                if(center!=null)
+                if(centered!=null)
                 {
                     map.SetCenter(new VELatLong(lat, lng));
                 }
         }
 
-                //To add the Pushpin object on the map.
+       //To a polygon object on the map.
         function AddPolygonPinOnMap(lat, lon, description)
         {
                 var shape = new VEShape(VEShapeType.Polygon, [  new VELatLong(lat,lon-0.015),
@@ -230,11 +230,13 @@
                 // Add shape to the map.
                 map.AddShape(shape);
         }
+
         // To set map view.
         function SetBestMapView()
         {
             map.SetMapView(locs);
         }
+
         function ClearMap()
         {
             // Remove all pushpins on the map.
@@ -244,6 +246,7 @@
             loc = null;
             locs = new Array;
         }
+
     </script>
 </head>
 

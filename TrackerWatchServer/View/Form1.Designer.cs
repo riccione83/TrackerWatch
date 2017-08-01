@@ -95,6 +95,8 @@
             this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlServer = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.alarmCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.pnlProgrammazione.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -750,7 +752,9 @@
             // 
             this.azioniToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.programmazioneToolStripMenuItem,
-            this.serverToolStripMenuItem});
+            this.serverToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.alarmCenterToolStripMenuItem});
             this.azioniToolStripMenuItem.Name = "azioniToolStripMenuItem";
             this.azioniToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.azioniToolStripMenuItem.Text = "Visualizza";
@@ -791,6 +795,18 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(769, 442);
             this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(162, 6);
+            // 
+            // alarmCenterToolStripMenuItem
+            // 
+            this.alarmCenterToolStripMenuItem.Name = "alarmCenterToolStripMenuItem";
+            this.alarmCenterToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.alarmCenterToolStripMenuItem.Text = "Alarm Center";
+            this.alarmCenterToolStripMenuItem.Click += new System.EventHandler(this.alarmCenterToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -890,6 +906,8 @@
         private System.Windows.Forms.ToolStripMenuItem azioniToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem programmazioneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serverToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem alarmCenterToolStripMenuItem;
     }
 }
 

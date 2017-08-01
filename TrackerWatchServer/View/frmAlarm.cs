@@ -12,6 +12,7 @@ namespace TrackerWatchServer
 {
     public partial class frmAlarm: Form, alarmDelegate
     {
+
         public void newEvent(Alarm evento)
         {
             eventGrid.Rows.Add();

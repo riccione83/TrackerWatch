@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -73,7 +73,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1016, 504);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1016, 514);
             this.toolStripContainer1.Location = new System.Drawing.Point(1, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.Size = new System.Drawing.Size(1016, 567);
@@ -95,7 +95,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1015, 468);
+            this.splitContainer1.Size = new System.Drawing.Size(1015, 478);
             this.splitContainer1.SplitterDistance = 225;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -113,8 +113,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.webBrowser1);
-            this.splitContainer2.Size = new System.Drawing.Size(786, 468);
-            this.splitContainer2.SplitterDistance = 272;
+            this.splitContainer2.Size = new System.Drawing.Size(786, 478);
+            this.splitContainer2.SplitterDistance = 277;
             this.splitContainer2.TabIndex = 0;
             // 
             // eventGrid
@@ -135,20 +135,20 @@
             this.Utente,
             this.Gestito,
             this.ID});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.eventGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.eventGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.eventGrid.Location = new System.Drawing.Point(3, 6);
             this.eventGrid.MultiSelect = false;
             this.eventGrid.Name = "eventGrid";
             this.eventGrid.RowHeadersVisible = false;
             this.eventGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.eventGrid.Size = new System.Drawing.Size(780, 263);
+            this.eventGrid.Size = new System.Drawing.Size(780, 268);
             this.eventGrid.TabIndex = 1;
             this.eventGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventGrid_CellClick);
             this.eventGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.eventGrid_KeyDown);
@@ -175,8 +175,8 @@
             // 
             // Utente
             // 
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Utente.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Utente.DefaultCellStyle = dataGridViewCellStyle1;
             this.Utente.HeaderText = "Utente";
             this.Utente.Name = "Utente";
             this.Utente.ReadOnly = true;
@@ -200,14 +200,14 @@
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(786, 192);
+            this.webBrowser1.Size = new System.Drawing.Size(786, 197);
             this.webBrowser1.TabIndex = 0;
             // 
             // toolStrip1
             // 
+            this.toolStrip1.AllowItemReorder = true;
             this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.toolStrip1.AutoSize = false;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(60, 60);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -221,7 +221,7 @@
             this.toolStripButton5});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(730, 63);
+            this.toolStrip1.Size = new System.Drawing.Size(280, 53);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButton1
@@ -239,7 +239,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 63);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 53);
             // 
             // toolStripButton2
             // 
@@ -266,7 +266,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 63);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 53);
             // 
             // toolStripButton4
             // 
@@ -282,7 +282,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 63);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 53);
             // 
             // toolStripButton5
             // 
@@ -307,6 +307,7 @@
             this.Load += new System.EventHandler(this.frmAlarm_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
+            this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

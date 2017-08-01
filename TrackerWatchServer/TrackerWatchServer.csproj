@@ -50,14 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\Command.cs" />
+    <Compile Include="Model\Command.cs" />
     <Compile Include="Controller\AlarmController.cs" />
     <Compile Include="Controller\CommandController.cs" />
     <Compile Include="Controller\DeviceController.cs" />
-    <Compile Include="Form\frmAlarm.cs">
+    <Compile Include="View\frmAlarm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\frmAlarm.Designer.cs">
+    <Compile Include="View\frmAlarm.Designer.cs">
       <DependentUpon>frmAlarm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Alarm.cs" />
@@ -65,10 +65,10 @@
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Device.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Form\Form1.cs">
+    <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Form1.Designer.cs">
+    <Compile Include="View\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\GM862.cs" />
@@ -82,10 +82,10 @@
     <Compile Include="UserControl\UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form\Form1.resx">
+    <EmbeddedResource Include="View\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\frmAlarm.resx">
+    <EmbeddedResource Include="View\frmAlarm.resx">
       <DependentUpon>frmAlarm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

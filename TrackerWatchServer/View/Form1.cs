@@ -305,27 +305,24 @@ namespace TrackerWatchServer
                 Console.WriteLine(cmd);
            }
 
-            frmAlarm alarm = new frmAlarm();
-            alarm.Show();
+           pnlServer.Visible = false;
 
-            pnlServer.Visible = false;
+           devices = loadDevices();           
 
-            devices = loadDevices();           
+           log("Command ready");
 
-            log("Command ready");
-
-            if (devices == null)
-            {
+           if (devices == null)
+           {
                 devices = importDevice();
                 if (devices != null)
                     saveDevices(devices);
-            }
-            if(devices != null)
-            {
+           }
+           if(devices != null)
+           {
                 refreshDevice();
-            }
-            try
-            {
+           }
+           try
+           {
                 modem = new GM862GPS("COM3");
                 log("Modem active on COM3");
 
@@ -1013,6 +1010,13 @@ namespace TrackerWatchServer
         private void azioniToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void alarmCenterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            frmAlarm alarmCenter = new frmAlarm();
+            alarmCenter.Show();
         }
     }
 }
