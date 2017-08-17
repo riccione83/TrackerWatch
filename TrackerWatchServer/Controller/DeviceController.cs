@@ -8,8 +8,10 @@ namespace TrackerWatchServer
 {
     class DeviceController
     {
-        private const string cmdGetDeviceByID = "SELECT devices.* FROM devices WHERE devices.ID = '{0}'";
+        public List<Device> devices = new List<Device>();
 
+        private const string cmdGetDeviceByID = "SELECT devices.* FROM devices WHERE devices.ID = '{0}'";
+        private const string cmdGetDevices = "SELECT devices.* FROM devices";
 
         private static DeviceController sharedInstance;
         private DeviceController() { }
@@ -24,6 +26,49 @@ namespace TrackerWatchServer
                 }
                 return sharedInstance;
             }
+        }
+
+        public List<Device> getDevices()
+        {
+            List<Device> devices = new List<Device>();
+
+            String cmd = cmdGetDevices;
+
+            List<Dictionary<String, Object>> returnedData = Database.SharedInstance.getData(cmd);
+
+            foreach (Dictionary<String, Object> device in returnedData)
+            {
+                Device _device = new Device();
+                _device.DeviceID = device["ID"].ToString();
+                _device.User = device["UserID"].ToString();
+                _device.TelephoneNumber = device["TelephoneNumber"].ToString();
+                _device.IMEI = device["IMEI"].ToString();
+                _device.Note = device["Note"].ToString();
+                _device.Version = device["Version"].ToString();
+                _device.Ip = device["IP"].ToString();
+                _device.Port = device["Port"].ToString();
+                _device.Center = device["CenterNumber"].ToString();
+                _device.Slave = device["SlaveNumber"].ToString();
+                _device.Sos1 = device["SOS1"].ToString();
+                _device.Sos2 = device["SOS2"].ToString();
+                _device.Sos3 = device["SOS3"].ToString();
+                _device.Version = device["Version"].ToString();
+                _device.Upload_time = device["UploadTime"].ToString();
+                _device.Battery_level = device["BatteryLevel"].ToString();
+                _device.Language = device["Language"].ToString();
+                _device.Time_zone = device["TimeZone"].ToString();
+                _device.Gps = device["GPS"].ToString();
+                _device.Gprs = device["GPRS"].ToString();
+                _device.LastComunicationTime = device["LastComunicationTime"].ToString();
+                _device.LastPositionLatitude = device["LastPositionLatitude"].ToString();
+                _device.LastPositionLongitude = device["LastPositionLongitude"].ToString();
+
+                devices.Add(_device);
+            }
+
+            this.devices = devices;
+
+            return devices;
         }
 
         public Device getDeviceById(String deviceID)
@@ -61,6 +106,13 @@ namespace TrackerWatchServer
 
             }
             return _device;
+        }
+
+        public List<Device> search(string text)
+        {
+            List<Device> prova = this.devices.FindAll(p => p.TelephoneNumber.Contains(text) || p.Note.Contains(text));
+
+            return prova;
         }
     }
 }

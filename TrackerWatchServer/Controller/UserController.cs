@@ -8,6 +8,8 @@ namespace TrackerWatchServer
 {
     class UserController
     {
+        public List<User> users = new List<User>();
+
         private const string cmdGetAllUser = "SELECT * FROM users";                                                     //ok
         private const string cmdGetUser = "SELECT * from users WHERE users.id={0}";                                     //ok
         private const string cmdDeleteUser = "DELETE FROM users WHERE users.id={0}";                                    //ok
@@ -140,7 +142,16 @@ namespace TrackerWatchServer
 
                 users.Add(_user);
             }
+
+            this.users = users;
             return users;
+        }
+
+        public List<User> search(string text)
+        {
+            List<User> prova = this.users.FindAll(p => p.Name.ToLower().Contains(text.ToLower()) || p.Note.ToLower().Contains(text.ToLower()) || p.Address.ToLower().Contains(text.ToLower()));
+
+            return prova;
         }
 
     }
