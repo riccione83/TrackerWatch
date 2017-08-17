@@ -1,7 +1,6 @@
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\TrackerWatchServer.exe.config
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\TrackerWatchServer.exe
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\bin\Debug\TrackerWatchServer.pdb
-c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.csprojResolveAssemblyReference.cache
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.Form1.resources
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.Properties.Resources.resources
 c:\users\riccardo\documents\visual studio 2015\Projects\TrackerWatchServer\TrackerWatchServer\obj\Debug\TrackerWatchServer.csproj.GenerateResource.Cache
