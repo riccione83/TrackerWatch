@@ -123,17 +123,9 @@ namespace TrackerWatchServer
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            //  AlarmController.SharedInstance.buildAlarm("1111", "Allarme di prova");
+            //AlarmController.SharedInstance.buildAlarm("1111", "Allarme di prova");
 
-            UserController.SharedInstance.loadUsers();
 
-            List<User> test = UserController.SharedInstance.search("R");
-
-            test = UserController.SharedInstance.search("Ricc");
-            test = UserController.SharedInstance.search("Z");
-            test = UserController.SharedInstance.search("ZZ");
-            test = UserController.SharedInstance.search("ZR");
-            test = UserController.SharedInstance.search("chiamare s");
         }
 
         private void toolStripButton5_Click(object sender, EventArgs e)
@@ -180,6 +172,13 @@ namespace TrackerWatchServer
                     }
                 }
             }
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            frmSearch frmsearch = new frmSearch();
+            frmsearch.mainFrm = this;
+            frmsearch.Show();
         }
     }
 }

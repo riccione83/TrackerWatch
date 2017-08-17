@@ -9,6 +9,7 @@ namespace TrackerWatchServer
     class DeviceController
     {
         public List<Device> devices = new List<Device>();
+        public bool devicesLoaded = false;
 
         private const string cmdGetDeviceByID = "SELECT devices.* FROM devices WHERE devices.ID = '{0}'";
         private const string cmdGetDevices = "SELECT devices.* FROM devices";
@@ -66,6 +67,7 @@ namespace TrackerWatchServer
                 devices.Add(_device);
             }
 
+            devicesLoaded = true;
             this.devices = devices;
 
             return devices;
@@ -110,7 +112,7 @@ namespace TrackerWatchServer
 
         public List<Device> search(string text)
         {
-            List<Device> prova = this.devices.FindAll(p => p.TelephoneNumber.Contains(text) || p.Note.Contains(text));
+            List<Device> prova = this.devices.FindAll(p => p.TelephoneNumber.ToLower().Contains(text.ToLower()) || p.Note.ToLower().Contains(text.ToLower()));
 
             return prova;
         }

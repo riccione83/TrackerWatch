@@ -221,7 +221,7 @@
             this.toolStripButton5});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(280, 53);
+            this.toolStrip1.Size = new System.Drawing.Size(311, 53);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButton1
@@ -278,6 +278,7 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(50, 50);
             this.toolStripButton4.Text = "Ricerca";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripSeparator3
             // 

@@ -9,6 +9,7 @@ namespace TrackerWatchServer
     class UserController
     {
         public List<User> users = new List<User>();
+        public bool usersLoaded = false;
 
         private const string cmdGetAllUser = "SELECT * FROM users";                                                     //ok
         private const string cmdGetUser = "SELECT * from users WHERE users.id={0}";                                     //ok
@@ -142,7 +143,7 @@ namespace TrackerWatchServer
 
                 users.Add(_user);
             }
-
+            usersLoaded = true;
             this.users = users;
             return users;
         }
@@ -153,6 +154,5 @@ namespace TrackerWatchServer
 
             return prova;
         }
-
     }
 }
