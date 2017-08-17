@@ -28,7 +28,7 @@ namespace TrackerWatchServer
         private List<Device> devices = new List<Device>();
         private Device currentDevice = null;
         private  TrackerCommand command = null;
-        private string SMSMessage = "";
+        private Dictionary<String,String> SMSMessage = new Dictionary<String, String>();   //was a string
 
         //*******  VARIABILI UTILIZZATE PER LA CONNESSIONE IN TCP
         private string IP_SERVER = "127.0.0.1";
@@ -134,25 +134,6 @@ namespace TrackerWatchServer
             string msg = string.Format(text, args);
             log(msg);
         }
-
-        /*
-                device.Version = version;
-                device.Upload_time = upload;
-                device.Time_zone = time_zone;
-                device.IMEI = imei;
-                device.Ip = ip;
-                device.Port = port;
-                device.Center = center;
-                device.Slave = slave;
-                device.Sos1 = sos1;
-                device.Sos2 = sos2;
-                device.Sos3 = sos3;
-                device.Profile = profile;
-                device.Battery_level = batt_lev;
-                device.Language = language;
-                device.Gps = gps;
-                device.Gprs = gprs;
-        */
 
         void saveDevices(List<Device> listofa)
         {
@@ -368,6 +349,8 @@ namespace TrackerWatchServer
 
         void ReceivedSMS(String Storage, int Number)
         {
+                string telNumber = Number.ToString();
+
                 GM862GPS.SMSMessage sms = modem.ReadMessage(Storage, Number);
                 string strSMS = sms.Message;
                 
@@ -376,14 +359,22 @@ namespace TrackerWatchServer
 
                 Console.WriteLine(strSMS);
 
-                SMSMessage += strSMS;
+                if (SMSMessage.ContainsKey(telNumber))
+                    SMSMessage[telNumber] += strSMS;
+                else
+                {
+                    SMSMessage.Add(telNumber, strSMS);
+                }
+
+                //SMSMessage += strSMS;
                 
                 if(strSMS.IndexOf("GPRS:") > -1)        //If parameters command has sent
                 {
-                    checkForCommand(SMSMessage);
-                    log("Parse new string: " + SMSMessage);
-                    Console.WriteLine(SMSMessage);
-                    SMSMessage = "";
+                    checkForCommand(SMSMessage[telNumber]);
+                    log("Parse new string: " + SMSMessage[telNumber]);
+                    Console.WriteLine(SMSMessage[telNumber]);
+                    SMSMessage.Remove(telNumber);
+                    //SMSMessage = "";
                 }
         }
 
