@@ -180,5 +180,11 @@ namespace TrackerWatchServer
             frmsearch.mainFrm = this;
             frmsearch.Show();
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Form1 frm1 = new Form1();
+            frm1.Show();
+        }
     }
 }

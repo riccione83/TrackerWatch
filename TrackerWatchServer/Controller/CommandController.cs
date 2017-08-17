@@ -11,6 +11,7 @@ namespace TrackerWatchServer
         private const string cmdGetNextCommand = "SELECT * FROM commands ORDER BY Id LIMIT 1";                                                     //ok
         private const string cmdDeleteCommand = "DELETE FROM commands WHERE commands.id={0}";
         private const string cmdCheckForCommand = "SELECT Count(*) FROM commands";
+        private const string cmdInsertCommand = "INSERT INTO commands (commands.command, commands.deviceID) VALUES('{0}','{1}')";
 
         private static CommandController sharedInstance;
         private CommandController() { }
@@ -25,6 +26,15 @@ namespace TrackerWatchServer
                 }
                 return sharedInstance;
             }
+        }
+
+        public bool newCommand(string command, string deviceID)
+        {
+            String cmd = cmdInsertCommand.Replace("{0}", command);
+            cmd = cmd.Replace("{1}", deviceID);
+
+            int cnt = Database.SharedInstance.Insert(cmd);
+            return cnt == 1 ? true : false;
         }
 
         public Command getLastCommand()

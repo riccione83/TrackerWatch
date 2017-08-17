@@ -19,9 +19,17 @@ namespace TrackerWatchServer
             Application.SetCompatibleTextRenderingDefault(false);
             
             if(!File.Exists(Application.StartupPath + "\\server.txt"))
-                Application.Run(new frmAlarm()); 
+            {
+                AppController.SharedInstance.setInstanceType(false);
+                Application.Run(new frmAlarm());
+            }
+                
             else
+            {
+                AppController.SharedInstance.setInstanceType(true);
                 Application.Run(new Form1());
+            }
+                
         }
     }
 }

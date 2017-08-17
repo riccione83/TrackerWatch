@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AppController.cs" />
     <Compile Include="Model\Command.cs" />
     <Compile Include="Controller\AlarmController.cs" />
     <Compile Include="Controller\CommandController.cs" />

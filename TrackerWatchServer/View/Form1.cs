@@ -280,51 +280,68 @@ namespace TrackerWatchServer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           if(CommandController.SharedInstance.commandAvailable())
-           {
-                Command cmd = CommandController.SharedInstance.getLastCommand();
-                Console.WriteLine(cmd);
-           }
+            pnlServer.Visible = false;
 
-           pnlServer.Visible = false;
+            devices = loadDevices();
 
-           devices = loadDevices();           
+            log("Command ready");
 
-           log("Command ready");
-
-           if (devices == null)
-           {
+            if (devices == null)
+            {
                 devices = importDevice();
                 if (devices != null)
                     saveDevices(devices);
-           }
-           if(devices != null)
-           {
-                refreshDevice();
-           }
-           try
-           {
-                modem = new GM862GPS("COM3");
-                log("Modem active on COM3");
-
-                modem.InitializeBasicGSM();
-                log("GSM Initialized success");
-
-                modem.InitializeSMS();
-                modem.OnRecievedSMS += ReceivedSMS;
-                log("SMS Initialized success");
             }
-            catch
+            if (devices != null)
             {
-                log("Unable to open GSM on port");
-                modem = null;
+                refreshDevice();
             }
 
-            command = new TrackerCommand(modem);
-            command.mainForm = this;
+            if (AppController.SharedInstance.isServer)
+            {
+                if (CommandController.SharedInstance.commandAvailable())
+                {
+                    Command cmd = CommandController.SharedInstance.getLastCommand();
+                    Console.WriteLine(cmd);
+                }
+                try
+                {
+                    modem = new GM862GPS("COM3");
+                    log("Modem active on COM3");
 
-            Thread listen = new Thread(listenClient);
-            listen.Start();
+                    modem.InitializeBasicGSM();
+                    log("GSM Initialized success");
+
+                    modem.InitializeSMS();
+                    modem.OnRecievedSMS += ReceivedSMS;
+                    log("SMS Initialized success");
+                }
+                catch
+                {
+                    log("Unable to open GSM on port");
+                    modem = null;
+                }
+
+                command = new TrackerCommand(modem);
+                command.mainForm = this;
+
+                Thread listen = new Thread(listenClient);
+                listen.Start();
+            }
+            else
+            {
+                command = new TrackerCommand(null);
+                if (command != null)
+                {
+                    command.mainForm = this;
+                    command.useGPRS = false;
+                }
+                gPRSToolStripMenuItem.Checked = false;
+                sMSToolStripMenuItem.Checked = true;
+                gPRSToolStripMenuItem.Enabled = false;
+                sMSToolStripMenuItem.Enabled = false;
+                log("Programming console as Client");
+            }
         }
 
         public static byte[] FromHex(string hex)

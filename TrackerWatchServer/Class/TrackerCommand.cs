@@ -11,6 +11,8 @@ namespace TrackerWatchServer
 {
     class TrackerCommand
     {
+        bool isServer = true;
+
         GM862GPS modem = null;
         public bool useGPRS = true;
         public Form1 mainForm = null;
@@ -109,7 +111,11 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetCenterNumber.Replace("xxxx", centerNumber);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+
+                if (isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -131,7 +137,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetAssistantCenterNumber.Replace("xxxx", assistantCenterNumber);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -144,7 +153,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetThreeSOSNumbers.Replace("xxxx", SOSNumber1).Replace("yyyy", SOSNumber2).Replace("zzzz", SOSNumber3);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -173,7 +185,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetSOSNumber1.Replace("xxxx", SOSNumber);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -197,7 +212,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             { 
                 String command = cmdSetSOSNumber2.Replace("xxxx", SOSNumber);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -222,7 +240,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetSOSNumber3.Replace("xxxx", SOSNumber);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -247,7 +268,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdDeleteSOSNumber.Replace("x", numberSOSNumber);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -260,7 +284,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetMonitor.Replace("xxxx", monitorNumber);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -285,7 +312,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetUploadTimeInterval.Replace("xxxx", uploadTimeInterval);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -305,7 +335,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdGetPosition;
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -323,7 +356,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdGetParameters;
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -336,7 +372,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdGetVersion;
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -354,7 +393,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdResetDevice;
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -372,7 +414,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdRestoreFactorySettings;
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -390,7 +435,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetLanguageAndTimezone.Replace("x", language).Replace("y", timezone);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -411,7 +459,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetIpAndPort.Replace("x", IP).Replace("y", port);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -432,7 +483,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetIMEI.Replace("xxxx", imei);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                     modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -445,7 +499,10 @@ namespace TrackerWatchServer
             if (!useGPRS)
             {
                 String command = cmdSetAPN.Replace("xxxx", apnString);
-                modem.SendSMSMessage(device.TelephoneNumber, command);
+                if(isServer)
+                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                else
+                    CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
             {
@@ -456,6 +513,7 @@ namespace TrackerWatchServer
         public TrackerCommand(GM862GPS device)
         {
             this.modem = device;
+            this.isServer = AppController.SharedInstance.isServer;
         }
 
     }
