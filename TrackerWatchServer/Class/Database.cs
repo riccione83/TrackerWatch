@@ -7,6 +7,7 @@ using MySql;
 using MySql.Data.MySqlClient;
 using System.IO;
 using System.Diagnostics;
+using System.Threading;
 
 namespace TrackerWatchServer
 {
@@ -19,6 +20,7 @@ namespace TrackerWatchServer
         private string database;
         private string uid;
         private string password;
+        private bool connectionOpened = false;
 
         public static Database SharedInstance
         {
@@ -55,7 +57,13 @@ namespace TrackerWatchServer
         {
             try
             {
+                while (connection.State == System.Data.ConnectionState.Open)
+                {
+                     Thread.Sleep(10);
+
+                }
                 connection.Open();
+                connectionOpened = true;
                 return true;
             }
             catch (MySqlException ex)
@@ -84,6 +92,7 @@ namespace TrackerWatchServer
         {
             try
             {
+                connectionOpened = false;
                 connection.Close();
                 return true;
             }
@@ -106,8 +115,15 @@ namespace TrackerWatchServer
                 MySqlCommand cmd = new MySqlCommand(query, connection);
 
                 //Execute command
-                int cnt = cmd.ExecuteNonQuery();
-
+                int cnt;
+                try
+                {
+                    cnt = cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    cnt = 0;
+                }
                 //close connection
                 this.CloseConnection();
                 return cnt;
@@ -166,6 +182,7 @@ namespace TrackerWatchServer
             {
                 //Create Command
                 MySqlCommand cmd = new MySqlCommand(query, connection);
+
                 //Create a data reader and Execute the command
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 

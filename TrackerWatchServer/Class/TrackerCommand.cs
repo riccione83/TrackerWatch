@@ -510,11 +510,18 @@ namespace TrackerWatchServer
             }
         }
 
+        public void sendCommand(string command, string deviceID)
+        {
+            if(modem != null)
+            {
+                modem.SendSMSMessage(deviceID, command);
+            }
+        }
+
         public TrackerCommand(GM862GPS device)
         {
             this.modem = device;
             this.isServer = AppController.SharedInstance.isServer;
         }
-
     }
 }

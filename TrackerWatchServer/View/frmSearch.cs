@@ -13,8 +13,9 @@ namespace TrackerWatchServer
     public partial class frmSearch : Form
     {
 
-
         public frmAlarm mainFrm = null;
+        List<User> users = new List<User>();
+        List<Device> devices = new List<Device>();
 
         public frmSearch()
         {
@@ -37,9 +38,6 @@ namespace TrackerWatchServer
 
         private void txtSearchText_TextChanged(object sender, EventArgs e)
         {
-            List<User> users = new List<User>();
-            List<Device> devices = new List<Device>();
-
             if (txtSearchText.Text.Length > 0)
             {
                 users = UserController.SharedInstance.search(txtSearchText.Text);
@@ -62,6 +60,35 @@ namespace TrackerWatchServer
             foreach (Device device in devices)
             {
                 lstDevice.Items.Add(device.Note + " [" + device.DeviceID + " - " + device.TelephoneNumber + "]");
+            }
+        }
+
+        private void lstUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstUser_DoubleClick(object sender, EventArgs e)
+        {
+            if(lstUser.SelectedIndex > -1)
+            {
+                if (mainFrm != null)
+                {
+                    Console.WriteLine("User selected: " + users[lstUser.SelectedIndex]);
+                    this.Close();
+                }
+            }
+        }
+
+        private void lstDevice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstDevice.SelectedIndex > -1)
+            {
+                if (mainFrm != null)
+                {
+                    Console.WriteLine("Device selected: " + devices[lstDevice.SelectedIndex]);
+                    this.Close();
+                }
             }
         }
     }

@@ -36,6 +36,8 @@ namespace TrackerWatchServer
 
         public Dictionary<string, NetworkStream> Connessioni = new Dictionary<string, NetworkStream>();
 
+        Thread checkCommandThread = null;
+
 
         public Form1()
         {
@@ -327,6 +329,10 @@ namespace TrackerWatchServer
 
                 Thread listen = new Thread(listenClient);
                 listen.Start();
+
+                checkCommandThread = new Thread(checkForCommandThread);
+                checkCommandThread.IsBackground = true;
+                checkCommandThread.Start();
             }
             else
             {
@@ -341,6 +347,35 @@ namespace TrackerWatchServer
                 gPRSToolStripMenuItem.Enabled = false;
                 sMSToolStripMenuItem.Enabled = false;
                 log("Programming console as Client");
+
+                checkCommandThread = new Thread(checkForCommandThread);
+                checkCommandThread.IsBackground = true;
+                checkCommandThread.Start();
+            }
+        }
+
+        private void checkForCommandThread()
+        {
+            try
+            {
+                Thread.CurrentThread.Name = "Command Thread";
+                while (Thread.CurrentThread.ThreadState == ThreadState.Background)
+                {
+                    if (CommandController.SharedInstance.commandAvailable())
+                    {
+                        Command cmd = CommandController.SharedInstance.getLastCommand();
+                        command.sendCommand(cmd.CommandText, cmd.DeviceID);
+                        Console.WriteLine("Send a queued command: " + cmd.CommandText + " to: " + cmd.DeviceID);
+                    }
+                    else
+                    {
+                        Thread.Sleep(1000);
+                    }
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Fine del processo checkForCommandThread");
             }
         }
 
@@ -584,6 +619,8 @@ namespace TrackerWatchServer
                 modem = null;
             if (command != null)
                 command = null;
+            if (checkCommandThread != null)
+                checkCommandThread.Interrupt();
         }
 
         private void btnSetCenterNumber_Click(object sender, EventArgs e)
