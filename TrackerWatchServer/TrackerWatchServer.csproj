@@ -66,11 +66,11 @@
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Device.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="View\Form1.cs">
+    <Compile Include="View\frmServer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\frmServer.Designer.cs">
+      <DependentUpon>frmServer.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\GM862.cs" />
     <Compile Include="AppSupport\Program.cs" />
@@ -89,8 +89,8 @@
     <Compile Include="View\frmSearch.Designer.cs">
       <DependentUpon>frmSearch.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="View\frmServer.resx">
+      <DependentUpon>frmServer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmAlarm.resx">
       <DependentUpon>frmAlarm.cs</DependentUpon>
