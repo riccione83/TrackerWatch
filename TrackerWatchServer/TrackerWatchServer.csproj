@@ -55,6 +55,12 @@
     <Compile Include="Controller\AlarmController.cs" />
     <Compile Include="Controller\CommandController.cs" />
     <Compile Include="Controller\DeviceController.cs" />
+    <Compile Include="UserControl\SearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\SearchControl.Designer.cs">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmAlarm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <Compile Include="View\frmSearch.Designer.cs">
       <DependentUpon>frmSearch.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControl\SearchControl.resx">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmServer.resx">
       <DependentUpon>frmServer.cs</DependentUpon>
     </EmbeddedResource>
