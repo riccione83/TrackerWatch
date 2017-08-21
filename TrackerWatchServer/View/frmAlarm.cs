@@ -109,16 +109,37 @@ namespace TrackerWatchServer
             AlarmController.SharedInstance.mainAlarmForm = this;
 
             List<Alarm> allarmi = AlarmController.SharedInstance.loadAlarm();
-
-            foreach(Alarm evento in allarmi)
+            if (AlarmController.SharedInstance.ErrorCode == 0)
             {
-                newEvent(evento);
-            }
 
-            String mapPath = Application.StartupPath + "\\Support\\map.htm";
-            webBrowser1.Navigate(mapPath);
-            webBrowser1.Document.InvokeScript("SetMapStyle", new object[] { "VEMapStyle.Hybrid" });
-            webBrowser1.Invoke(new ClearMapDelegate(ClearMap), null);
+                foreach (Alarm evento in allarmi)
+                {
+                    newEvent(evento);
+                }
+
+                String mapPath = Application.StartupPath + "\\Support\\map.htm";
+                webBrowser1.Navigate(mapPath);
+                webBrowser1.Document.InvokeScript("SetMapStyle", new object[] { "VEMapStyle.Hybrid" });
+                webBrowser1.Invoke(new ClearMapDelegate(ClearMap), null);
+            }
+            else
+            {
+                switch(AlarmController.SharedInstance.ErrorCode)
+                {
+                    case 1:
+                        MessageBox.Show("Cannot Connect to Server. Plese Contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 2:
+                        MessageBox.Show("Invalid Database Username or Password, please contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 3:
+                        MessageBox.Show("Unable to connect with Database Server", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    default:
+                        MessageBox.Show("Unknow Error: " + AlarmController.SharedInstance.ErrorCode.ToString(), "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+            }
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

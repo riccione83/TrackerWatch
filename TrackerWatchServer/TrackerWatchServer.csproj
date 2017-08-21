@@ -137,6 +137,10 @@
     <Content Include="AppSupport\devices.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="options.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="server.txt" />
     <Content Include="Support\Images\pushpin_blue.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,0 +1,6 @@
+﻿COM_PORT = COM5
+TCP_PORT = 8001
+SQL_SERVER_IP = 192.168.2.83
+DATABASE = watch
+DB_USER = software
+DB_PASSWORD = software

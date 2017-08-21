@@ -20,7 +20,8 @@ namespace TrackerWatchServer
         private string database;
         private string uid;
         private string password;
-        private bool connectionOpened = false;
+        public int Error = 0;
+       // private bool connectionOpened = false;
 
         public static Database SharedInstance
         {
@@ -42,15 +43,16 @@ namespace TrackerWatchServer
 
         public void initialize()
         {
-            server = "192.168.2.83";
-            database = "watch";
-            uid = "software";
-            password = "software";
+            server = AppController.SharedInstance.SQL_SERVER_IP;// "192.168.2.83";
+            database = AppController.SharedInstance.DATABASE; // "watch";
+            uid = AppController.SharedInstance.DB_USER; // "software";
+            password = AppController.SharedInstance.DB_PASSWORD; // "software";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new MySqlConnection(connectionString);
+
         }
 
         public bool OpenConnection()
@@ -63,7 +65,7 @@ namespace TrackerWatchServer
 
                 }
                 connection.Open();
-                connectionOpened = true;
+                //connectionOpened = true;
                 return true;
             }
             catch (MySqlException ex)
@@ -77,10 +79,19 @@ namespace TrackerWatchServer
                 {
                     case 0:
                         Console.WriteLine("Cannot connect to server.  Contact administrator");
+                        Error = 1;
                         break;
 
                     case 1045:
                         Console.WriteLine("Invalid username/password, please try again");
+                        Error = 2;
+                        break;
+                    case 1130:
+                        Console.WriteLine("Unable to connect with DB Server");
+                        Error = 3;
+                        break;
+                    default:
+                        Error = ex.Number;
                         break;
                 }
                 return false;
@@ -92,7 +103,7 @@ namespace TrackerWatchServer
         {
             try
             {
-                connectionOpened = false;
+                //connectionOpened = false;
                 connection.Close();
                 return true;
             }

@@ -17,8 +17,8 @@ namespace TrackerWatchServer
         private const string cmdDeleteAlarm = "DELETE FROM alarm WHERE alarm.ID={0}";                                  
         private const string cmdUpdateAlarm = "UPDATE alarm SET alarm..ManagedByID = '{0}', alarm.Note = '{1}' WHERE ID = {2}";
         private const string cmdInsertNewAlarm = "INSERT INTO alarm (alarm.DeviceID, alarm.Type, alarm.ArrivalTimeDate, alarm.ManagedByID, alarm.Note) VALUES('{0}','{1}','{2}','{3}','{4}')";
-        private const string cmdGetAlarm = "SELECT * FROM alarm WHERE Closed = 0";                        
-
+        private const string cmdGetAlarm = "SELECT * FROM alarm WHERE Closed = 0";
+        public int ErrorCode = 0;
 
         private static AlarmController sharedInstance;
         private AlarmController() { }
@@ -29,6 +29,7 @@ namespace TrackerWatchServer
             List<Alarm> alarms = new List<Alarm>();
 
             List<Dictionary<String, Object>> returnedData = Database.SharedInstance.getData(cmdGetAlarm);
+            ErrorCode = Database.SharedInstance.Error;
 
             foreach (Dictionary<String, Object> alarm in returnedData)
             {
@@ -69,7 +70,7 @@ namespace TrackerWatchServer
             cmd = cmd.Replace("{4}", alarm.Note);
 
             int cnt = Database.SharedInstance.Insert(cmd);
-
+            ErrorCode = Database.SharedInstance.Error;
             return cnt == 1 ? true : false;
         }
 
@@ -77,7 +78,7 @@ namespace TrackerWatchServer
         {
             String cmd = cmdDeleteAlarm.Replace("{0}", ID);
             int cnt = Database.SharedInstance.Delete(cmd);
-
+            ErrorCode = Database.SharedInstance.Error;
             //Check if user has deleted or not
             return cnt == 1 ? true : false;
         }
