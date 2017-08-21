@@ -308,8 +308,8 @@ namespace TrackerWatchServer
                 }
                 try
                 {
-                    modem = new GM862GPS("COM3");
-                    log("Modem active on COM3");
+                    modem = new GM862GPS(AppController.SharedInstance.COM_PORT);
+                    log("Modem active on " + AppController.SharedInstance.COM_PORT);
 
                     modem.InitializeBasicGSM();
                     log("GSM Initialized success");
@@ -674,7 +674,7 @@ namespace TrackerWatchServer
         private void listenClient()
         {
             Thread.CurrentThread.Name = "TCP Thread";
-            TcpListener tcpListener = new TcpListener(IPAddress.Any, IP_PORT);
+            TcpListener tcpListener = new TcpListener(IPAddress.Any, int.Parse(AppController.SharedInstance.TCP_PORT));
             try
             {
                 tcpListener.Start();

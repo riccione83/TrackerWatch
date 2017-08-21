@@ -21,7 +21,6 @@ namespace TrackerWatchServer
         private string uid;
         private string password;
         public int Error = 0;
-       // private bool connectionOpened = false;
 
         public static Database SharedInstance
         {
@@ -43,16 +42,15 @@ namespace TrackerWatchServer
 
         public void initialize()
         {
-            server = AppController.SharedInstance.SQL_SERVER_IP;// "192.168.2.83";
-            database = AppController.SharedInstance.DATABASE; // "watch";
-            uid = AppController.SharedInstance.DB_USER; // "software";
-            password = AppController.SharedInstance.DB_PASSWORD; // "software";
+            server = AppController.SharedInstance.SQL_SERVER_IP;
+            database = AppController.SharedInstance.DATABASE;
+            uid = AppController.SharedInstance.DB_USER;
+            password = AppController.SharedInstance.DB_PASSWORD;
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new MySqlConnection(connectionString);
-
         }
 
         public bool OpenConnection()
@@ -65,7 +63,6 @@ namespace TrackerWatchServer
 
                 }
                 connection.Open();
-                //connectionOpened = true;
                 return true;
             }
             catch (MySqlException ex)
@@ -103,7 +100,6 @@ namespace TrackerWatchServer
         {
             try
             {
-                //connectionOpened = false;
                 connection.Close();
                 return true;
             }
@@ -267,8 +263,7 @@ namespace TrackerWatchServer
                 psi.FileName = "mysqldump";
                 psi.RedirectStandardInput = false;
                 psi.RedirectStandardOutput = true;
-                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}",
-                    uid, password, server, database);
+                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", uid, password, server, database);
                 psi.UseShellExecute = false;
 
                 Process process = Process.Start(psi);
@@ -301,10 +296,8 @@ namespace TrackerWatchServer
                 psi.FileName = "mysql";
                 psi.RedirectStandardInput = true;
                 psi.RedirectStandardOutput = false;
-                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}",
-                    uid, password, server, database);
+                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}",uid, password, server, database);
                 psi.UseShellExecute = false;
-
 
                 Process process = Process.Start(psi);
                 process.StandardInput.WriteLine(input);
@@ -317,8 +310,5 @@ namespace TrackerWatchServer
                 Console.WriteLine("Error , unable to Restore!");
             }
         }
-
-        
-
     }
 }
