@@ -174,17 +174,35 @@ namespace TrackerWatchServer
             }
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            frmSearch frmsearch = new frmSearch();
-            frmsearch.mainFrm = this;
-            frmsearch.Show();
-        }
-
+        
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             Form1 frm1 = new Form1();
             frm1.Show();
         }
+
+        private void toolStripBtnUser_Click(object sender, EventArgs e)
+        {
+            SearchControl ctrl = new SearchControl();
+            splitContainer1.Panel1.Controls.Add(ctrl);
+        }
+
+        private void toolStripBtnSearch_Click(object sender, EventArgs e)
+        {
+            frmSearch frm1 = new frmSearch();
+            frm1.Show();
+        }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

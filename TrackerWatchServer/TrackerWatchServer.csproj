@@ -95,6 +95,12 @@
     <Compile Include="View\frmSearch.Designer.cs">
       <DependentUpon>frmSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmUserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmUserDetails.Designer.cs">
+      <DependentUpon>frmUserDetails.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UserControl\SearchControl.resx">
       <DependentUpon>SearchControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmSearch.resx">
       <DependentUpon>frmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmUserDetails.resx">
+      <DependentUpon>frmUserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
