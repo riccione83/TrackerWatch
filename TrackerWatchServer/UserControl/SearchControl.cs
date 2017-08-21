@@ -88,7 +88,7 @@ namespace TrackerWatchServer
             {
                 Console.WriteLine("User selected: " + users[lstUser.SelectedIndex]);
                 devices = DeviceController.SharedInstance.getDevicesByUserID(users[lstUser.SelectedIndex].Id);
-
+                lstDevice.Items.Clear();
                 foreach (Device device in devices)
                 {
                     lstDevice.Items.Add(device.Note + " [" + device.DeviceID + " - " + device.TelephoneNumber + "]");
