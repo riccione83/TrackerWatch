@@ -61,7 +61,7 @@
             this.groupBox1.Controls.Add(this.txtSearchText);
             this.groupBox1.Location = new System.Drawing.Point(5, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 600);
+            this.groupBox1.Size = new System.Drawing.Size(265, 457);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleziona Dispositivo";
@@ -74,7 +74,7 @@
             this.lstDevice.FormattingEnabled = true;
             this.lstDevice.Location = new System.Drawing.Point(8, 55);
             this.lstDevice.Name = "lstDevice";
-            this.lstDevice.Size = new System.Drawing.Size(243, 537);
+            this.lstDevice.Size = new System.Drawing.Size(243, 394);
             this.lstDevice.TabIndex = 1;
             this.lstDevice.SelectedIndexChanged += new System.EventHandler(this.lstDevice_SelectedIndexChanged);
             // 
@@ -100,7 +100,7 @@
             this.groupBox2.Controls.Add(this.dtStart);
             this.groupBox2.Location = new System.Drawing.Point(276, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(585, 111);
+            this.groupBox2.Size = new System.Drawing.Size(666, 111);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Seleziona Inizio/Fine";
@@ -117,7 +117,8 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(462, 50);
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(491, 50);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(55, 55);
             this.button3.TabIndex = 6;
@@ -127,7 +128,8 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(523, 50);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(552, 50);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(55, 55);
             this.button2.TabIndex = 5;
@@ -147,8 +149,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(338, 26);
+            this.label2.Location = new System.Drawing.Point(367, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 3;
@@ -165,7 +168,8 @@
             // 
             // dtFinish
             // 
-            this.dtFinish.Location = new System.Drawing.Point(378, 20);
+            this.dtFinish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtFinish.Location = new System.Drawing.Point(407, 20);
             this.dtFinish.Name = "dtFinish";
             this.dtFinish.Size = new System.Drawing.Size(200, 20);
             this.dtFinish.TabIndex = 1;
@@ -194,7 +198,7 @@
             this.eventGrid.Location = new System.Drawing.Point(276, 120);
             this.eventGrid.Name = "eventGrid";
             this.eventGrid.RowHeadersVisible = false;
-            this.eventGrid.Size = new System.Drawing.Size(585, 475);
+            this.eventGrid.Size = new System.Drawing.Size(666, 332);
             this.eventGrid.TabIndex = 2;
             // 
             // DataEvento
@@ -238,7 +242,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 604);
+            this.ClientSize = new System.Drawing.Size(945, 461);
             this.Controls.Add(this.eventGrid);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

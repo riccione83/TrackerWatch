@@ -22,12 +22,15 @@ namespace TrackerWatchServer
             //If users aren't loaded Update users list
             if (!UserController.SharedInstance.usersLoaded)
             {
-                //I show all the user in the list
-                users = UserController.SharedInstance.loadUsers();
-                updateSearchWithResults(users, devices);
+                refreshData();
             }
-            //if (!DeviceController.SharedInstance.devicesLoaded)
-            //    DeviceController.SharedInstance.getDevices();
+        }
+
+        public void refreshData()
+        {
+            //I show all the user in the list
+            users = UserController.SharedInstance.loadUsers();
+            updateSearchWithResults(users, devices);
         }
 
         //This text works like a filter
@@ -94,6 +97,20 @@ namespace TrackerWatchServer
                 {
                     lstDevice.Items.Add(device.Note + " [" + device.DeviceID + " - " + device.TelephoneNumber + "]");
                 }
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearchText_Enter(object sender, EventArgs e)
+        {
+            if (txtSearchText.Text == "Termine Ricerca")
+            {
+                txtSearchText.Text = "";
+                txtSearchText.ForeColor = Color.Black;
             }
         }
     }

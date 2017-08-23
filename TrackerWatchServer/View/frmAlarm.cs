@@ -12,16 +12,19 @@ namespace TrackerWatchServer
 {
     public partial class frmAlarm: Form, alarmDelegate
     {
+        SearchControl searchControl;
 
         public void newEvent(Alarm evento)
         {
             eventGrid.Rows.Add();
             eventGrid.Rows[eventGrid.RowCount - 1].Cells["Arrivo"].Value = evento.ArrivalTime;
-            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Codice"].Value = evento.Device.DeviceID;
+            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Codice"].Value = evento.Device.Note + " - " + evento.Device.DeviceID;
             eventGrid.Rows[eventGrid.RowCount - 1].Cells["Evento"].Value = evento.EventText;
             eventGrid.Rows[eventGrid.RowCount - 1].Cells["Utente"].Value = evento.User.Name + "\r\n" + evento.User.Address;
             eventGrid.Rows[eventGrid.RowCount - 1].Cells["Gestito"].Value = evento.Managed;
             eventGrid.Rows[eventGrid.RowCount - 1].Cells["ID"].Value = evento.Id;
+            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Latitude"].Value = evento.Latitude;
+            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Longitude"].Value = evento.Longitude;
 
             eventGrid.Rows[eventGrid.RowCount - 1].DefaultCellStyle.BackColor = evento.alarmColor[(int)evento.AlarmType];
         }
@@ -35,8 +38,6 @@ namespace TrackerWatchServer
         public void printStorico(object[] o)
         {
             webBrowser1.Invoke(new SetMultipinDelegate(SetMultipin), new object[] { o });
-
-           // webBrowser1.Invoke(new SetPushpinDelegate(SetPushpin), new object[] { ob });
         }
 
 
@@ -60,7 +61,6 @@ namespace TrackerWatchServer
                 webBrowser1.Document.InvokeScript("AddMultiPinOnMap",o);
             }
         }
-
 
         public delegate void SetPushpinDelegate(object[] o);
         public void SetPushpin(object[] o)
@@ -170,8 +170,8 @@ namespace TrackerWatchServer
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            //this.Close();
-            AlarmController.SharedInstance.buildAlarm("1111", "Allarme di prova", "37.537211", "15.094644");
+            this.Close();
+            //AlarmController.SharedInstance.buildAlarm("1111", "Allarme di prova", "37.537211", "15.094644");
         }
 
         private void eventGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -179,16 +179,24 @@ namespace TrackerWatchServer
             int rowIndex = e.RowIndex;
             if (rowIndex > -1)
             {
-                Console.WriteLine("Selected alarm ID: " + eventGrid.Rows[rowIndex].Cells["ID"].Value);
-
-                //Test
+                string alarmID = eventGrid.Rows[rowIndex].Cells["ID"].Value.ToString();
+                Console.WriteLine("Selected alarm ID: " + alarmID);
+                Alarm alarmSelected = AlarmController.SharedInstance.alarms.First(x => x.Id == alarmID);
                 object[] ob = new object[6];
-                ob[0] = 37.537211;
-                ob[1] = 15.094644;
-                ob[2] = "Posizione di prova (Orologio Blu)"; //descrizione
-                ob[3] = "Descrizione bla bla bla <br> Numero 1: 123456 <br> Numero 2: 22222 <br> <b>Chiamare solo in caso di necessità</b>";
+                if (alarmSelected.Latitude != "")
+                    ob[0] = alarmSelected.Latitude;
+                else
+                    ob[0] = 0.00;
+                if (alarmSelected.Longitude != "")
+                    ob[1] = alarmSelected.Longitude;
+                else
+                    ob[1] = 0.00;
+                
+                ob[2] = alarmSelected.Device.Note + "[" + alarmSelected.Device.DeviceID + "]"; //descrizione
+                ob[3] = Helper.getTextFromRTF(alarmSelected.User.References).Replace("\n","<br>") + "<hr><br>" + Helper.getTextFromRTF(alarmSelected.User.Note).Replace("\n", "<br>");// "Descrizione bla bla bla <br> Numero 1: 123456 <br> Numero 2: 22222 <br> <b>Chiamare solo in caso di necessità</b>";
                 ob[4] = Application.StartupPath + "\\Support\\Images\\pushpin_blue.png";   //immagine del pushpin
-                ob[5] = true;       //Se deve essere selezionato
+                ob[5] = true;       //Se deve essere centrato
+                webBrowser1.Invoke(new ClearMapDelegate(ClearMap));
                 webBrowser1.Invoke(new SetPushpinDelegate(SetPushpin), new object[] { ob });
             }
         }
@@ -226,8 +234,18 @@ namespace TrackerWatchServer
 
         private void toolStripBtnUser_Click(object sender, EventArgs e)
         {
-            SearchControl ctrl = new SearchControl();
-            splitContainer1.Panel1.Controls.Add(ctrl);
+            if (splitContainer1.Panel1.Controls.Contains(searchControl))
+                searchControl.refreshData();
+            else
+            {
+                searchControl = new SearchControl();
+                splitContainer1.Panel1.Controls.Clear();  //Close all previus control
+                searchControl.BorderStyle = BorderStyle.FixedSingle;
+                
+                splitContainer1.Panel1.Controls.Add(searchControl);
+                searchControl.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom;
+                searchControl.Dock = DockStyle.Fill;
+            }
         }
 
         private void toolStripBtnSearch_Click(object sender, EventArgs e)

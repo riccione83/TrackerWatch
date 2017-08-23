@@ -21,13 +21,6 @@ namespace TrackerWatchServer
         private static AppController sharedInstance;
         private AppController()
         {
-            if (!File.Exists(Application.StartupPath + "\\server.txt"))
-                this.isServer = false;
-            else
-            {
-                this.isServer = true;
-            }
-
             loadOptions();
         }
 
@@ -59,6 +52,9 @@ namespace TrackerWatchServer
                                 break;
                             case "DB_PASSWORD":
                                 DB_PASSWORD = par[1];
+                                break;
+                            case "IS_SERVER":
+                                isServer = Boolean.Parse(par[1]);
                                 break;
                             default:
                                 break;

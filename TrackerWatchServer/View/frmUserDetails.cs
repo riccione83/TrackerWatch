@@ -27,8 +27,8 @@ namespace TrackerWatchServer
             tbCity.Text = userSelected.City;
             cbProvinces.Text = userSelected.Province;
             tbCAP.Text = userSelected.CAP;
-            rtbContacts.Rtf = userSelected.References.Replace("§", "\\").Replace("£", @"'");
-            rtbNotes.Rtf = userSelected.Note.Replace("§", @"\").Replace("£", @"'");
+            rtbContacts.Rtf = Helper.decodeRTF(userSelected.References);
+            rtbNotes.Rtf = Helper.decodeRTF(userSelected.Note); 
         }
 
         //menu for Contacts
@@ -42,7 +42,6 @@ namespace TrackerWatchServer
             {
                 rtbContacts.SelectionFont = new Font(rtbContacts.SelectionFont.OriginalFontName, rtbContacts.SelectionFont.Size, FontStyle.Regular);
             }
-
         }
 
         private void italicToolStripMenuItemContacts_Click(object sender, EventArgs e)
@@ -155,9 +154,20 @@ namespace TrackerWatchServer
             newUser.Province = cbProvinces.SelectedItem.ToString();
             newUser.CAP = tbCAP.Text;
 
-            newUser.References = rtbContacts.Rtf.Replace(@"\", "§").Replace(@"'", "£"); ;
-            newUser.Note = rtbNotes.Rtf.Replace(@"\", "§").Replace(@"'", "£");
-            UserController.SharedInstance.updateUser(newUser);
-        } 
+            newUser.References = Helper.encodeRTF(rtbContacts.Rtf);
+            newUser.Note = Helper.encodeRTF(rtbNotes.Rtf);
+            if (UserController.SharedInstance.updateUser(newUser))
+                this.Close();
+            else
+            {
+                MessageBox.Show("Errore nel salvataggio dell'utente.", "Errore.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void frmUserDetails_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

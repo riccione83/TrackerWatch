@@ -533,6 +533,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmUserDetails";
             this.Text = "Dettagli Utente";
+            this.Load += new System.EventHandler(this.frmUserDetails_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();

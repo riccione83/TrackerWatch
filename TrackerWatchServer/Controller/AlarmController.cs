@@ -25,6 +25,7 @@ namespace TrackerWatchServer
         private static AlarmController sharedInstance;
         private AlarmController() { }
         public frmAlarm mainAlarmForm;
+        public List<Alarm> alarms;
 
 
         public List<Alarm> loadAlarm(DateTime from, DateTime to, Device device)
@@ -114,6 +115,7 @@ namespace TrackerWatchServer
                 _alarm.EventText = alarm["Event"].ToString();
                 alarms.Add(_alarm);
             }
+            this.alarms = alarms;
             return alarms;
         }
 

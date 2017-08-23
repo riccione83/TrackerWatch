@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Helper.cs" />
     <Compile Include="Controller\AppController.cs" />
     <Compile Include="Model\Command.cs" />
     <Compile Include="Controller\AlarmController.cs" />
@@ -165,7 +166,6 @@
     <Content Include="options.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="server.txt" />
     <Content Include="Resources\bold_icon.png" />
     <Content Include="Resources\center_align_text_icon.png" />
     <Content Include="Resources\elenco_puntato_icon.png" />
