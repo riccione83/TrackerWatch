@@ -170,7 +170,8 @@ namespace TrackerWatchServer
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
+            AlarmController.SharedInstance.buildAlarm("1111", "Allarme di prova", "37.537211", "15.094644");
         }
 
         private void eventGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -192,20 +193,6 @@ namespace TrackerWatchServer
             }
         }
 
-     /*   public void printStorico(float[] latitudes, float[] longitudes, string[] datetime)
-        {
-            foreach (float latitude in latitudes)
-            {
-                object[] ob = new object[6];
-                ob[0] = 37.537211;
-                ob[1] = 15.094644;
-                ob[2] = "Posizione di prova (Orologio Blu)"; //descrizione
-                ob[3] = "Descrizione bla bla bla <br> Numero 1: 123456 <br> Numero 2: 22222 <br> <b>Chiamare solo in caso di necessità</b>";
-                ob[4] = Application.StartupPath + "\\Support\\Images\\pushpin_blue.png";   //immagine del pushpin
-                ob[5] = true;       //Se deve essere selezionato
-                webBrowser1.Invoke(new SetPushpinDelegate(SetPushpin), new object[] { ob });
-            }
-        }*/
 
         private void eventGrid_KeyPress(object sender, KeyPressEventArgs e)
         {

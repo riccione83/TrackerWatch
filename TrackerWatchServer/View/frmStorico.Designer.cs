@@ -40,15 +40,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtFinish = new System.Windows.Forms.DateTimePicker();
             this.dtStart = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.eventGrid = new System.Windows.Forms.DataGridView();
             this.DataEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Evento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Latitudine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Longitudine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saveFileDialogTXT = new System.Windows.Forms.SaveFileDialog();
+            this.saveFileDialogCSV = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -59,7 +61,7 @@
             this.groupBox1.Controls.Add(this.txtSearchText);
             this.groupBox1.Location = new System.Drawing.Point(5, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 574);
+            this.groupBox1.Size = new System.Drawing.Size(265, 600);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleziona Dispositivo";
@@ -72,8 +74,9 @@
             this.lstDevice.FormattingEnabled = true;
             this.lstDevice.Location = new System.Drawing.Point(8, 55);
             this.lstDevice.Name = "lstDevice";
-            this.lstDevice.Size = new System.Drawing.Size(243, 511);
+            this.lstDevice.Size = new System.Drawing.Size(243, 537);
             this.lstDevice.TabIndex = 1;
+            this.lstDevice.SelectedIndexChanged += new System.EventHandler(this.lstDevice_SelectedIndexChanged);
             // 
             // txtSearchText
             // 
@@ -97,7 +100,7 @@
             this.groupBox2.Controls.Add(this.dtStart);
             this.groupBox2.Location = new System.Drawing.Point(276, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(596, 111);
+            this.groupBox2.Size = new System.Drawing.Size(585, 111);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Seleziona Inizio/Fine";
@@ -120,6 +123,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "Esporta TXT";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -129,6 +133,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "Esporta CSV";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -138,6 +143,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Refresh";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -171,23 +177,25 @@
             this.dtStart.Size = new System.Drawing.Size(191, 20);
             this.dtStart.TabIndex = 0;
             // 
-            // dataGridView1
+            // eventGrid
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.eventGrid.AllowUserToAddRows = false;
+            this.eventGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.eventGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.eventGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.eventGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DataEvento,
             this.ID,
             this.Evento,
             this.Latitudine,
             this.Longitudine});
-            this.dataGridView1.Location = new System.Drawing.Point(276, 120);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(596, 449);
-            this.dataGridView1.TabIndex = 2;
+            this.eventGrid.Location = new System.Drawing.Point(276, 120);
+            this.eventGrid.Name = "eventGrid";
+            this.eventGrid.RowHeadersVisible = false;
+            this.eventGrid.Size = new System.Drawing.Size(585, 475);
+            this.eventGrid.TabIndex = 2;
             // 
             // DataEvento
             // 
@@ -214,22 +222,34 @@
             this.Longitudine.HeaderText = "Longitudine";
             this.Longitudine.Name = "Longitudine";
             // 
+            // saveFileDialogTXT
+            // 
+            this.saveFileDialogTXT.DefaultExt = "*.txt";
+            this.saveFileDialogTXT.Filter = "Text Files|*.txt";
+            this.saveFileDialogTXT.Title = "Esporta in File Testo";
+            // 
+            // saveFileDialogCSV
+            // 
+            this.saveFileDialogCSV.DefaultExt = "*.csv";
+            this.saveFileDialogCSV.Filter = "File CSV|*.csv";
+            this.saveFileDialogCSV.Title = "Esporta in file CSV";
+            // 
             // frmStorico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 578);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(864, 604);
+            this.Controls.Add(this.eventGrid);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmStorico";
-            this.Text = "frmStorico";
+            this.Text = "Visualizza Storico";
             this.Load += new System.EventHandler(this.frmStorico_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -248,11 +268,13 @@
         private System.Windows.Forms.DateTimePicker dtFinish;
         private System.Windows.Forms.DateTimePicker dtStart;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView eventGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataEvento;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Evento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Latitudine;
         private System.Windows.Forms.DataGridViewTextBoxColumn Longitudine;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogTXT;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogCSV;
     }
 }

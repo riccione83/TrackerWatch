@@ -28,6 +28,8 @@ namespace TrackerWatchServer
         private AlarmTypeCode alarmType;
         private String note = "";
         private String lastModifiedTime = "";
+        private String latitude = "";
+        private String longitude = "";
 
         public AlarmTypeCode AlarmType
         {
@@ -143,6 +145,32 @@ namespace TrackerWatchServer
             set
             {
                 lastModifiedTime = value;
+            }
+        }
+
+        public string Latitude
+        {
+            get
+            {
+                return latitude;
+            }
+
+            set
+            {
+                latitude = value;
+            }
+        }
+
+        public string Longitude
+        {
+            get
+            {
+                return longitude;
+            }
+
+            set
+            {
+                longitude = value;
             }
         }
     }

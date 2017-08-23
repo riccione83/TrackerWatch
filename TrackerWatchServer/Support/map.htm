@@ -213,20 +213,21 @@
 
 
         function AddMultiPinOnMap(lat, lng, description) {
-            loc = new VELatLong(parseFloat(lat), parseFloat(lng));
-            // Store the location in an array.
-            locs.push(loc);
 
-            var shape = new VEShape(VEShapeType.Pushpin, loc);
-            // Set custom icon for the pushpin.
-            shape.SetTitle("Storico");
-            shape.SetDescription(description);
-            /*shape.SetCustomIcon("<span style='font-family:Arial; font-size:x-small;" +
-                                "color:Black; background-color:transparent'>" +
-                                "<img src='" + icon_path + "'/></span>");*/
-            // Add shape to the map.
-            map.AddShape(shape);
-            //window.alert(lat.length);
+                loc = new VELatLong(parseFloat(lat), parseFloat(lng));
+                // Store the location in an array.
+                locs.push(loc);
+
+                var shape = new VEShape(VEShapeType.Pushpin, loc);
+                // Set custom icon for the pushpin.
+                shape.SetTitle("Storico");
+                shape.SetDescription(description);
+                /*shape.SetCustomIcon("<span style='font-family:Arial; font-size:x-small;" +
+                                    "color:Black; background-color:transparent'>" +
+                                    "<img src='" + icon_path + "'/></span>");*/
+                // Add shape to the map.
+                map.AddShape(shape);
+                //window.alert(lat.length);
         }
 
        //To a polygon object on the map.
