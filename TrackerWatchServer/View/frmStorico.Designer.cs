@@ -80,9 +80,11 @@
             // 
             // txtSearchText
             // 
+            this.txtSearchText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchText.Location = new System.Drawing.Point(8, 20);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(195, 20);
+            this.txtSearchText.Size = new System.Drawing.Size(243, 20);
             this.txtSearchText.TabIndex = 0;
             this.txtSearchText.TextChanged += new System.EventHandler(this.txtSearchText_TextChanged);
             // 
@@ -169,16 +171,18 @@
             // dtFinish
             // 
             this.dtFinish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFinish.Location = new System.Drawing.Point(407, 20);
             this.dtFinish.Name = "dtFinish";
-            this.dtFinish.Size = new System.Drawing.Size(200, 20);
+            this.dtFinish.Size = new System.Drawing.Size(200, 26);
             this.dtFinish.TabIndex = 1;
             // 
             // dtStart
             // 
+            this.dtStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtStart.Location = new System.Drawing.Point(67, 20);
             this.dtStart.Name = "dtStart";
-            this.dtStart.Size = new System.Drawing.Size(191, 20);
+            this.dtStart.Size = new System.Drawing.Size(191, 26);
             this.dtStart.TabIndex = 0;
             // 
             // eventGrid

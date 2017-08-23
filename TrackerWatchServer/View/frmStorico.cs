@@ -33,8 +33,9 @@ namespace TrackerWatchServer
             if (!DeviceController.SharedInstance.devicesLoaded)
                 devices = DeviceController.SharedInstance.getDevices();
 
-            updateSearchWithResults(devices);
-        }
+             updateSearchWithResults(devices);
+         }
+
 
         private void showNewStorico(Alarm evento)
         {
@@ -44,7 +45,6 @@ namespace TrackerWatchServer
             eventGrid.Rows[eventGrid.RowCount - 1].Cells["Evento"].Value = evento.EventText;
             eventGrid.Rows[eventGrid.RowCount - 1].Cells["Latitudine"].Value = evento.Latitude;
             eventGrid.Rows[eventGrid.RowCount - 1].Cells["Longitudine"].Value = evento.Longitude;
-
             eventGrid.Rows[eventGrid.RowCount - 1].DefaultCellStyle.BackColor = evento.alarmColor[(int)evento.AlarmType];
         }
 
