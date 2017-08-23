@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TrackerWatchServer.View
+namespace TrackerWatchServer
 {
     public partial class frmUserDetails : Form
     {
@@ -21,15 +21,14 @@ namespace TrackerWatchServer.View
 
         public frmUserDetails(User userSelected) : this()
         {
-            //InitializeComponent();
             this.userSelected = userSelected;
             tbName.Text = userSelected.Name;
             tbAddress.Text = userSelected.Address;
             tbCity.Text = userSelected.City;
             cbProvinces.Text = userSelected.Province;
             tbCAP.Text = userSelected.CAP;
-            rtbContacts.Text = userSelected.References;
-            rtbNotes.Text = userSelected.Note;
+            rtbContacts.Rtf = userSelected.References.Replace("§", "\\").Replace("£", @"'");
+            rtbNotes.Rtf = userSelected.Note.Replace("§", @"\").Replace("£", @"'");
         }
 
         //menu for Contacts
@@ -140,6 +139,25 @@ namespace TrackerWatchServer.View
             frm.Show();
         }
 
-        
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            User newUser;
+
+            //I cliccked on un existing user
+            if (userSelected != null)
+            {
+               newUser = userSelected;
+            }//I want to create a new user
+            else { newUser = new User(); }
+          
+            newUser.Name = tbName.Text;
+            newUser.Address = tbAddress.Text;
+            newUser.Province = cbProvinces.SelectedItem.ToString();
+            newUser.CAP = tbCAP.Text;
+
+            newUser.References = rtbContacts.Rtf.Replace(@"\", "§").Replace(@"'", "£"); ;
+            newUser.Note = rtbNotes.Rtf.Replace(@"\", "§").Replace(@"'", "£");
+            UserController.SharedInstance.updateUser(newUser);
+        } 
     }
 }

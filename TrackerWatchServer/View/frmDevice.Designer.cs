@@ -1,4 +1,4 @@
-﻿namespace TrackerWatchServer.View
+﻿namespace TrackerWatchServer
 {
     partial class frmDevice
     {

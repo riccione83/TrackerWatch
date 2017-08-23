@@ -14,8 +14,8 @@ namespace TrackerWatchServer
         private const string cmdGetAllUser = "SELECT * FROM users";                                                     //ok
         private const string cmdGetUser = "SELECT * from users WHERE users.id={0}";                                     //ok
         private const string cmdDeleteUser = "DELETE FROM users WHERE users.id={0}";                                    //ok
-        private const string cmdUpdateUser = "UPDATE users SET users.Name = '{0}', users.References = '{1}', users.Note = '{2}', users.Address = '{3}', users.City = '{4}', user.Province = '{5}', user.CAP = '{6}' WHERE id = {7}";
-        private const string cmdInsertNewUser = "INSERT INTO users (users.Name, users.References, users.Note, users.Address, users.City, user.Province, user.CAP) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}')";
+        private const string cmdUpdateUser = "UPDATE users SET users.Name = '{0}', users.References = '{1}', users.Note = '{2}', users.Address = '{3}', users.City = '{4}', users.Province = '{5}', users.CAP = '{6}' WHERE id = {7}";
+        private const string cmdInsertNewUser = "INSERT INTO users (users.Name, users.References, users.Note, users.Address, users.City, users.Province, users.CAP) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}')";
         private const string cmdCheckIfUserExist = "SELECT Count(*) FROM users WHERE id= {0}";                          //ok
 
         private const string cmdGetUserByDeviceID = "SELECT users.* FROM users,devices WHERE devices.UserID = users.id AND devices.ID = '{0}'";

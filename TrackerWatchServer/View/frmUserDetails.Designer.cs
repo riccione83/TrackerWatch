@@ -1,4 +1,4 @@
-﻿namespace TrackerWatchServer.View
+﻿namespace TrackerWatchServer
 {
     partial class frmUserDetails
     {
@@ -291,6 +291,7 @@
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Salva";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnAddDevice
             // 
