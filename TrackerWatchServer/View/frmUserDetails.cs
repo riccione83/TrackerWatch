@@ -12,9 +12,24 @@ namespace TrackerWatchServer.View
 {
     public partial class frmUserDetails : Form
     {
+        User userSelected;
+
         public frmUserDetails()
         {
             InitializeComponent();
+        }
+
+        public frmUserDetails(User userSelected) : this()
+        {
+            //InitializeComponent();
+            this.userSelected = userSelected;
+            tbName.Text = userSelected.Name;
+            tbAddress.Text = userSelected.Address;
+            tbCity.Text = userSelected.City;
+            cbProvinces.Text = userSelected.Province;
+            tbCAP.Text = userSelected.CAP;
+            rtbContacts.Text = userSelected.References;
+            rtbNotes.Text = userSelected.Note;
         }
 
         //menu for Contacts
@@ -121,7 +136,7 @@ namespace TrackerWatchServer.View
 
         private void btnAddDevice_Click(object sender, EventArgs e)
         {
-            frmDevice frm = new frmDevice();
+            frmDevice frm = new frmDevice(userSelected);
             frm.Show();
         }
 

@@ -67,7 +67,8 @@ namespace TrackerWatchServer
             if (lstUser.SelectedIndex > -1)
             {              
                 Console.WriteLine("User selected: " + users[lstUser.SelectedIndex]);
-                frmUserDetails frmdetails = new frmUserDetails();
+                //pass the user selected to the UserDetails Form
+                frmUserDetails frmdetails = new frmUserDetails(users[lstUser.SelectedIndex]);
                 frmdetails.Show();
             }      
         }

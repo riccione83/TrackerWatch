@@ -40,7 +40,7 @@
             this.cbProvinces = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbCAP = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAddDevice = new System.Windows.Forms.Button();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
@@ -276,12 +276,12 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "CAP";
             // 
-            // textBox1
+            // tbCAP
             // 
-            this.textBox1.Location = new System.Drawing.Point(112, 203);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
-            this.textBox1.TabIndex = 13;
+            this.tbCAP.Location = new System.Drawing.Point(112, 203);
+            this.tbCAP.Name = "tbCAP";
+            this.tbCAP.Size = new System.Drawing.Size(76, 20);
+            this.tbCAP.TabIndex = 13;
             // 
             // btnSave
             // 
@@ -512,12 +512,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 518);
+            this.ClientSize = new System.Drawing.Size(1017, 518);
             this.Controls.Add(this.toolStripContainer2);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.btnAddDevice);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbCAP);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbProvinces);
@@ -564,7 +564,7 @@
         private System.Windows.Forms.ComboBox cbProvinces;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbCAP;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAddDevice;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;

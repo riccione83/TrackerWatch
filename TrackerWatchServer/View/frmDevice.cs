@@ -12,9 +12,17 @@ namespace TrackerWatchServer.View
 {
     public partial class frmDevice : Form
     {
+        User userToAssociateTo;
+
         public frmDevice()
         {
             InitializeComponent();
+        }
+
+        public frmDevice(User user)
+        {
+            InitializeComponent();
+            userToAssociateTo = user;
         }
     }
 }

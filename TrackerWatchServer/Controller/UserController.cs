@@ -14,8 +14,8 @@ namespace TrackerWatchServer
         private const string cmdGetAllUser = "SELECT * FROM users";                                                     //ok
         private const string cmdGetUser = "SELECT * from users WHERE users.id={0}";                                     //ok
         private const string cmdDeleteUser = "DELETE FROM users WHERE users.id={0}";                                    //ok
-        private const string cmdUpdateUser = "UPDATE users SET users.Name = '{0}', users.References = '{1}', users.Note = '{2}', users.Address = '{3}', users.City = '{4}' WHERE id = {5}";
-        private const string cmdInsertNewUser = "INSERT INTO users (users.Name, users.References, users.Note, users.Address, users.City) VALUES('{0}','{1}','{2}','{3}','{4}')";
+        private const string cmdUpdateUser = "UPDATE users SET users.Name = '{0}', users.References = '{1}', users.Note = '{2}', users.Address = '{3}', users.City = '{4}', user.Province = '{5}', user.CAP = '{6}' WHERE id = {7}";
+        private const string cmdInsertNewUser = "INSERT INTO users (users.Name, users.References, users.Note, users.Address, users.City, user.Province, user.CAP) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}')";
         private const string cmdCheckIfUserExist = "SELECT Count(*) FROM users WHERE id= {0}";                          //ok
 
         private const string cmdGetUserByDeviceID = "SELECT users.* FROM users,devices WHERE devices.UserID = users.id AND devices.ID = '{0}'";
@@ -51,11 +51,13 @@ namespace TrackerWatchServer
                 _user.References = user["References"].ToString();
                 _user.City = user["City"].ToString();
                 _user.Address = user["Address"].ToString();
+                _user.Province = user["Province"].ToString();
+                _user.CAP = user["CAP"].ToString();
             }
             return _user;
         }
 
-         // (users.Name, users.References, users.Note, users.Address, users.City)
+         // (users.Name, users.References, users.Note, users.Address, users.City, user.Province, user.CAP)
          // Facciamo un controllo sulla id. Se non è presente è un nuovo record da inserire, altrimenti lo aggiorniamo.
         public bool updateUser(User user)
         {
@@ -73,7 +75,9 @@ namespace TrackerWatchServer
                 cmd = cmd.Replace("{2}", user.Note);
                 cmd = cmd.Replace("{3}", user.Address);
                 cmd = cmd.Replace("{4}", user.City);
-                cmd = cmd.Replace("{5}", user.Id);
+                cmd = cmd.Replace("{5}", user.Province);
+                cmd = cmd.Replace("{6}", user.CAP);
+                cmd = cmd.Replace("{7}", user.Id);
 
                 cnt = Database.SharedInstance.Update(cmd);
             }
@@ -91,6 +95,8 @@ namespace TrackerWatchServer
             cmd = cmd.Replace("{2}", user.Note);
             cmd = cmd.Replace("{3}", user.Address);
             cmd = cmd.Replace("{4}", user.City);
+            cmd = cmd.Replace("{5}", user.Province);
+            cmd = cmd.Replace("{6}", user.CAP);
 
             int cnt = Database.SharedInstance.Insert(cmd);
 
@@ -121,6 +127,9 @@ namespace TrackerWatchServer
                 _user.References = user["References"].ToString();
                 _user.City = user["City"].ToString();
                 _user.Address = user["Address"].ToString();
+                _user.Province = user["Province"].ToString();
+                _user.CAP = user["CAP"].ToString();
+
             }
             return _user;
         }
@@ -140,6 +149,8 @@ namespace TrackerWatchServer
                 _user.References = user["References"].ToString();
                 _user.City = user["City"].ToString();
                 _user.Address = user["Address"].ToString();
+                _user.Province = user["Province"].ToString();
+                _user.CAP = user["CAP"].ToString();
 
                 users.Add(_user);
             }

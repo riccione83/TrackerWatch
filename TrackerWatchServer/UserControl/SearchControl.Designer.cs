@@ -53,7 +53,7 @@ namespace TrackerWatchServer
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 373);
+            this.groupBox1.Size = new System.Drawing.Size(230, 345);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ricerca";
@@ -85,7 +85,7 @@ namespace TrackerWatchServer
             this.lstDevice.ItemHeight = 25;
             this.lstDevice.Location = new System.Drawing.Point(14, 218);
             this.lstDevice.Name = "lstDevice";
-            this.lstDevice.Size = new System.Drawing.Size(235, 104);
+            this.lstDevice.Size = new System.Drawing.Size(198, 104);
             this.lstDevice.TabIndex = 3;
             this.lstDevice.DoubleClick += new System.EventHandler(this.lstDevice_DoubleClick);
             // 
@@ -98,7 +98,7 @@ namespace TrackerWatchServer
             this.lstUser.ItemHeight = 25;
             this.lstUser.Location = new System.Drawing.Point(14, 93);
             this.lstUser.Name = "lstUser";
-            this.lstUser.Size = new System.Drawing.Size(235, 79);
+            this.lstUser.Size = new System.Drawing.Size(198, 79);
             this.lstUser.TabIndex = 2;
             this.lstUser.SelectedIndexChanged += new System.EventHandler(this.lstUser_SelectedIndexChanged);
             this.lstUser.DoubleClick += new System.EventHandler(this.lstUser_DoubleClick);
@@ -110,7 +110,7 @@ namespace TrackerWatchServer
             this.txtSearchText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchText.Location = new System.Drawing.Point(14, 37);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(235, 29);
+            this.txtSearchText.Size = new System.Drawing.Size(198, 29);
             this.txtSearchText.TabIndex = 1;
             this.txtSearchText.TextChanged += new System.EventHandler(this.txtSearchText_TextChanged);
             // 

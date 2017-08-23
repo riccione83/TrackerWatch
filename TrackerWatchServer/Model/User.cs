@@ -14,6 +14,8 @@ namespace TrackerWatchServer
         private String note = "";
         private String address = "";
         private String city = "";
+        private String province = "";
+        private String cap = "";
 
         public string Name
         {
@@ -90,6 +92,32 @@ namespace TrackerWatchServer
             set
             {
                 id = value;
+            }
+        }
+
+        public string Province
+        {
+            get
+            {
+                return province;
+            }
+
+            set
+            {
+                province = value;
+            }
+        }
+
+        public string CAP
+        {
+            get
+            {
+                return cap;
+            }
+
+            set
+            {
+                cap = value;
             }
         }
     }
