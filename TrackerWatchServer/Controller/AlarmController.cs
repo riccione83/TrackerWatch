@@ -149,7 +149,7 @@ namespace TrackerWatchServer
          * Poi lo invia al form principale con il 'pushNewEvent'
          * 
          */
-        public Alarm buildAlarm(String deviceID, String Alarm, string Latitude="", string Longitude="")
+        public Alarm buildAlarm(AlarmTypeCode alarmType, String deviceID, String Alarm, string Latitude="", string Longitude="")
         {
             User user = UserController.SharedInstance.getUserByDeviceId(deviceID);
             Device device = DeviceController.SharedInstance.getDeviceById(deviceID);
@@ -159,7 +159,7 @@ namespace TrackerWatchServer
             alarm.User = user;
             alarm.EventText = Alarm;
             alarm.Managed = "No";
-            alarm.AlarmType = AlarmTypeCode.High;
+            alarm.AlarmType = alarmType;
             alarm.Latitude = Latitude;
             alarm.Longitude = Longitude;
             pushNewEvent(alarm);
@@ -172,8 +172,8 @@ namespace TrackerWatchServer
             if (mainAlarmForm != null)
             {
                 mainAlarmForm.newEvent(evento);
-                FCMPushNotification pushNotificationService = new FCMPushNotification();
-                pushNotificationService.SendNotification("SOS Reminder", "Warning a SOS was sent", "Un sms è stato inviato","1234567890123456");
+               // FCMPushNotification pushNotificationService = new FCMPushNotification();
+              //  pushNotificationService.SendNotification("SOS Reminder", "Warning a SOS was sent", "Un sms è stato inviato","1234567890123456");
             }
         }
 

@@ -193,7 +193,7 @@ namespace TrackerWatchServer
         void refreshDevice()
         {
             foreach(Device d in devices) {
-                deviceList.Items.Add(d.Note + "["+d.DeviceID+"]");
+                deviceList.Items.Add(d.Note + " ["+d.DeviceID+"]");
             }
             
         }
@@ -281,6 +281,7 @@ namespace TrackerWatchServer
         {
             if(modem != null)
             {
+                modem.Dispose();
                 modem = null;
             }
 
@@ -315,6 +316,8 @@ namespace TrackerWatchServer
             devices = loadDevices();
             refreshDevice();
             log("Command ready");
+
+            testMethod();
 
             if (AppController.SharedInstance.isServer)
             {
@@ -409,19 +412,63 @@ namespace TrackerWatchServer
             return s;
         }
 
+        void testMethod()
+        {
+         /*   string test1 = @"ID:1208302416,SOS Alarm
+url:http://maps.google.com/maps?q=N37.512393,E15.031840
+Locate date:2017-7-20
+Locate time:12:13:23";*/
+
+           // string test2 = @"apn:internet.wind;user:;passwork:;userdata:22288";
+            string test3 = @"url:
+http://maps.google.com/maps?q=N37.512477,E15.032072
+Locate date:2017-8-24
+Locate time:16:9:4
+";
+
+            string testStr = test3;
+
+            if (testStr.Substring(0, 4).Contains("ver:")  && testStr.Substring(testStr.Length - 20, 20).Contains("GPRS:")) //GetParameters Command
+            {
+                Console.WriteLine("TEST: Get Parameters - PASSED");
+            }
+
+            if (testStr.Substring(0, 4).IndexOf("apn:") > -1 && testStr.Substring(testStr.Length - 5, 5).IndexOf("22288") > -1) //Apn Command
+            {
+                Console.WriteLine("TEST: Apn response - PASSED");
+            }
+
+            if (testStr.Substring(0, 3).IndexOf("ID:") > -1 && testStr.Substring(testStr.Length - 20, 10).IndexOf("Locate") > -1) //SOS Message Command
+            {
+                Console.WriteLine("TEST: SOS Message - PASSED");
+            }
+
+            if (testStr.Substring(0, 4).Contains("url:") && testStr.Substring(testStr.Length - 20, 10).Contains("Locate")) //SOS Message Command
+            {
+                string[] str_tmp = testStr.Split('\r');
+                if(str_tmp[0].Contains("url:") && str_tmp[1].Contains("maps.google.com"))
+                {
+                    string[] location = str_tmp[1].Split('=')[1].Split(',');
+                    string latitude = location[0].Substring(1, location[0].Length-1);
+                    string longitude = location[1].Substring(1, location[1].Length-1);
+                }
+            }
+
+        }
+
         void ReceivedSMS(String Storage, int Number)
         {
-                
-
-                GM862GPS.SMSMessage sms = modem.ReadMessage(Storage, Number);
-                string strSMS = sms.Message;
-
+            GM862GPS.SMSMessage sms = modem.ReadMessage(Storage, Number);
+            string strSMS = sms.Message;
             string telNumber = sms.Orginator;
 
             if (strSMS.IndexOf("00") > -1)
                     strSMS = convertHEXtoString(strSMS);
 
-                Console.WriteLine(strSMS);
+            Console.WriteLine(strSMS);
+
+            if (telNumber != "")
+            {
 
                 if (SMSMessage.ContainsKey(telNumber))
                     SMSMessage[telNumber] += strSMS;
@@ -430,16 +477,38 @@ namespace TrackerWatchServer
                     SMSMessage.Add(telNumber, strSMS);
                 }
 
-                //SMSMessage += strSMS;
-                
-                if(strSMS.IndexOf("GPRS:") > -1)        //If parameters command has sent
+                /*if(strSMS.IndexOf("GPRS:") > -1)        //If parameters command has sent
                 {
                     checkForCommand(SMSMessage[telNumber]);
                     log("Parse new string: " + SMSMessage[telNumber]);
                     Console.WriteLine(SMSMessage[telNumber]);
                     SMSMessage.Remove(telNumber);
-                    //SMSMessage = "";
+                }*/
+
+                if (SMSMessage[telNumber].Substring(0, 4).IndexOf("ver:") > -1 && SMSMessage[telNumber].Substring(SMSMessage[telNumber].Length - 20, 20).IndexOf("GPRS:") > -1) //GetParameters Command
+                {
+                    checkForCommand(SMSMessage[telNumber]);
+                    log("Parse new string: " + SMSMessage[telNumber]);
+                    Console.WriteLine(SMSMessage[telNumber]);
+                    SMSMessage.Remove(telNumber);
                 }
+                else if (SMSMessage[telNumber].Substring(0, 4).Contains("url:") && SMSMessage[telNumber].Substring(SMSMessage[telNumber].Length - 20, 10).Contains("Locate")) //SOS Message Command
+                {
+                    string[] str_tmp = SMSMessage[telNumber].Split('\n');
+                    if (str_tmp[0].Contains("url:") && str_tmp[1].Contains("maps.google.com"))
+                    {
+                        string[] location = str_tmp[1].Split('=')[1].Split(',');
+                        string latitude = location[0].Substring(1, location[0].Length - 1);
+                        string longitude = location[1].Substring(1, location[1].Length - 1).Split(':')[0];
+
+                        Device device = DeviceController.SharedInstance.devices.Find(x => x.TelephoneNumber.Contains(telNumber.Substring(3, telNumber.Length - 3)));
+                        device.LastPositionLatitude = latitude;
+                        device.LastPositionLongitude = longitude;
+                        DeviceController.SharedInstance.updateDevice(device);
+                        AlarmController.SharedInstance.buildAlarm(AlarmTypeCode.Message, device.DeviceID, "Nuova posizione GPS", latitude, longitude);
+                    }
+                }
+            }
         }
 
         private void checkForCommand(String smsMessage)
@@ -493,45 +562,14 @@ namespace TrackerWatchServer
                 device.Language = language;
                 device.Gps = gps;
                 device.Gprs = gprs;
-                //device.LastComunicationTime = DateTime.Now.ToString();
-
                 DeviceController.SharedInstance.updateDevice(device);
-
-                //saveDevices(devices);
             }
         }
 
 
         private void deviceList_MouseClick(object sender, MouseEventArgs e)
         {
-            int index = deviceList.SelectedIndex;
-            if(index > -1)
-            {
-                currentDevice = devices[index];
-                label1.Text = "IMEI: " + currentDevice.IMEI;
-                label2.Text = "Serial: " + currentDevice.DeviceID;
-                label3.Text = "Telephone: " + currentDevice.TelephoneNumber;
-                label4.Text = "Note: " + currentDevice.Note;
 
-                if (currentDevice.Gprs != "")
-                {
-                    progressBar1.Value = int.Parse(currentDevice.Gprs);
-                    label11.Text = currentDevice.Gps;
-                }
-                else
-                {
-                    progressBar1.Value = 0;
-                    label11.Text = "No GPS Data";
-                }
-                if (currentDevice.LastComunicationTime != "")
-                    txtLastComunication.Text = "Last Comunication: ND";
-                else
-                    txtLastComunication.Text = "Last Comunication: " + currentDevice.LastComunicationTime;
-            }
-            else
-            {
-                currentDevice = null;
-            }
         }
 
         private void btnSetAPN_Click(object sender, EventArgs e)
@@ -586,7 +624,8 @@ namespace TrackerWatchServer
         {
             if (currentDevice != null)
             {
-                command.getPosition(currentDevice);
+                if(!command.getPosition(currentDevice))
+                    MessageBox.Show("Error on send command GetPosition");
             }
         }
 
@@ -594,7 +633,8 @@ namespace TrackerWatchServer
         {
             if (currentDevice != null)
             {
-                command.getParameters(currentDevice);
+                if (!command.getParameters(currentDevice))
+                    MessageBox.Show("Error on send command GetParameters");
             }
         }
 
@@ -633,11 +673,15 @@ namespace TrackerWatchServer
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (modem != null)
+            {
+                modem.Dispose();
                 modem = null;
+            }
             if (command != null)
                 command = null;
             if (checkCommandThread != null)
                 checkCommandThread.Interrupt();
+            this.Dispose();
         }
 
         private void btnSetCenterNumber_Click(object sender, EventArgs e)
@@ -1079,6 +1123,51 @@ namespace TrackerWatchServer
 
             frmAlarm alarmCenter = new frmAlarm();
             alarmCenter.Show();
+        }
+
+        private void resetModemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            startGSM();
+        }
+
+        private void deviceList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = deviceList.SelectedIndex;
+            if (index > -1)
+            {
+                currentDevice = devices[index];
+                label1.Text = "IMEI: " + currentDevice.IMEI;
+                label2.Text = "Serial: " + currentDevice.DeviceID;
+                label3.Text = "Telephone: " + currentDevice.TelephoneNumber;
+                label4.Text = "Note: " + currentDevice.Note;
+
+                if (currentDevice.Gprs != "")
+                {
+                    progressBar1.Value = int.Parse(currentDevice.Gprs);
+                    label11.Text = currentDevice.Gps;
+                }
+                else
+                {
+                    progressBar1.Value = 0;
+                    label11.Text = "No GPS Data";
+                }
+                if (currentDevice.LastComunicationTime == "")
+                    txtLastComunication.Text = "Last Comunication: ND";
+                else
+                {
+                    DateTime lastTime = DateTime.Parse(currentDevice.LastComunicationTime);
+                    txtLastComunication.Text = "Last Comunication: " + String.Format("{0:MM/dd/yy HH:mm:ss}", lastTime);
+                }
+            }
+            else
+            {
+                currentDevice = null;
+            }
+        }
+
+        private void pnlServer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -27,8 +27,22 @@ namespace TrackerWatchServer
             tbCity.Text = userSelected.City;
             cbProvinces.Text = userSelected.Province;
             tbCAP.Text = userSelected.CAP;
-            rtbContacts.Rtf = Helper.decodeRTF(userSelected.References);
-            rtbNotes.Rtf = Helper.decodeRTF(userSelected.Note); 
+            try
+            {
+                rtbContacts.Rtf = Helper.decodeRTF(userSelected.References);
+            }
+            catch
+            {
+                rtbContacts.Text = Helper.getTextFromRTF(userSelected.References);
+            }
+            try
+            {
+                rtbNotes.Rtf = Helper.decodeRTF(userSelected.Note);
+            }
+            catch
+            {
+                rtbNotes.Text = Helper.getTextFromRTF(userSelected.Note);
+            }
         }
 
         //menu for Contacts
@@ -153,7 +167,7 @@ namespace TrackerWatchServer
             newUser.Address = tbAddress.Text;
             newUser.Province = cbProvinces.SelectedItem.ToString();
             newUser.CAP = tbCAP.Text;
-
+            newUser.City = tbCity.Text;
             newUser.References = Helper.encodeRTF(rtbContacts.Rtf);
             newUser.Note = Helper.encodeRTF(rtbNotes.Rtf);
             if (UserController.SharedInstance.updateUser(newUser))

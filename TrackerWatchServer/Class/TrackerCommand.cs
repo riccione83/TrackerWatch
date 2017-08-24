@@ -330,14 +330,25 @@ namespace TrackerWatchServer
             }
         }
 
-        public void getPosition(Device device)
+        public bool getPosition(Device device)
         {
             if (!useGPRS)
             {
                 String command = cmdGetPosition;
-                if(isServer)
-                    modem.SendSMSMessage(device.TelephoneNumber, command);
-                else
+                if (isServer)
+                {
+                    try
+                    {
+                        modem.SendSMSMessage(device.TelephoneNumber, command);
+                        return true;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Unable to send SMS to:" + device.TelephoneNumber + " with message [" + command + "]");
+                        return false;
+                    }
+                }
+                else 
                     CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
             }
             else
@@ -347,24 +358,41 @@ namespace TrackerWatchServer
                     NetworkStream deviceStream = mainForm.Connessioni[device.DeviceID];
                     String command = gprsCmdGetPosition.Replace("YYYYYYYYYY", device.DeviceID);
                     sendGPRSCommand(deviceStream, command);
+                    return true;
                 }
             }
+            return true;
         }
 
-        public void getParameters(Device device)
+        public bool getParameters(Device device)
         {
             if (!useGPRS)
             {
                 String command = cmdGetParameters;
-                if(isServer)
-                    modem.SendSMSMessage(device.TelephoneNumber, command);
+                if (isServer)
+                {
+                    try
+                    {
+                        modem.SendSMSMessage(device.TelephoneNumber, command);
+                        return true;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Unable to send SMS to:" + device.TelephoneNumber + " with message [" + command + "]");
+                        return false;
+                    }
+                }
                 else
+                {
                     CommandController.SharedInstance.newCommand(command, device.TelephoneNumber);
-            }
+                    return true;
+                }
+             }
             else
             {
                 mainForm.log("Unable to send GetParameter command via GPRS");
             }
+            return true;
         }
 
         public void getVersion(Device device)

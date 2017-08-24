@@ -14,19 +14,36 @@ namespace TrackerWatchServer
     {
         SearchControl searchControl;
 
+
+
+        delegate void dl(Alarm evento);
+
         public void newEvent(Alarm evento)
         {
-            eventGrid.Rows.Add();
-            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Arrivo"].Value = evento.ArrivalTime;
-            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Codice"].Value = evento.Device.Note + " - " + evento.Device.DeviceID;
-            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Evento"].Value = evento.EventText;
-            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Utente"].Value = evento.User.Name + "\r\n" + evento.User.Address;
-            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Gestito"].Value = evento.Managed;
-            eventGrid.Rows[eventGrid.RowCount - 1].Cells["ID"].Value = evento.Id;
-            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Latitude"].Value = evento.Latitude;
-            eventGrid.Rows[eventGrid.RowCount - 1].Cells["Longitude"].Value = evento.Longitude;
+            if (this.eventGrid.InvokeRequired)
+            {
+                dl stc = new dl(newEvent);
+                this.Invoke(stc, new object[] { evento});
+            }
+            else
+            {
+                eventGrid.Rows.Add();
+                eventGrid.Rows[eventGrid.RowCount - 1].Cells["Arrivo"].Value = evento.ArrivalTime;
+                eventGrid.Rows[eventGrid.RowCount - 1].Cells["Codice"].Value = evento.Device.Note + " - " + evento.Device.DeviceID;
+                eventGrid.Rows[eventGrid.RowCount - 1].Cells["Evento"].Value = evento.EventText;
+                eventGrid.Rows[eventGrid.RowCount - 1].Cells["Utente"].Value = evento.User.Name + "\r\n" + evento.User.Address;
+                eventGrid.Rows[eventGrid.RowCount - 1].Cells["Gestito"].Value = evento.Managed;
+                eventGrid.Rows[eventGrid.RowCount - 1].Cells["ID"].Value = evento.Id;
+                eventGrid.Rows[eventGrid.RowCount - 1].Cells["Latitude"].Value = evento.Latitude;
+                eventGrid.Rows[eventGrid.RowCount - 1].Cells["Longitude"].Value = evento.Longitude;
 
-            eventGrid.Rows[eventGrid.RowCount - 1].DefaultCellStyle.BackColor = evento.alarmColor[(int)evento.AlarmType];
+                eventGrid.Rows[eventGrid.RowCount - 1].DefaultCellStyle.BackColor = evento.alarmColor[(int)evento.AlarmType];
+            }
+        }
+
+        private void newEvent(Alarm evento, params object[] args)
+        {
+            newEvent(evento);
         }
 
         public frmAlarm()
@@ -180,24 +197,27 @@ namespace TrackerWatchServer
             if (rowIndex > -1)
             {
                 string alarmID = eventGrid.Rows[rowIndex].Cells["ID"].Value.ToString();
-                Console.WriteLine("Selected alarm ID: " + alarmID);
-                Alarm alarmSelected = AlarmController.SharedInstance.alarms.First(x => x.Id == alarmID);
-                object[] ob = new object[6];
-                if (alarmSelected.Latitude != "")
-                    ob[0] = alarmSelected.Latitude;
-                else
-                    ob[0] = 0.00;
-                if (alarmSelected.Longitude != "")
-                    ob[1] = alarmSelected.Longitude;
-                else
-                    ob[1] = 0.00;
-                
-                ob[2] = alarmSelected.Device.Note + "[" + alarmSelected.Device.DeviceID + "]"; //descrizione
-                ob[3] = Helper.getTextFromRTF(alarmSelected.User.References).Replace("\n","<br>") + "<hr><br>" + Helper.getTextFromRTF(alarmSelected.User.Note).Replace("\n", "<br>");// "Descrizione bla bla bla <br> Numero 1: 123456 <br> Numero 2: 22222 <br> <b>Chiamare solo in caso di necessità</b>";
-                ob[4] = Application.StartupPath + "\\Support\\Images\\pushpin_blue.png";   //immagine del pushpin
-                ob[5] = true;       //Se deve essere centrato
-                webBrowser1.Invoke(new ClearMapDelegate(ClearMap));
-                webBrowser1.Invoke(new SetPushpinDelegate(SetPushpin), new object[] { ob });
+                if (alarmID != "")
+                {
+                    Console.WriteLine("Selected alarm ID: " + alarmID);
+                    Alarm alarmSelected = AlarmController.SharedInstance.alarms.First(x => x.Id == alarmID);
+                    object[] ob = new object[6];
+                    if (alarmSelected.Latitude != "")
+                        ob[0] = alarmSelected.Latitude;
+                    else
+                        ob[0] = 0.00;
+                    if (alarmSelected.Longitude != "")
+                        ob[1] = alarmSelected.Longitude;
+                    else
+                        ob[1] = 0.00;
+
+                    ob[2] = alarmSelected.Device.Note + "[" + alarmSelected.Device.DeviceID + "]"; //descrizione
+                    ob[3] = Helper.getTextFromRTF(alarmSelected.User.References).Replace("\n", "<br>") + "<hr><br>" + Helper.getTextFromRTF(alarmSelected.User.Note).Replace("\n", "<br>");// "Descrizione bla bla bla <br> Numero 1: 123456 <br> Numero 2: 22222 <br> <b>Chiamare solo in caso di necessità</b>";
+                    ob[4] = Application.StartupPath + "\\Support\\Images\\pushpin_blue.png";   //immagine del pushpin
+                    ob[5] = true;       //Se deve essere centrato
+                    webBrowser1.Invoke(new ClearMapDelegate(ClearMap));
+                    webBrowser1.Invoke(new SetPushpinDelegate(SetPushpin), new object[] { ob });
+                }
             }
         }
 

@@ -34,6 +34,14 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.eventGrid = new System.Windows.Forms.DataGridView();
+            this.Arrivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Evento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Utente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gestito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Latitude = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Longitude = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnUser = new System.Windows.Forms.ToolStripButton();
@@ -44,14 +52,6 @@
             this.toolStripBtnSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.Arrivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Codice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Evento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Utente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gestito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Latitude = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Longitude = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -127,6 +127,7 @@
             this.eventGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.eventGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.eventGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.eventGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.eventGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -157,6 +158,58 @@
             this.eventGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventGrid_CellClick);
             this.eventGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.eventGrid_KeyDown);
             this.eventGrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.eventGrid_KeyPress);
+            // 
+            // Arrivo
+            // 
+            this.Arrivo.HeaderText = "Arrivo";
+            this.Arrivo.Name = "Arrivo";
+            this.Arrivo.ReadOnly = true;
+            // 
+            // Codice
+            // 
+            this.Codice.HeaderText = "Codice";
+            this.Codice.Name = "Codice";
+            this.Codice.ReadOnly = true;
+            // 
+            // Evento
+            // 
+            this.Evento.HeaderText = "Evento";
+            this.Evento.Name = "Evento";
+            this.Evento.ReadOnly = true;
+            // 
+            // Utente
+            // 
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Utente.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Utente.HeaderText = "Utente";
+            this.Utente.Name = "Utente";
+            this.Utente.ReadOnly = true;
+            // 
+            // Gestito
+            // 
+            this.Gestito.HeaderText = "Gestito";
+            this.Gestito.Name = "Gestito";
+            this.Gestito.ReadOnly = true;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Latitude
+            // 
+            this.Latitude.HeaderText = "Latitude";
+            this.Latitude.Name = "Latitude";
+            this.Latitude.ReadOnly = true;
+            this.Latitude.Visible = false;
+            // 
+            // Longitude
+            // 
+            this.Longitude.HeaderText = "Longitude";
+            this.Longitude.Name = "Longitude";
+            this.Longitude.ReadOnly = true;
+            this.Longitude.Visible = false;
             // 
             // webBrowser1
             // 
@@ -261,60 +314,6 @@
             this.toolStripButton5.Size = new System.Drawing.Size(50, 50);
             this.toolStripButton5.Text = "Esci";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
-            // 
-            // Arrivo
-            // 
-            this.Arrivo.HeaderText = "Arrivo";
-            this.Arrivo.Name = "Arrivo";
-            this.Arrivo.ReadOnly = true;
-            // 
-            // Codice
-            // 
-            this.Codice.HeaderText = "Codice";
-            this.Codice.Name = "Codice";
-            this.Codice.ReadOnly = true;
-            // 
-            // Evento
-            // 
-            this.Evento.HeaderText = "Evento";
-            this.Evento.Name = "Evento";
-            this.Evento.ReadOnly = true;
-            this.Evento.Width = 200;
-            // 
-            // Utente
-            // 
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Utente.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Utente.HeaderText = "Utente";
-            this.Utente.Name = "Utente";
-            this.Utente.ReadOnly = true;
-            this.Utente.Width = 300;
-            // 
-            // Gestito
-            // 
-            this.Gestito.HeaderText = "Gestito";
-            this.Gestito.Name = "Gestito";
-            this.Gestito.ReadOnly = true;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Latitude
-            // 
-            this.Latitude.HeaderText = "Latitude";
-            this.Latitude.Name = "Latitude";
-            this.Latitude.ReadOnly = true;
-            this.Latitude.Visible = false;
-            // 
-            // Longitude
-            // 
-            this.Longitude.HeaderText = "Longitude";
-            this.Longitude.Name = "Longitude";
-            this.Longitude.ReadOnly = true;
-            this.Longitude.Visible = false;
             // 
             // frmAlarm
             // 
