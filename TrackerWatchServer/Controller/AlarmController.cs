@@ -168,11 +168,10 @@ namespace TrackerWatchServer
 
         public void pushNewEvent(Alarm evento)
         {
-            if(mainAlarmForm != null)
+            saveNewAlarm(evento);
+            if (mainAlarmForm != null)
             {
                 mainAlarmForm.newEvent(evento);
-                saveNewAlarm(evento);
-
                 FCMPushNotification pushNotificationService = new FCMPushNotification();
                 pushNotificationService.SendNotification("SOS Reminder", "Warning a SOS was sent", "Un sms è stato inviato","1234567890123456");
             }
