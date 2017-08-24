@@ -323,10 +323,9 @@
             // 
             // rtbContacts
             // 
-            this.rtbContacts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbContacts.Location = new System.Drawing.Point(0, 0);
+            this.rtbContacts.Location = new System.Drawing.Point(51, 0);
             this.rtbContacts.Name = "rtbContacts";
-            this.rtbContacts.Size = new System.Drawing.Size(306, 388);
+            this.rtbContacts.Size = new System.Drawing.Size(255, 388);
             this.rtbContacts.TabIndex = 0;
             this.rtbContacts.Text = "";
             // 

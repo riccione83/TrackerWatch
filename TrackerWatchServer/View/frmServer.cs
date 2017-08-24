@@ -156,10 +156,11 @@ namespace TrackerWatchServer
 
         List<Device> loadDevices()
         {
+            /*
             string dir = Application.StartupPath;
             string serializationFile = Path.Combine(dir, "devices.bin");
+            
             List<Device> temp_dev;
-
             if (!File.Exists(serializationFile))
                 return null;
 
@@ -170,7 +171,9 @@ namespace TrackerWatchServer
 
                 temp_dev = (List<Device>)bformatter.Deserialize(stream);
             }
-            return temp_dev;
+            */
+
+            return DeviceController.SharedInstance.getDevices(); 
         }
 
         List<Device> importDevice()
@@ -315,8 +318,11 @@ namespace TrackerWatchServer
                     log("GSM Initialized success");
 
                     modem.InitializeSMS();
+
                     modem.OnRecievedSMS += ReceivedSMS;
                     log("SMS Initialized success");
+
+                    modem.OnRecievingCall += NewVoiceCall;
                 }
                 catch
                 {
@@ -352,6 +358,11 @@ namespace TrackerWatchServer
                 checkCommandThread.IsBackground = true;
                 checkCommandThread.Start();
             }
+        }
+
+        private void NewVoiceCall()
+        {
+            Console.WriteLine("New voice call...");
         }
 
         private void checkForCommandThread()
@@ -401,12 +412,14 @@ namespace TrackerWatchServer
 
         void ReceivedSMS(String Storage, int Number)
         {
-                string telNumber = Number.ToString();
+                
 
                 GM862GPS.SMSMessage sms = modem.ReadMessage(Storage, Number);
                 string strSMS = sms.Message;
-                
-                if (strSMS.IndexOf("00") > -1)
+
+                string telNumber = sms.Orginator;
+
+               if (strSMS.IndexOf("00") > -1)
                     strSMS = convertHEXtoString(strSMS);
 
                 Console.WriteLine(strSMS);
