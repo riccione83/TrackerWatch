@@ -14,6 +14,24 @@ namespace TrackerWatchServer
         private const string cmdGetDeviceByID = "SELECT devices.* FROM devices WHERE devices.ID = '{0}'";
         private const string cmdGetDevicesByUserID = "SELECT devices.* FROM devices WHERE devices.UserID = '{0}'";
         private const string cmdGetDevices = "SELECT devices.* FROM devices";
+        private const string cmdUpdateDevice = @"UPDATE devices SET
+        devices.IMEI = '{0}', devices.Version = '{1}', 
+        devices.IP = '{2}', devices.PORT = '{3}', 
+        devices.CenterNumber = '{4}', devices.SlaveNumber = '{5}',
+        devices.SOS1 = '{6}', devices.SOS2 = '{7}', devices.SOS3 = '{8}',
+        devices.UploadTime = '{9}', devices.BatteryLevel = '{10}', 
+        devices.Language = '{11}', devices.TimeZone = '{12}', 
+        devices.GPS = '{13}', devices.GPRS = '{14}',
+        devices.LastPositionLatitude = '{15}', devices.LastPositionLongitude = '{16}' WHERE id = {17}";
+
+        private const string cmdInsertDevice = @"INSERT INTO devices (devices.IMEI, devices.Version ,
+        devices.IP, devices.PORT,
+        devices.CenterNumber, devices.SlaveNumber',
+        devices.SOS1, devices.SOS2, devices.SOS3',
+        devices.UploadTime', devices.BatteryLevel,
+        devices.Language, devices.TimeZone,
+        devices.GPS, devices.GPRS',
+        devices.LastPositionLatitud, devices.LastPositionLongitude VALUES('{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')";
 
         private static DeviceController sharedInstance;
         private DeviceController() { }
@@ -28,6 +46,32 @@ namespace TrackerWatchServer
                 }
                 return sharedInstance;
             }
+        }
+
+        public bool updateDevice(Device device)
+        {
+            string cmd = cmdUpdateDevice.Replace("{0}", device.IMEI);
+            cmd = cmd.Replace("{1}", device.Version);
+            cmd = cmd.Replace("{2}", device.Ip);
+            cmd = cmd.Replace("{3}", device.Port);
+            cmd = cmd.Replace("{4}", device.Center);
+            cmd = cmd.Replace("{5}", device.Slave);
+            cmd = cmd.Replace("{6}", device.Sos1);
+            cmd = cmd.Replace("{7}", device.Sos2);
+            cmd = cmd.Replace("{8}", device.Sos3);
+            cmd = cmd.Replace("{9}", device.Upload_time);
+            cmd = cmd.Replace("{10}", device.Battery_level);
+            cmd = cmd.Replace("{11}", device.Language);
+            cmd = cmd.Replace("{12}", device.Time_zone);
+            cmd = cmd.Replace("{13}", device.Gps);
+            cmd = cmd.Replace("{14}", device.Gprs);
+            cmd = cmd.Replace("{15}", device.LastPositionLatitude);
+            cmd = cmd.Replace("{16}", device.LastPositionLongitude);
+            cmd = cmd.Replace("{17}", device.DeviceID);
+
+            int cn1 = Database.SharedInstance.Update(cmd);
+            //int cn2 = Database.SharedInstance.Update(cmd2);
+            return (cn1 == 1) ? true : false;
         }
 
         public List<Device> getDevices()

@@ -93,10 +93,12 @@
             this.azioniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programmazioneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlServer = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.alarmCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlServer = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.resetModemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.pnlProgrammazione.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -724,7 +726,9 @@
             // 
             this.comunicazioneùToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gPRSToolStripMenuItem,
-            this.sMSToolStripMenuItem});
+            this.sMSToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.resetModemToolStripMenuItem});
             this.comunicazioneùToolStripMenuItem.Name = "comunicazioneùToolStripMenuItem";
             this.comunicazioneùToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
             this.comunicazioneùToolStripMenuItem.Text = "&Comunicazione";
@@ -732,19 +736,19 @@
             // 
             // gPRSToolStripMenuItem
             // 
-            this.gPRSToolStripMenuItem.Checked = true;
-            this.gPRSToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.gPRSToolStripMenuItem.Name = "gPRSToolStripMenuItem";
             this.gPRSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.gPRSToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.gPRSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.gPRSToolStripMenuItem.Text = "&GPRS";
             this.gPRSToolStripMenuItem.Click += new System.EventHandler(this.gPRSToolStripMenuItem_Click);
             // 
             // sMSToolStripMenuItem
             // 
+            this.sMSToolStripMenuItem.Checked = true;
+            this.sMSToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sMSToolStripMenuItem.Name = "sMSToolStripMenuItem";
             this.sMSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.sMSToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.sMSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sMSToolStripMenuItem.Text = "&SMS";
             this.sMSToolStripMenuItem.Click += new System.EventHandler(this.sMSToolStripMenuItem_Click);
             // 
@@ -774,6 +778,18 @@
             this.serverToolStripMenuItem.Text = "Server";
             this.serverToolStripMenuItem.Click += new System.EventHandler(this.serverToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(162, 6);
+            // 
+            // alarmCenterToolStripMenuItem
+            // 
+            this.alarmCenterToolStripMenuItem.Name = "alarmCenterToolStripMenuItem";
+            this.alarmCenterToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.alarmCenterToolStripMenuItem.Text = "Alarm Center";
+            this.alarmCenterToolStripMenuItem.Click += new System.EventHandler(this.alarmCenterToolStripMenuItem_Click);
+            // 
             // pnlServer
             // 
             this.pnlServer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -796,17 +812,16 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(769, 442);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // toolStripMenuItem1
+            // toolStripMenuItem2
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(162, 6);
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
             // 
-            // alarmCenterToolStripMenuItem
+            // resetModemToolStripMenuItem
             // 
-            this.alarmCenterToolStripMenuItem.Name = "alarmCenterToolStripMenuItem";
-            this.alarmCenterToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.alarmCenterToolStripMenuItem.Text = "Alarm Center";
-            this.alarmCenterToolStripMenuItem.Click += new System.EventHandler(this.alarmCenterToolStripMenuItem_Click);
+            this.resetModemToolStripMenuItem.Name = "resetModemToolStripMenuItem";
+            this.resetModemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resetModemToolStripMenuItem.Text = "Reset Modem";
             // 
             // Form1
             // 
@@ -908,6 +923,8 @@
         private System.Windows.Forms.ToolStripMenuItem serverToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem alarmCenterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem resetModemToolStripMenuItem;
     }
 }
 
