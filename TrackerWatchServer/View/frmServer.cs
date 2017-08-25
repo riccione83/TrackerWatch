@@ -30,10 +30,6 @@ namespace TrackerWatchServer
         private  TrackerCommand command = null;
         private Dictionary<String,String> SMSMessage = new Dictionary<String, String>();   //was a string
 
-        //*******  VARIABILI UTILIZZATE PER LA CONNESSIONE IN TCP
-        private string IP_SERVER = "127.0.0.1";
-        private int IP_PORT = 8001;
-
         public Dictionary<string, NetworkStream> Connessioni = new Dictionary<string, NetworkStream>();
 
         Thread checkCommandThread = null;
@@ -156,24 +152,9 @@ namespace TrackerWatchServer
 
         List<Device> loadDevices()
         {
-            /*
-            string dir = Application.StartupPath;
-            string serializationFile = Path.Combine(dir, "devices.bin");
-            
-            List<Device> temp_dev;
-            if (!File.Exists(serializationFile))
-                return null;
-
-            //deserialize
-            using (Stream stream = File.Open(serializationFile, FileMode.Open))
-            {
-                var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-                temp_dev = (List<Device>)bformatter.Deserialize(stream);
-            }
-            */
 
             return DeviceController.SharedInstance.getDevices(); 
+
         }
 
         List<Device> importDevice()
@@ -199,7 +180,7 @@ namespace TrackerWatchServer
         void refreshDevice()
         {
             foreach(Device d in devices) {
-                deviceList.Items.Add(d.User);
+                deviceList.Items.Add(d.Note + "["+d.DeviceID+"]");
             }
             
         }
@@ -283,24 +264,44 @@ namespace TrackerWatchServer
             }
         }
 
+        private void startGSM()
+        {
+            if(modem != null)
+            {
+                modem = null;
+            }
+
+            modem = new GM862GPS(AppController.SharedInstance.COM_PORT);
+            log("Modem active on " + AppController.SharedInstance.COM_PORT);
+
+            if (!modem.RegisteredOnNetwork(true))
+            {
+                //modem.ExecuteCommand("AT+CFUN=0", 1000);
+                //modem.ExecuteCommand("AT+CFUN=1", 1000);
+                modem.ExecuteCommand("ATZ", 1000);
+            }
+
+            modem.InitializeBasicGSM();
+            log("GSM Initialized success");
+
+
+
+            modem.InitializeSMS();
+
+            modem.ExecuteCommand("AT+CMGD=1,4", 5000);
+            log("SMS reset success");
+
+            modem.OnRecievedSMS += ReceivedSMS;
+            log("SMS Initialized success");
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             pnlServer.Visible = false;
 
             devices = loadDevices();
-
+            refreshDevice();
             log("Command ready");
-
-            if (devices == null)
-            {
-                devices = importDevice();
-                if (devices != null)
-                    saveDevices(devices);
-            }
-            if (devices != null)
-            {
-                refreshDevice();
-            }
 
             if (AppController.SharedInstance.isServer)
             {
@@ -311,18 +312,9 @@ namespace TrackerWatchServer
                 }
                 try
                 {
-                    modem = new GM862GPS(AppController.SharedInstance.COM_PORT);
-                    log("Modem active on " + AppController.SharedInstance.COM_PORT);
 
-                    modem.InitializeBasicGSM();
-                    log("GSM Initialized success");
+                    startGSM();
 
-                    modem.InitializeSMS();
-
-                    modem.OnRecievedSMS += ReceivedSMS;
-                    log("SMS Initialized success");
-
-                    modem.OnRecievingCall += NewVoiceCall;
                 }
                 catch
                 {
@@ -331,6 +323,7 @@ namespace TrackerWatchServer
                 }
 
                 command = new TrackerCommand(modem);
+                command.useGPRS = false;
                 command.mainForm = this;
 
                 Thread listen = new Thread(listenClient);
@@ -417,9 +410,10 @@ namespace TrackerWatchServer
                 GM862GPS.SMSMessage sms = modem.ReadMessage(Storage, Number);
                 string strSMS = sms.Message;
 
-                string telNumber = sms.Orginator;
+            string telNumber = sms.Orginator;
 
-               if (strSMS.IndexOf("00") > -1)
+            if (strSMS.IndexOf("00") > -1)
+
                     strSMS = convertHEXtoString(strSMS);
 
                 Console.WriteLine(strSMS);
@@ -451,7 +445,9 @@ namespace TrackerWatchServer
             {
                 int start = smsMessage.IndexOf("ID:");
                 int end = smsMessage.IndexOf(",");
-                string id = smsMessage.Substring(start, start + end);
+                string id = "";
+                if (start > -1 && end > -1)
+                    id = smsMessage.Substring(start, start + end);
             } 
             if(smsMessage.IndexOf("ID:") > -1)
             {
@@ -492,8 +488,11 @@ namespace TrackerWatchServer
                 device.Language = language;
                 device.Gps = gps;
                 device.Gprs = gprs;
-                device.LastComunicationTime = DateTime.Now.ToString();
-                saveDevices(devices);
+                //device.LastComunicationTime = DateTime.Now.ToString();
+
+                DeviceController.SharedInstance.updateDevice(device);
+
+                //saveDevices(devices);
             }
         }
 

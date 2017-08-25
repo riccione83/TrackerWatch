@@ -908,8 +908,11 @@ namespace ElzeKool.Devices
             // Now get response body and delete response from FIFO
             lock (_SerialFIFO_CommandMode)
             {
+                if (ResponseStart < 0)   //MODIFICATO DA RICCARDO
+                    ResponseStart = 0;
                 ResponseBody = _SerialFIFO_CommandMode.Substring(0, ResponseStart);
                 _SerialFIFO_CommandMode = _SerialFIFO_CommandMode.Substring(ResponseStart + ResponseLength);
+
             }
 
             // Return recieved response
