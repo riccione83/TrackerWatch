@@ -21,6 +21,7 @@ namespace TrackerWatchServer
         public frmDevice()
         {
             InitializeComponent();
+            btnGetParametersTest.Enabled = false;
         }
 
         //I came from UserDetails and I want to associate a device to un user
@@ -34,6 +35,7 @@ namespace TrackerWatchServer
         public frmDevice(Device device) : this()
         {          
             deviceSelected = device;
+            btnGetParametersTest.Enabled = true;
             tbSerial.Text = deviceSelected.DeviceID;
             tbTelephoneNumber.Text = deviceSelected.TelephoneNumber;
             tbUserID.Text = deviceSelected.User;
@@ -70,7 +72,10 @@ namespace TrackerWatchServer
             //dal risultato del getParameter
 
             if (DeviceController.SharedInstance.updateDevice(newDevice))
+            {
+                btnGetParametersTest.Enabled = true;
                 this.Close();
+            }     
             else
             {
                 MessageBox.Show("Errore nel salvataggio del device.", "Errore.", MessageBoxButtons.OK, MessageBoxIcon.Error);
