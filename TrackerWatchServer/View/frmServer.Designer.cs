@@ -90,6 +90,8 @@
             this.comunicazioneùToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gPRSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.resetModemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.azioniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programmazioneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,8 +99,6 @@
             this.alarmCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlServer = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.resetModemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.pnlProgrammazione.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -112,9 +112,10 @@
             this.deviceList.FormattingEnabled = true;
             this.deviceList.Location = new System.Drawing.Point(2, 38);
             this.deviceList.Name = "deviceList";
-            this.deviceList.Size = new System.Drawing.Size(186, 394);
+            this.deviceList.Size = new System.Drawing.Size(222, 394);
             this.deviceList.TabIndex = 0;
             this.deviceList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.deviceList_MouseClick);
+            this.deviceList.SelectedIndexChanged += new System.EventHandler(this.deviceList_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -129,7 +130,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(2, 438);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(186, 176);
+            this.panel1.Size = new System.Drawing.Size(222, 176);
             this.panel1.TabIndex = 1;
             // 
             // txtLastComunication
@@ -249,7 +250,7 @@
             this.pnlProgrammazione.Controls.Add(this.label13);
             this.pnlProgrammazione.Controls.Add(this.btnSetCenterNumber);
             this.pnlProgrammazione.Controls.Add(this.label5);
-            this.pnlProgrammazione.Location = new System.Drawing.Point(195, 38);
+            this.pnlProgrammazione.Location = new System.Drawing.Point(234, 38);
             this.pnlProgrammazione.Name = "pnlProgrammazione";
             this.pnlProgrammazione.Size = new System.Drawing.Size(289, 471);
             this.pnlProgrammazione.TabIndex = 2;
@@ -695,20 +696,20 @@
             this.webBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser.Location = new System.Drawing.Point(508, 38);
+            this.webBrowser.Location = new System.Drawing.Point(529, 38);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(478, 471);
+            this.webBrowser.Size = new System.Drawing.Size(457, 471);
             this.webBrowser.TabIndex = 3;
             // 
             // txtLog
             // 
             this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLog.Location = new System.Drawing.Point(195, 515);
+            this.txtLog.Location = new System.Drawing.Point(230, 515);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(791, 99);
+            this.txtLog.Size = new System.Drawing.Size(756, 99);
             this.txtLog.TabIndex = 4;
             // 
             // menuStrip1
@@ -738,7 +739,7 @@
             // 
             this.gPRSToolStripMenuItem.Name = "gPRSToolStripMenuItem";
             this.gPRSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.gPRSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gPRSToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.gPRSToolStripMenuItem.Text = "&GPRS";
             this.gPRSToolStripMenuItem.Click += new System.EventHandler(this.gPRSToolStripMenuItem_Click);
             // 
@@ -748,9 +749,21 @@
             this.sMSToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sMSToolStripMenuItem.Name = "sMSToolStripMenuItem";
             this.sMSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.sMSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sMSToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.sMSToolStripMenuItem.Text = "&SMS";
             this.sMSToolStripMenuItem.Click += new System.EventHandler(this.sMSToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(144, 6);
+            // 
+            // resetModemToolStripMenuItem
+            // 
+            this.resetModemToolStripMenuItem.Name = "resetModemToolStripMenuItem";
+            this.resetModemToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.resetModemToolStripMenuItem.Text = "Reset Modem";
+            this.resetModemToolStripMenuItem.Click += new System.EventHandler(this.resetModemToolStripMenuItem_Click);
             // 
             // azioniToolStripMenuItem
             // 
@@ -796,10 +809,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlServer.Controls.Add(this.flowLayoutPanel1);
-            this.pnlServer.Location = new System.Drawing.Point(195, 38);
+            this.pnlServer.Location = new System.Drawing.Point(230, 38);
             this.pnlServer.Name = "pnlServer";
-            this.pnlServer.Size = new System.Drawing.Size(791, 471);
+            this.pnlServer.Size = new System.Drawing.Size(756, 471);
             this.pnlServer.TabIndex = 30;
+            this.pnlServer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlServer_Paint);
             // 
             // flowLayoutPanel1
             // 
@@ -809,19 +823,8 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(769, 442);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(734, 442);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
-            // 
-            // resetModemToolStripMenuItem
-            // 
-            this.resetModemToolStripMenuItem.Name = "resetModemToolStripMenuItem";
-            this.resetModemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.resetModemToolStripMenuItem.Text = "Reset Modem";
             // 
             // Form1
             // 

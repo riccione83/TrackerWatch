@@ -30,7 +30,7 @@ namespace TrackerWatchServer
             dtFinish.Format = DateTimePickerFormat.Custom;
             dtFinish.CustomFormat = "dd/MM/yyyy HH:mm:ss";
 
-            if (!DeviceController.SharedInstance.devicesLoaded)
+          //  if (!DeviceController.SharedInstance.devicesLoaded)
                 devices = DeviceController.SharedInstance.getDevices();
 
              updateSearchWithResults(devices);
