@@ -175,7 +175,6 @@ namespace TrackerWatchServer
             else
             {
                 MessageBox.Show("Errore nel salvataggio dell'utente.", "Errore.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 

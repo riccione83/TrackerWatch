@@ -81,8 +81,9 @@ namespace TrackerWatchServer
             if (lstDevice.SelectedIndex > -1)
             {
                 Console.WriteLine("Device selected: " + devices[lstDevice.SelectedIndex]);
-                Form1 frm1 = new Form1();
-                frm1.Show();
+                //pass the device selected to the Device Form
+                frmDevice frmdevice = new frmDevice(devices[lstDevice.SelectedIndex]);
+                frmdevice.Show();
             }
         }
 

@@ -70,25 +70,25 @@ namespace TrackerWatchServer
 
         private void lstUser_DoubleClick(object sender, EventArgs e)
         {
-            if(lstUser.SelectedIndex > -1)
-            {
-                if (mainFrm != null)
-                {
+            if (lstUser.SelectedIndex > -1)
+            {              
                     Console.WriteLine("User selected: " + users[lstUser.SelectedIndex]);
                     this.Close();
-                }
+                    //pass the user selected to the UserDetails Form
+                    frmUserDetails frmdetails = new frmUserDetails(users[lstUser.SelectedIndex]);
+                    frmdetails.Show();
             }
-        }
 
-        private void lstDevice_SelectedIndexChanged(object sender, EventArgs e)
+        }
+        private void lstDevice_DoubleClick(object sender, EventArgs e)
         {
+
             if (lstDevice.SelectedIndex > -1)
-            {
-                if (mainFrm != null)
-                {
+            {             
                     Console.WriteLine("Device selected: " + devices[lstDevice.SelectedIndex]);
-                    this.Close();
-                }
+                    //pass the device selected to the Device Form
+                    frmDevice frmdevice = new frmDevice(devices[lstDevice.SelectedIndex]);
+                    frmdevice.Show();
             }
         }
     }

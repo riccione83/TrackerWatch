@@ -85,7 +85,7 @@
             this.lstDevice.Name = "lstDevice";
             this.lstDevice.Size = new System.Drawing.Size(775, 129);
             this.lstDevice.TabIndex = 3;
-            this.lstDevice.SelectedIndexChanged += new System.EventHandler(this.lstDevice_SelectedIndexChanged);
+            this.lstDevice.DoubleClick += new System.EventHandler(this.lstDevice_DoubleClick);
             // 
             // lstUser
             // 

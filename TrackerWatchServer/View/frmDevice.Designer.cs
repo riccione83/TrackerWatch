@@ -46,6 +46,7 @@
             this.lIP = new System.Windows.Forms.Label();
             this.lPorta = new System.Windows.Forms.Label();
             this.lLevelBattery = new System.Windows.Forms.Label();
+            this.btnGetParametersTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -198,17 +199,28 @@
             // lLevelBattery
             // 
             this.lLevelBattery.AutoSize = true;
-            this.lLevelBattery.Location = new System.Drawing.Point(25, 367);
+            this.lLevelBattery.Location = new System.Drawing.Point(25, 376);
             this.lLevelBattery.Name = "lLevelBattery";
             this.lLevelBattery.Size = new System.Drawing.Size(76, 13);
             this.lLevelBattery.TabIndex = 23;
             this.lLevelBattery.Text = "Livello Batteria";
+            // 
+            // btnGetParametersTest
+            // 
+            this.btnGetParametersTest.Location = new System.Drawing.Point(148, 411);
+            this.btnGetParametersTest.Name = "btnGetParametersTest";
+            this.btnGetParametersTest.Size = new System.Drawing.Size(151, 23);
+            this.btnGetParametersTest.TabIndex = 24;
+            this.btnGetParametersTest.Text = "Test getParameter";
+            this.btnGetParametersTest.UseVisualStyleBackColor = true;
+            this.btnGetParametersTest.Click += new System.EventHandler(this.btnGetParametersTest_Click);
             // 
             // frmDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 446);
+            this.Controls.Add(this.btnGetParametersTest);
             this.Controls.Add(this.lLevelBattery);
             this.Controls.Add(this.lPorta);
             this.Controls.Add(this.lIP);
@@ -254,5 +266,6 @@
         private System.Windows.Forms.Label lIP;
         private System.Windows.Forms.Label lPorta;
         private System.Windows.Forms.Label lLevelBattery;
+        private System.Windows.Forms.Button btnGetParametersTest;
     }
 }
