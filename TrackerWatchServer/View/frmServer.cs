@@ -456,9 +456,18 @@ Locate time:16:9:4
             string strSMS = sms.Message;
             string telNumber = sms.Orginator;
 
-            if (strSMS.IndexOf("00") > -1)
-
+            //
+            if (strSMS is string)
+            {
+                //don't do nothing
+            }
+            else
+            {
+                if (strSMS.IndexOf("00") > -1)
                     strSMS = convertHEXtoString(strSMS);
+            }
+
+                   
 
             Console.WriteLine(strSMS);
 
@@ -500,20 +509,23 @@ Locate time:16:9:4
                         AlarmController.SharedInstance.buildAlarm(AlarmTypeCode.Message, device.DeviceID, "Nuova posizione GPS", latitude, longitude);
                     }
                 }
-                else if (SMSMessage[telNumber].Substring(0, 4).Contains("ID:") )//&& SMSMessage[telNumber].Substring(SMSMessage[telNumber].Length - 20, 10).Contains("Locate")) //SOS Message Command
+                else if (SMSMessage[telNumber].Substring(0, 4).Contains("ID:") && SMSMessage[telNumber].Substring(SMSMessage[telNumber].Length - 20, 15).Contains("time:")) //SOS Message Command
                 {
                     string[] str_tmp = SMSMessage[telNumber].Split('\n');
-                    if (str_tmp[0].Contains("ID:") && str_tmp[1].Contains("maps.google.com"))
+                    if (str_tmp[0].Contains("ID:") && str_tmp[4].Contains("time:"))
                     {
+                        string typeMessage = str_tmp[0].Split(',')[1];
+                        string position = str_tmp[2];
+
                         string[] location = str_tmp[1].Split('=')[1].Split(',');
-                        string latitude = location[0].Substring(1, location[0].Length - 1);
+                        /*string latitude = location[0].Substring(1, location[0].Length - 1);
                         string longitude = location[1].Substring(1, location[1].Length - 1).Split(':')[0];
 
                         Device device = DeviceController.SharedInstance.devices.Find(x => x.TelephoneNumber.Contains(telNumber.Substring(3, telNumber.Length - 3)));
                         device.LastPositionLatitude = latitude;
                         device.LastPositionLongitude = longitude;
                         DeviceController.SharedInstance.updateDevice(device);
-                        AlarmController.SharedInstance.buildAlarm(AlarmTypeCode.Message, device.DeviceID, "Nuova posizione GPS", latitude, longitude);
+                        AlarmController.SharedInstance.buildAlarm(AlarmTypeCode.Message, device.DeviceID, "Nuova posizione GPS", latitude, longitude);*/
                     }
                 }
             }
