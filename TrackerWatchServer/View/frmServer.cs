@@ -518,7 +518,7 @@ Locate time:16:9:4
                         device.LastPositionLatitude = latitude;
                         device.LastPositionLongitude = longitude;
                         DeviceController.SharedInstance.updateDevice(device);
-                        AlarmController.SharedInstance.buildAlarm(AlarmTypeCode.Message, device.DeviceID, "Nuova posizione GPS", latitude, longitude);
+                        AlarmController.SharedInstance.buildAlarm(AlarmTypeCode.Message, device.DeviceID, typeMessage, latitude, longitude);
                     }
                 }
             }
