@@ -243,12 +243,7 @@ namespace TrackerWatchServer
             {
                 if (e.Control && e.KeyCode == Keys.D1)
                 {
-                    Console.WriteLine("Key pressed");
-                    int rowIndex = eventGrid.SelectedRows[0].Index;
-                    if (rowIndex > -1)
-                    {
-                        eventGrid.Rows.RemoveAt(rowIndex);
-                    }
+                    closeAllarm();
                 }
 
                 if (e.KeyCode == Keys.F4)
@@ -307,6 +302,25 @@ namespace TrackerWatchServer
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void closeAllarm()
+        {
+            int rowIndex = eventGrid.SelectedRows[0].Index;
+            if (rowIndex > -1)
+            {
+                string alarmID = eventGrid.Rows[rowIndex].Cells["ID"].Value.ToString();
+                if (alarmID != "")
+                {
+                    Console.WriteLine("Selected alarm ID: " + alarmID);
+                    Alarm alarm = AlarmController.SharedInstance.alarms.First(x => x.Id == alarmID);
+                    if (alarm != null)
+                    {
+                        AlarmController.SharedInstance.setAlarmAsClosed(alarm);
+                        eventGrid.Rows.RemoveAt(rowIndex);
+                    }
+                }
+            }
         }
 
         private void openManagementAlarmCtrl()
