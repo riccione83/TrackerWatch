@@ -17,6 +17,7 @@ namespace TrackerWatchServer
     {
         private const string cmdDeleteAlarm = "DELETE FROM alarm WHERE alarm.ID={0}";                                  
         private const string cmdUpdateAlarm = "UPDATE alarm SET alarm..ManagedByID = '{0}', alarm.Note = '{1}' WHERE ID = {2}";
+        private const string cmdSetNoteForAlarm = "UPDATE alarm SET alarm.Note = '{0}' WHERE ID = {1}";
         private const string cmdInsertNewAlarm = "INSERT INTO alarm (alarm.DeviceID, alarm.Type, alarm.ManagedByID, alarm.Note, alarm.Latitude, alarm.Longitude, alarm.Event) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}')";
         private const string cmdGetAlarm = "SELECT * FROM alarm WHERE Closed = 0";
         private const string cmgGetAllAlarm = "SELECT * FROM alarm WHERE alarm.DeviceID = {0} AND alarm.ArrivalTimeDate >= '{1}' AND alarm.ArrivalTimeDate <= '{2}'";
@@ -130,6 +131,16 @@ namespace TrackerWatchServer
             cmd = cmd.Replace("{6}", alarm.EventText);
 
             int cnt = Database.SharedInstance.Insert(cmd);
+            ErrorCode = Database.SharedInstance.Error;
+            return cnt == 1 ? true : false;
+        }
+
+        public bool updateNoteForAlarm(string note, Alarm alarm)
+        {
+            String cmd = cmdSetNoteForAlarm.Replace("{0}", note);
+            cmd = cmd.Replace("{1}", alarm.Id);
+
+            int cnt = Database.SharedInstance.Update(cmd);
             ErrorCode = Database.SharedInstance.Error;
             return cnt == 1 ? true : false;
         }

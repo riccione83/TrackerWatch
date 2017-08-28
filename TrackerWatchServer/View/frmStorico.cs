@@ -31,9 +31,9 @@ namespace TrackerWatchServer
             dtFinish.CustomFormat = "dd/MM/yyyy HH:mm:ss";
 
           //  if (!DeviceController.SharedInstance.devicesLoaded)
-                devices = DeviceController.SharedInstance.getDevices();
+            devices = DeviceController.SharedInstance.getDevices();
 
-             updateSearchWithResults(devices);
+            updateSearchWithResults(devices);
          }
 
 

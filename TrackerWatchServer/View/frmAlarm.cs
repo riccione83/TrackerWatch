@@ -13,7 +13,8 @@ namespace TrackerWatchServer
     public partial class frmAlarm: Form, alarmDelegate
     {
         SearchControl searchControl;
-
+        AlarmMgmCtrl alarmManagementControl;
+        string lastAlarmID;
 
 
         delegate void dl(Alarm evento);
@@ -140,42 +141,50 @@ namespace TrackerWatchServer
         }
         //*********************************************************************************************
 
+        private void checkForNewAlarm()
+        {
+            List<Alarm> allarmi = AlarmController.SharedInstance.loadAlarm();
+            if (allarmi.Last().Id != lastAlarmID)
+            {
+                if (AlarmController.SharedInstance.ErrorCode == 0)
+                {
+                    foreach (Alarm evento in allarmi)
+                    {
+                        newEvent(evento);
+                        lastAlarmID = evento.Id;
+                    }
+
+                    String mapPath = Application.StartupPath + "\\Support\\map.htm";
+                    webBrowser1.Navigate(mapPath);
+                    webBrowser1.Document.InvokeScript("SetMapStyle", new object[] { "VEMapStyle.Hybrid" });
+                    webBrowser1.Invoke(new ClearMapDelegate(ClearMap), null);
+                }
+                else
+                {
+                    switch (AlarmController.SharedInstance.ErrorCode)
+                    {
+                        case 1:
+                            MessageBox.Show("Cannot Connect to Server. Plese Contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        case 2:
+                            MessageBox.Show("Invalid Database Username or Password, please contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        case 3:
+                            MessageBox.Show("Unable to connect with Database Server", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        default:
+                            MessageBox.Show("Unknow Error: " + AlarmController.SharedInstance.ErrorCode.ToString(), "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                    }
+                }
+            }
+        }
+        
         private void frmAlarm_Load(object sender, EventArgs e)
         {
             AlarmController.SharedInstance.mainAlarmForm = this;
 
-            List<Alarm> allarmi = AlarmController.SharedInstance.loadAlarm();
-            if (AlarmController.SharedInstance.ErrorCode == 0)
-            {
-
-                foreach (Alarm evento in allarmi)
-                {
-                    newEvent(evento);
-                }
-
-                String mapPath = Application.StartupPath + "\\Support\\map.htm";
-                webBrowser1.Navigate(mapPath);
-                webBrowser1.Document.InvokeScript("SetMapStyle", new object[] { "VEMapStyle.Hybrid" });
-                webBrowser1.Invoke(new ClearMapDelegate(ClearMap), null);
-            }
-            else
-            {
-                switch(AlarmController.SharedInstance.ErrorCode)
-                {
-                    case 1:
-                        MessageBox.Show("Cannot Connect to Server. Plese Contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    case 2:
-                        MessageBox.Show("Invalid Database Username or Password, please contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    case 3:
-                        MessageBox.Show("Unable to connect with Database Server", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                    default:
-                        MessageBox.Show("Unknow Error: " + AlarmController.SharedInstance.ErrorCode.ToString(), "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                }
-            }
+            checkForNewAlarm();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -241,6 +250,12 @@ namespace TrackerWatchServer
                         eventGrid.Rows.RemoveAt(rowIndex);
                     }
                 }
+
+                if (e.KeyCode == Keys.F4)
+                {
+                    openManagementAlarmCtrl();
+                }
+
             }
         }
 
@@ -284,6 +299,46 @@ namespace TrackerWatchServer
 
         }
 
-        
+        private void checkAllarmTimer_Tick(object sender, EventArgs e)
+        {
+            checkForNewAlarm();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void openManagementAlarmCtrl()
+        {
+            int rowIndex = eventGrid.SelectedRows[0].Index;
+            if (rowIndex > -1)
+            {
+                string alarmID = eventGrid.Rows[rowIndex].Cells["ID"].Value.ToString();
+                if (alarmID != "")
+                {
+                    Console.WriteLine("Selected alarm ID: " + alarmID);
+                    alarmManagementControl = new AlarmMgmCtrl();
+                    alarmManagementControl.currentAlarmID = alarmID;
+                    alarmManagementControl.refresh();
+                    splitContainer1.Panel1.Controls.Clear();  //Close all previus control
+                    alarmManagementControl.BorderStyle = BorderStyle.FixedSingle;
+
+                    splitContainer1.Panel1.Controls.Add(alarmManagementControl);
+                    alarmManagementControl.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom;
+                    alarmManagementControl.Dock = DockStyle.Fill;
+                }
+            }
+        }
+
+        private void eventGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            openManagementAlarmCtrl();
+        }
+
+        private void gestisciToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openManagementAlarmCtrl();
+        }
     }
 }
