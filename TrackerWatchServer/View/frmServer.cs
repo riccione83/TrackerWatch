@@ -467,13 +467,10 @@ Locate time:16:9:4
 
             if (telNumber != "")
             {
-
                 if (SMSMessage.ContainsKey(telNumber))
                     SMSMessage[telNumber] += strSMS;
                 else
-                {
                     SMSMessage.Add(telNumber, strSMS);
-                }
 
                 /*if(strSMS.IndexOf("GPRS:") > -1)        //If parameters command has sent
                 {
@@ -490,7 +487,7 @@ Locate time:16:9:4
                     Console.WriteLine(SMSMessage[telNumber]);
                     SMSMessage.Remove(telNumber);
                 }
-                else if (SMSMessage[telNumber].Substring(0, 4).Contains("url:") && SMSMessage[telNumber].Substring(SMSMessage[telNumber].Length - 20, 10).Contains("Locate")) //GetPosition Message Command
+                else if (SMSMessage[telNumber].Substring(0, 4).Contains("url:") && SMSMessage[telNumber].Substring(SMSMessage[telNumber].Length - 20, 10).Contains("Locate")) //Get Position Message Command
                 {
                     string[] str_tmp = SMSMessage[telNumber].Split('\n');
                     if (str_tmp[0].Contains("url:") && str_tmp[1].Contains("maps.google.com"))
