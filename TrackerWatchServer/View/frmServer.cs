@@ -456,9 +456,18 @@ Locate time:16:9:4
             string strSMS = sms.Message;
             string telNumber = sms.Orginator;
 
-            if (strSMS.IndexOf("00") > -1)
-
+            //
+            if (strSMS is string)
+            {
+                //don't do nothing
+            }
+            else
+            {
+                if (strSMS.IndexOf("00") > -1)
                     strSMS = convertHEXtoString(strSMS);
+            }
+
+                   
 
             Console.WriteLine(strSMS);
 
