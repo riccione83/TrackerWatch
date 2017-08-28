@@ -19,6 +19,7 @@ namespace TrackerWatchServer
         public string DB_PASSWORD;
 
         private static AppController sharedInstance;
+
         private AppController()
         {
             loadOptions();
@@ -56,8 +57,6 @@ namespace TrackerWatchServer
                             case "IS_SERVER":
                                 isServer = Boolean.Parse(par[1]);
                                 break;
-                            default:
-                                break;
                         }
                     }
                 }
@@ -77,11 +76,5 @@ namespace TrackerWatchServer
                 return sharedInstance;
             }
         }
-
-        public void setInstanceType(bool isServer)
-        {
-            this.isServer = isServer;
-        }
-
     }
 }

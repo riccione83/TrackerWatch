@@ -8,11 +8,6 @@ using System.Threading.Tasks;
 
 namespace TrackerWatchServer
 {
-    interface alarmDelegate
-    {
-        void newEvent(Alarm evento);
-    }
-
     class AlarmController
     {
         private const string cmdDeleteAlarm = "DELETE FROM alarm WHERE alarm.ID={0}";                                  

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -57,7 +57,7 @@
             this.toolStripBtnSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.checkAllarmTimer = new System.Windows.Forms.Timer(this.components);
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -148,20 +148,20 @@
             this.Latitude,
             this.Longitude});
             this.eventGrid.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.eventGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.eventGrid.DefaultCellStyle = dataGridViewCellStyle4;
             this.eventGrid.Location = new System.Drawing.Point(3, 6);
             this.eventGrid.MultiSelect = false;
             this.eventGrid.Name = "eventGrid";
             this.eventGrid.RowHeadersVisible = false;
             this.eventGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.eventGrid.Size = new System.Drawing.Size(780, 202);
+            this.eventGrid.Size = new System.Drawing.Size(780, 235);
             this.eventGrid.TabIndex = 1;
             this.eventGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventGrid_CellClick);
             this.eventGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventGrid_CellDoubleClick);
@@ -188,8 +188,8 @@
             // 
             // Utente
             // 
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Utente.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Utente.DefaultCellStyle = dataGridViewCellStyle3;
             this.Utente.HeaderText = "Utente";
             this.Utente.Name = "Utente";
             this.Utente.ReadOnly = true;
@@ -227,26 +227,27 @@
             this.toolStripMenuItem1,
             this.chiudiToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(115, 54);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // gestisciToolStripMenuItem
             // 
             this.gestisciToolStripMenuItem.Name = "gestisciToolStripMenuItem";
-            this.gestisciToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gestisciToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.gestisciToolStripMenuItem.Text = "Gestisci";
             this.gestisciToolStripMenuItem.Click += new System.EventHandler(this.gestisciToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(111, 6);
             // 
             // chiudiToolStripMenuItem
             // 
             this.chiudiToolStripMenuItem.Name = "chiudiToolStripMenuItem";
-            this.chiudiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.chiudiToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.chiudiToolStripMenuItem.Text = "Chiudi";
+            this.chiudiToolStripMenuItem.Click += new System.EventHandler(this.chiudiToolStripMenuItem_Click);
             // 
             // webBrowser1
             // 
@@ -268,6 +269,7 @@
             this.toolStripBtnUser,
             this.toolStripSeparator1,
             this.toolStripButton2,
+            this.toolStripSeparator4,
             this.toolStripButton3,
             this.toolStripSeparator2,
             this.toolStripBtnSearch,
@@ -275,7 +277,7 @@
             this.toolStripButton5});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(280, 53);
+            this.toolStrip1.Size = new System.Drawing.Size(286, 53);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripBtnUser
@@ -352,11 +354,10 @@
             this.toolStripButton5.Text = "Esci";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
-            // checkAllarmTimer
+            // toolStripSeparator4
             // 
-            this.checkAllarmTimer.Enabled = true;
-            this.checkAllarmTimer.Interval = 2000;
-            this.checkAllarmTimer.Tick += new System.EventHandler(this.checkAllarmTimer_Tick);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 53);
             // 
             // frmAlarm
             // 
@@ -366,6 +367,7 @@
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "frmAlarm";
             this.Text = "SereSitter - Alarm Center";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAlarm_FormClosing);
             this.Load += new System.EventHandler(this.frmAlarm_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
@@ -411,10 +413,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Latitude;
         private System.Windows.Forms.DataGridViewTextBoxColumn Longitude;
-        private System.Windows.Forms.Timer checkAllarmTimer;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem gestisciToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem chiudiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

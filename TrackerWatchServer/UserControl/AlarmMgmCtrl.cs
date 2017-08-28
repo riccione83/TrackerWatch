@@ -23,6 +23,8 @@ namespace TrackerWatchServer
         {
             txtAlarmNote.Text += DateTime.Now.ToString() + " - " + text + "\r\n";
             saveNoteForAlarm(txtAlarmNote.Text);
+            cbNote.Text = "";
+            cbNote.Focus();
         }
 
         public void refresh()
@@ -56,6 +58,11 @@ namespace TrackerWatchServer
             {
                 addNewRow(cbNote.Text);
             }
+        }
+
+        private void cbNote_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

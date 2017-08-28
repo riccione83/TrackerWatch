@@ -99,10 +99,17 @@
             this.alarmCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlServer = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             this.pnlProgrammazione.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.pnlServer.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // deviceList
@@ -136,7 +143,7 @@
             // txtLastComunication
             // 
             this.txtLastComunication.AutoSize = true;
-            this.txtLastComunication.Location = new System.Drawing.Point(11, 133);
+            this.txtLastComunication.Location = new System.Drawing.Point(11, 142);
             this.txtLastComunication.Name = "txtLastComunication";
             this.txtLastComunication.Size = new System.Drawing.Size(116, 13);
             this.txtLastComunication.TabIndex = 7;
@@ -144,15 +151,15 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(57, 104);
+            this.progressBar1.Location = new System.Drawing.Point(57, 116);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(126, 23);
+            this.progressBar1.Size = new System.Drawing.Size(151, 23);
             this.progressBar1.TabIndex = 6;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(11, 109);
+            this.label12.Location = new System.Drawing.Point(11, 121);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(31, 13);
             this.label12.TabIndex = 5;
@@ -161,7 +168,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 88);
+            this.label11.Location = new System.Drawing.Point(11, 100);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(29, 13);
             this.label11.TabIndex = 4;
@@ -170,7 +177,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 67);
+            this.label4.Location = new System.Drawing.Point(11, 79);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 3;
@@ -179,7 +186,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 46);
+            this.label3.Location = new System.Drawing.Point(11, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 2;
@@ -188,7 +195,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 25);
+            this.label2.Location = new System.Drawing.Point(11, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 1;
@@ -197,7 +204,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 4);
+            this.label1.Location = new System.Drawing.Point(11, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 0;
@@ -205,113 +212,99 @@
             // 
             // pnlProgrammazione
             // 
-            this.pnlProgrammazione.Controls.Add(this.button1);
-            this.pnlProgrammazione.Controls.Add(this.btnDeleteSOSNumber);
-            this.pnlProgrammazione.Controls.Add(this.btnGetParameters);
-            this.pnlProgrammazione.Controls.Add(this.cbSOSNumberToDelete);
-            this.pnlProgrammazione.Controls.Add(this.btnGetPosition);
-            this.pnlProgrammazione.Controls.Add(this.cbTimezone);
-            this.pnlProgrammazione.Controls.Add(this.btnSetIMEI);
-            this.pnlProgrammazione.Controls.Add(this.cbLanguage);
-            this.pnlProgrammazione.Controls.Add(this.cbIMEI);
-            this.pnlProgrammazione.Controls.Add(this.label19);
-            this.pnlProgrammazione.Controls.Add(this.label10);
-            this.pnlProgrammazione.Controls.Add(this.label18);
-            this.pnlProgrammazione.Controls.Add(this.btnSetMonitor);
-            this.pnlProgrammazione.Controls.Add(this.btnSetLanguageAndTimezone);
-            this.pnlProgrammazione.Controls.Add(this.btnSetSOS3);
-            this.pnlProgrammazione.Controls.Add(this.btnSetIPandPort);
-            this.pnlProgrammazione.Controls.Add(this.cbMonitor);
-            this.pnlProgrammazione.Controls.Add(this.tbPort);
-            this.pnlProgrammazione.Controls.Add(this.label9);
-            this.pnlProgrammazione.Controls.Add(this.label17);
-            this.pnlProgrammazione.Controls.Add(this.cbSOS3);
-            this.pnlProgrammazione.Controls.Add(this.tbIP);
-            this.pnlProgrammazione.Controls.Add(this.label8);
-            this.pnlProgrammazione.Controls.Add(this.label16);
-            this.pnlProgrammazione.Controls.Add(this.btnSetSOS2);
-            this.pnlProgrammazione.Controls.Add(this.btnRestoreFactorySettings);
-            this.pnlProgrammazione.Controls.Add(this.btnResetDevice);
-            this.pnlProgrammazione.Controls.Add(this.cbSOS2);
-            this.pnlProgrammazione.Controls.Add(this.btnGetVersion);
-            this.pnlProgrammazione.Controls.Add(this.label7);
-            this.pnlProgrammazione.Controls.Add(this.tbUploadTimeInterval);
-            this.pnlProgrammazione.Controls.Add(this.btnSetSOS1);
-            this.pnlProgrammazione.Controls.Add(this.label15);
-            this.pnlProgrammazione.Controls.Add(this.cbSOS1);
-            this.pnlProgrammazione.Controls.Add(this.btnSetTimeInterval);
-            this.pnlProgrammazione.Controls.Add(this.label6);
-            this.pnlProgrammazione.Controls.Add(this.btnSetAPN);
-            this.pnlProgrammazione.Controls.Add(this.btnSetAssistantCenterNumber);
-            this.pnlProgrammazione.Controls.Add(this.tbAssistantCenterNumber);
-            this.pnlProgrammazione.Controls.Add(this.cbAPN);
-            this.pnlProgrammazione.Controls.Add(this.label14);
-            this.pnlProgrammazione.Controls.Add(this.tbCenterNumber);
-            this.pnlProgrammazione.Controls.Add(this.label13);
-            this.pnlProgrammazione.Controls.Add(this.btnSetCenterNumber);
-            this.pnlProgrammazione.Controls.Add(this.label5);
+            this.pnlProgrammazione.Controls.Add(this.tabControl1);
             this.pnlProgrammazione.Location = new System.Drawing.Point(234, 38);
             this.pnlProgrammazione.Name = "pnlProgrammazione";
-            this.pnlProgrammazione.Size = new System.Drawing.Size(289, 471);
+            this.pnlProgrammazione.Size = new System.Drawing.Size(293, 471);
             this.pnlProgrammazione.TabIndex = 2;
             this.pnlProgrammazione.TabStop = false;
             this.pnlProgrammazione.Text = "Programmazione";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(58, 133);
+            this.button1.Location = new System.Drawing.Point(101, 141);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 19);
+            this.button1.Size = new System.Drawing.Size(91, 34);
             this.button1.TabIndex = 17;
-            this.button1.Text = "Set all the 3 SOS Numbers";
+            this.button1.Text = "Set All SOS Numbers";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnSetThreeSOSNumbers_Click);
             // 
             // btnDeleteSOSNumber
             // 
-            this.btnDeleteSOSNumber.Location = new System.Drawing.Point(61, 415);
+            this.btnDeleteSOSNumber.Location = new System.Drawing.Point(221, 189);
             this.btnDeleteSOSNumber.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteSOSNumber.Name = "btnDeleteSOSNumber";
-            this.btnDeleteSOSNumber.Size = new System.Drawing.Size(117, 19);
+            this.btnDeleteSOSNumber.Size = new System.Drawing.Size(55, 21);
             this.btnDeleteSOSNumber.TabIndex = 28;
-            this.btnDeleteSOSNumber.Text = "Delete SOS Number";
+            this.btnDeleteSOSNumber.Text = "Delete";
             this.btnDeleteSOSNumber.UseVisualStyleBackColor = true;
             this.btnDeleteSOSNumber.Click += new System.EventHandler(this.DeleteSOSNumber_Click);
             // 
             // btnGetParameters
             // 
-            this.btnGetParameters.Location = new System.Drawing.Point(11, 225);
+            this.btnGetParameters.Location = new System.Drawing.Point(6, 383);
             this.btnGetParameters.Name = "btnGetParameters";
-            this.btnGetParameters.Size = new System.Drawing.Size(75, 23);
+            this.btnGetParameters.Size = new System.Drawing.Size(75, 34);
             this.btnGetParameters.TabIndex = 16;
-            this.btnGetParameters.Text = "Parameters";
+            this.btnGetParameters.Text = "Get Parameters";
             this.btnGetParameters.UseVisualStyleBackColor = true;
             this.btnGetParameters.Click += new System.EventHandler(this.BtnGetParameters_Click);
             // 
             // cbSOSNumberToDelete
             // 
             this.cbSOSNumberToDelete.FormattingEnabled = true;
-            this.cbSOSNumberToDelete.Location = new System.Drawing.Point(14, 415);
+            this.cbSOSNumberToDelete.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cbSOSNumberToDelete.Location = new System.Drawing.Point(125, 189);
             this.cbSOSNumberToDelete.Margin = new System.Windows.Forms.Padding(2);
             this.cbSOSNumberToDelete.Name = "cbSOSNumberToDelete";
-            this.cbSOSNumberToDelete.Size = new System.Drawing.Size(41, 21);
+            this.cbSOSNumberToDelete.Size = new System.Drawing.Size(90, 21);
             this.cbSOSNumberToDelete.TabIndex = 27;
             // 
             // btnGetPosition
             // 
-            this.btnGetPosition.Location = new System.Drawing.Point(206, 223);
+            this.btnGetPosition.Location = new System.Drawing.Point(199, 383);
             this.btnGetPosition.Name = "btnGetPosition";
-            this.btnGetPosition.Size = new System.Drawing.Size(75, 23);
+            this.btnGetPosition.Size = new System.Drawing.Size(75, 34);
             this.btnGetPosition.TabIndex = 15;
-            this.btnGetPosition.Text = "Position";
+            this.btnGetPosition.Text = "Get Position";
             this.btnGetPosition.UseVisualStyleBackColor = true;
             this.btnGetPosition.Click += new System.EventHandler(this.btnGetPosition_Click);
             // 
             // cbTimezone
             // 
             this.cbTimezone.FormattingEnabled = true;
-            this.cbTimezone.Location = new System.Drawing.Point(182, 384);
+            this.cbTimezone.Items.AddRange(new object[] {
+            "-12",
+            "-11",
+            "-10",
+            "-9",
+            "-8",
+            "-7",
+            "-6",
+            "-5",
+            "-4",
+            "-3",
+            "-2",
+            "-1",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cbTimezone.Location = new System.Drawing.Point(172, 228);
             this.cbTimezone.Margin = new System.Windows.Forms.Padding(2);
             this.cbTimezone.Name = "cbTimezone";
             this.cbTimezone.Size = new System.Drawing.Size(43, 21);
@@ -319,7 +312,7 @@
             // 
             // btnSetIMEI
             // 
-            this.btnSetIMEI.Location = new System.Drawing.Point(226, 185);
+            this.btnSetIMEI.Location = new System.Drawing.Point(223, 54);
             this.btnSetIMEI.Name = "btnSetIMEI";
             this.btnSetIMEI.Size = new System.Drawing.Size(55, 23);
             this.btnSetIMEI.TabIndex = 14;
@@ -330,24 +323,27 @@
             // cbLanguage
             // 
             this.cbLanguage.FormattingEnabled = true;
-            this.cbLanguage.Location = new System.Drawing.Point(73, 384);
+            this.cbLanguage.Items.AddRange(new object[] {
+            "0",
+            "1"});
+            this.cbLanguage.Location = new System.Drawing.Point(67, 228);
             this.cbLanguage.Margin = new System.Windows.Forms.Padding(2);
             this.cbLanguage.Name = "cbLanguage";
-            this.cbLanguage.Size = new System.Drawing.Size(40, 21);
+            this.cbLanguage.Size = new System.Drawing.Size(48, 21);
             this.cbLanguage.TabIndex = 25;
             // 
             // cbIMEI
             // 
             this.cbIMEI.FormattingEnabled = true;
-            this.cbIMEI.Location = new System.Drawing.Point(58, 188);
+            this.cbIMEI.Location = new System.Drawing.Point(52, 56);
             this.cbIMEI.Name = "cbIMEI";
-            this.cbIMEI.Size = new System.Drawing.Size(163, 21);
+            this.cbIMEI.Size = new System.Drawing.Size(166, 21);
             this.cbIMEI.TabIndex = 13;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(122, 389);
+            this.label19.Location = new System.Drawing.Point(119, 233);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(56, 13);
@@ -357,7 +353,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 190);
+            this.label10.Location = new System.Drawing.Point(3, 56);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(32, 13);
             this.label10.TabIndex = 12;
@@ -366,16 +362,17 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(12, 389);
+            this.label18.Location = new System.Drawing.Point(3, 231);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(58, 13);
             this.label18.TabIndex = 23;
             this.label18.Text = "Language:";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // btnSetMonitor
             // 
-            this.btnSetMonitor.Location = new System.Drawing.Point(226, 157);
+            this.btnSetMonitor.Location = new System.Drawing.Point(223, 16);
             this.btnSetMonitor.Name = "btnSetMonitor";
             this.btnSetMonitor.Size = new System.Drawing.Size(55, 23);
             this.btnSetMonitor.TabIndex = 8;
@@ -385,10 +382,10 @@
             // 
             // btnSetLanguageAndTimezone
             // 
-            this.btnSetLanguageAndTimezone.Location = new System.Drawing.Point(230, 384);
+            this.btnSetLanguageAndTimezone.Location = new System.Drawing.Point(220, 228);
             this.btnSetLanguageAndTimezone.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetLanguageAndTimezone.Name = "btnSetLanguageAndTimezone";
-            this.btnSetLanguageAndTimezone.Size = new System.Drawing.Size(56, 19);
+            this.btnSetLanguageAndTimezone.Size = new System.Drawing.Size(56, 21);
             this.btnSetLanguageAndTimezone.TabIndex = 22;
             this.btnSetLanguageAndTimezone.Text = "Set";
             this.btnSetLanguageAndTimezone.UseVisualStyleBackColor = true;
@@ -396,7 +393,7 @@
             // 
             // btnSetSOS3
             // 
-            this.btnSetSOS3.Location = new System.Drawing.Point(227, 106);
+            this.btnSetSOS3.Location = new System.Drawing.Point(221, 104);
             this.btnSetSOS3.Name = "btnSetSOS3";
             this.btnSetSOS3.Size = new System.Drawing.Size(55, 23);
             this.btnSetSOS3.TabIndex = 11;
@@ -406,10 +403,10 @@
             // 
             // btnSetIPandPort
             // 
-            this.btnSetIPandPort.Location = new System.Drawing.Point(230, 356);
+            this.btnSetIPandPort.Location = new System.Drawing.Point(220, 275);
             this.btnSetIPandPort.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetIPandPort.Name = "btnSetIPandPort";
-            this.btnSetIPandPort.Size = new System.Drawing.Size(56, 19);
+            this.btnSetIPandPort.Size = new System.Drawing.Size(56, 20);
             this.btnSetIPandPort.TabIndex = 21;
             this.btnSetIPandPort.Text = "Set";
             this.btnSetIPandPort.UseVisualStyleBackColor = true;
@@ -418,23 +415,24 @@
             // cbMonitor
             // 
             this.cbMonitor.FormattingEnabled = true;
-            this.cbMonitor.Location = new System.Drawing.Point(58, 162);
+            this.cbMonitor.Location = new System.Drawing.Point(52, 18);
             this.cbMonitor.Name = "cbMonitor";
-            this.cbMonitor.Size = new System.Drawing.Size(163, 21);
+            this.cbMonitor.Size = new System.Drawing.Size(166, 21);
             this.cbMonitor.TabIndex = 7;
             // 
             // tbPort
             // 
-            this.tbPort.Location = new System.Drawing.Point(61, 361);
+            this.tbPort.Location = new System.Drawing.Point(176, 275);
             this.tbPort.Margin = new System.Windows.Forms.Padding(2);
             this.tbPort.Name = "tbPort";
-            this.tbPort.Size = new System.Drawing.Size(163, 20);
+            this.tbPort.Size = new System.Drawing.Size(39, 20);
             this.tbPort.TabIndex = 20;
+            this.tbPort.Text = "8001";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 162);
+            this.label9.Location = new System.Drawing.Point(3, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 13);
             this.label9.TabIndex = 6;
@@ -443,7 +441,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 361);
+            this.label17.Location = new System.Drawing.Point(149, 278);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(29, 13);
@@ -453,23 +451,23 @@
             // cbSOS3
             // 
             this.cbSOS3.FormattingEnabled = true;
-            this.cbSOS3.Location = new System.Drawing.Point(58, 108);
+            this.cbSOS3.Location = new System.Drawing.Point(50, 106);
             this.cbSOS3.Name = "cbSOS3";
             this.cbSOS3.Size = new System.Drawing.Size(163, 21);
             this.cbSOS3.TabIndex = 10;
             // 
             // tbIP
             // 
-            this.tbIP.Location = new System.Drawing.Point(61, 335);
+            this.tbIP.Location = new System.Drawing.Point(48, 275);
             this.tbIP.Margin = new System.Windows.Forms.Padding(2);
             this.tbIP.Name = "tbIP";
-            this.tbIP.Size = new System.Drawing.Size(163, 20);
+            this.tbIP.Size = new System.Drawing.Size(97, 20);
             this.tbIP.TabIndex = 18;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 114);
+            this.label8.Location = new System.Drawing.Point(-1, 112);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 9;
@@ -478,7 +476,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(12, 337);
+            this.label16.Location = new System.Drawing.Point(3, 278);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(20, 13);
@@ -487,7 +485,7 @@
             // 
             // btnSetSOS2
             // 
-            this.btnSetSOS2.Location = new System.Drawing.Point(227, 77);
+            this.btnSetSOS2.Location = new System.Drawing.Point(221, 76);
             this.btnSetSOS2.Name = "btnSetSOS2";
             this.btnSetSOS2.Size = new System.Drawing.Size(55, 23);
             this.btnSetSOS2.TabIndex = 8;
@@ -497,10 +495,10 @@
             // 
             // btnRestoreFactorySettings
             // 
-            this.btnRestoreFactorySettings.Location = new System.Drawing.Point(138, 446);
+            this.btnRestoreFactorySettings.Location = new System.Drawing.Point(169, 384);
             this.btnRestoreFactorySettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnRestoreFactorySettings.Name = "btnRestoreFactorySettings";
-            this.btnRestoreFactorySettings.Size = new System.Drawing.Size(148, 19);
+            this.btnRestoreFactorySettings.Size = new System.Drawing.Size(107, 34);
             this.btnRestoreFactorySettings.TabIndex = 16;
             this.btnRestoreFactorySettings.Text = "Restore Factory Settings";
             this.btnRestoreFactorySettings.UseVisualStyleBackColor = true;
@@ -508,10 +506,10 @@
             // 
             // btnResetDevice
             // 
-            this.btnResetDevice.Location = new System.Drawing.Point(73, 446);
+            this.btnResetDevice.Location = new System.Drawing.Point(85, 384);
             this.btnResetDevice.Margin = new System.Windows.Forms.Padding(2);
             this.btnResetDevice.Name = "btnResetDevice";
-            this.btnResetDevice.Size = new System.Drawing.Size(56, 19);
+            this.btnResetDevice.Size = new System.Drawing.Size(80, 34);
             this.btnResetDevice.TabIndex = 15;
             this.btnResetDevice.Text = "Reset Device";
             this.btnResetDevice.UseVisualStyleBackColor = true;
@@ -520,17 +518,17 @@
             // cbSOS2
             // 
             this.cbSOS2.FormattingEnabled = true;
-            this.cbSOS2.Location = new System.Drawing.Point(58, 79);
+            this.cbSOS2.Location = new System.Drawing.Point(50, 78);
             this.cbSOS2.Name = "cbSOS2";
             this.cbSOS2.Size = new System.Drawing.Size(163, 21);
             this.cbSOS2.TabIndex = 7;
             // 
             // btnGetVersion
             // 
-            this.btnGetVersion.Location = new System.Drawing.Point(12, 446);
+            this.btnGetVersion.Location = new System.Drawing.Point(5, 384);
             this.btnGetVersion.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetVersion.Name = "btnGetVersion";
-            this.btnGetVersion.Size = new System.Drawing.Size(56, 19);
+            this.btnGetVersion.Size = new System.Drawing.Size(76, 33);
             this.btnGetVersion.TabIndex = 14;
             this.btnGetVersion.Text = "Version";
             this.btnGetVersion.UseVisualStyleBackColor = true;
@@ -539,7 +537,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 85);
+            this.label7.Location = new System.Drawing.Point(-1, 84);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 13);
             this.label7.TabIndex = 6;
@@ -547,15 +545,15 @@
             // 
             // tbUploadTimeInterval
             // 
-            this.tbUploadTimeInterval.Location = new System.Drawing.Point(142, 306);
+            this.tbUploadTimeInterval.Location = new System.Drawing.Point(133, 170);
             this.tbUploadTimeInterval.Margin = new System.Windows.Forms.Padding(2);
             this.tbUploadTimeInterval.Name = "tbUploadTimeInterval";
-            this.tbUploadTimeInterval.Size = new System.Drawing.Size(82, 20);
+            this.tbUploadTimeInterval.Size = new System.Drawing.Size(85, 20);
             this.tbUploadTimeInterval.TabIndex = 13;
             // 
             // btnSetSOS1
             // 
-            this.btnSetSOS1.Location = new System.Drawing.Point(227, 48);
+            this.btnSetSOS1.Location = new System.Drawing.Point(221, 48);
             this.btnSetSOS1.Name = "btnSetSOS1";
             this.btnSetSOS1.Size = new System.Drawing.Size(55, 23);
             this.btnSetSOS1.TabIndex = 5;
@@ -566,7 +564,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(12, 309);
+            this.label15.Location = new System.Drawing.Point(5, 173);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(107, 13);
@@ -576,17 +574,17 @@
             // cbSOS1
             // 
             this.cbSOS1.FormattingEnabled = true;
-            this.cbSOS1.Location = new System.Drawing.Point(58, 50);
+            this.cbSOS1.Location = new System.Drawing.Point(50, 50);
             this.cbSOS1.Name = "cbSOS1";
             this.cbSOS1.Size = new System.Drawing.Size(163, 21);
             this.cbSOS1.TabIndex = 4;
             // 
             // btnSetTimeInterval
             // 
-            this.btnSetTimeInterval.Location = new System.Drawing.Point(230, 306);
+            this.btnSetTimeInterval.Location = new System.Drawing.Point(222, 168);
             this.btnSetTimeInterval.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetTimeInterval.Name = "btnSetTimeInterval";
-            this.btnSetTimeInterval.Size = new System.Drawing.Size(56, 19);
+            this.btnSetTimeInterval.Size = new System.Drawing.Size(56, 23);
             this.btnSetTimeInterval.TabIndex = 11;
             this.btnSetTimeInterval.Text = "Set";
             this.btnSetTimeInterval.UseVisualStyleBackColor = true;
@@ -595,7 +593,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 56);
+            this.label6.Location = new System.Drawing.Point(-1, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 3;
@@ -603,7 +601,7 @@
             // 
             // btnSetAPN
             // 
-            this.btnSetAPN.Location = new System.Drawing.Point(227, 20);
+            this.btnSetAPN.Location = new System.Drawing.Point(221, 20);
             this.btnSetAPN.Name = "btnSetAPN";
             this.btnSetAPN.Size = new System.Drawing.Size(55, 23);
             this.btnSetAPN.TabIndex = 2;
@@ -613,10 +611,10 @@
             // 
             // btnSetAssistantCenterNumber
             // 
-            this.btnSetAssistantCenterNumber.Location = new System.Drawing.Point(228, 280);
+            this.btnSetAssistantCenterNumber.Location = new System.Drawing.Point(222, 130);
             this.btnSetAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetAssistantCenterNumber.Name = "btnSetAssistantCenterNumber";
-            this.btnSetAssistantCenterNumber.Size = new System.Drawing.Size(56, 19);
+            this.btnSetAssistantCenterNumber.Size = new System.Drawing.Size(56, 23);
             this.btnSetAssistantCenterNumber.TabIndex = 6;
             this.btnSetAssistantCenterNumber.Text = "Set";
             this.btnSetAssistantCenterNumber.UseVisualStyleBackColor = true;
@@ -624,10 +622,10 @@
             // 
             // tbAssistantCenterNumber
             // 
-            this.tbAssistantCenterNumber.Location = new System.Drawing.Point(138, 277);
+            this.tbAssistantCenterNumber.Location = new System.Drawing.Point(133, 132);
             this.tbAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2);
             this.tbAssistantCenterNumber.Name = "tbAssistantCenterNumber";
-            this.tbAssistantCenterNumber.Size = new System.Drawing.Size(82, 20);
+            this.tbAssistantCenterNumber.Size = new System.Drawing.Size(85, 20);
             this.tbAssistantCenterNumber.TabIndex = 10;
             // 
             // cbAPN
@@ -637,7 +635,7 @@
             "internet.wind",
             "web.omnitel.it",
             "ibox.tim.it"});
-            this.cbAPN.Location = new System.Drawing.Point(58, 22);
+            this.cbAPN.Location = new System.Drawing.Point(50, 22);
             this.cbAPN.Name = "cbAPN";
             this.cbAPN.Size = new System.Drawing.Size(163, 21);
             this.cbAPN.TabIndex = 1;
@@ -646,7 +644,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 280);
+            this.label14.Location = new System.Drawing.Point(3, 132);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(126, 13);
@@ -655,16 +653,16 @@
             // 
             // tbCenterNumber
             // 
-            this.tbCenterNumber.Location = new System.Drawing.Point(96, 250);
+            this.tbCenterNumber.Location = new System.Drawing.Point(133, 94);
             this.tbCenterNumber.Margin = new System.Windows.Forms.Padding(2);
             this.tbCenterNumber.Name = "tbCenterNumber";
-            this.tbCenterNumber.Size = new System.Drawing.Size(126, 20);
+            this.tbCenterNumber.Size = new System.Drawing.Size(85, 20);
             this.tbCenterNumber.TabIndex = 9;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 251);
+            this.label13.Location = new System.Drawing.Point(3, 94);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(81, 13);
@@ -673,10 +671,10 @@
             // 
             // btnSetCenterNumber
             // 
-            this.btnSetCenterNumber.Location = new System.Drawing.Point(227, 251);
+            this.btnSetCenterNumber.Location = new System.Drawing.Point(222, 92);
             this.btnSetCenterNumber.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetCenterNumber.Name = "btnSetCenterNumber";
-            this.btnSetCenterNumber.Size = new System.Drawing.Size(56, 19);
+            this.btnSetCenterNumber.Size = new System.Drawing.Size(56, 23);
             this.btnSetCenterNumber.TabIndex = 5;
             this.btnSetCenterNumber.Text = "Set";
             this.btnSetCenterNumber.UseVisualStyleBackColor = true;
@@ -685,7 +683,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 28);
+            this.label5.Location = new System.Drawing.Point(-1, 28);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 0;
@@ -696,10 +694,10 @@
             this.webBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser.Location = new System.Drawing.Point(529, 38);
+            this.webBrowser.Location = new System.Drawing.Point(530, 41);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(457, 471);
+            this.webBrowser.Size = new System.Drawing.Size(456, 468);
             this.webBrowser.TabIndex = 3;
             // 
             // txtLog
@@ -826,6 +824,94 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(734, 442);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(3, 192);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(116, 13);
+            this.label20.TabIndex = 29;
+            this.label20.Text = "SOS Position to delete:";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(0, 19);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(290, 449);
+            this.tabControl1.TabIndex = 30;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.PowderBlue;
+            this.tabPage1.Controls.Add(this.btnGetParameters);
+            this.tabPage1.Controls.Add(this.cbSOS3);
+            this.tabPage1.Controls.Add(this.btnGetPosition);
+            this.tabPage1.Controls.Add(this.label20);
+            this.tabPage1.Controls.Add(this.btnDeleteSOSNumber);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.cbSOSNumberToDelete);
+            this.tabPage1.Controls.Add(this.cbAPN);
+            this.tabPage1.Controls.Add(this.btnSetIPandPort);
+            this.tabPage1.Controls.Add(this.btnSetAPN);
+            this.tabPage1.Controls.Add(this.cbTimezone);
+            this.tabPage1.Controls.Add(this.tbPort);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.cbSOS1);
+            this.tabPage1.Controls.Add(this.label17);
+            this.tabPage1.Controls.Add(this.cbLanguage);
+            this.tabPage1.Controls.Add(this.tbIP);
+            this.tabPage1.Controls.Add(this.btnSetSOS1);
+            this.tabPage1.Controls.Add(this.label16);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.label19);
+            this.tabPage1.Controls.Add(this.cbSOS2);
+            this.tabPage1.Controls.Add(this.btnSetSOS2);
+            this.tabPage1.Controls.Add(this.label18);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.btnSetSOS3);
+            this.tabPage1.Controls.Add(this.btnSetLanguageAndTimezone);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(282, 423);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Basic Config";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.btnRestoreFactorySettings);
+            this.tabPage2.Controls.Add(this.btnResetDevice);
+            this.tabPage2.Controls.Add(this.btnSetIMEI);
+            this.tabPage2.Controls.Add(this.btnGetVersion);
+            this.tabPage2.Controls.Add(this.btnSetCenterNumber);
+            this.tabPage2.Controls.Add(this.cbIMEI);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.tbCenterNumber);
+            this.tabPage2.Controls.Add(this.btnSetMonitor);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.cbMonitor);
+            this.tabPage2.Controls.Add(this.tbAssistantCenterNumber);
+            this.tabPage2.Controls.Add(this.btnSetAssistantCenterNumber);
+            this.tabPage2.Controls.Add(this.btnSetTimeInterval);
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.tbUploadTimeInterval);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(282, 423);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Advanced Config";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -846,10 +932,14 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlProgrammazione.ResumeLayout(false);
-            this.pnlProgrammazione.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnlServer.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -928,6 +1018,10 @@
         private System.Windows.Forms.ToolStripMenuItem alarmCenterToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem resetModemToolStripMenuItem;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 

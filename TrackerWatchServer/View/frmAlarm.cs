@@ -5,15 +5,17 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TrackerWatchServer
 {
-    public partial class frmAlarm: Form, alarmDelegate
+    public partial class frmAlarm: Form
     {
         SearchControl searchControl;
         AlarmMgmCtrl alarmManagementControl;
+        Thread ckAlarmThread;
         string lastAlarmID;
 
 
@@ -122,7 +124,7 @@ namespace TrackerWatchServer
         }
 
         /*
-         * Help per le chiamate
+         *  Help per le chiamate
          *  object[] ob = new object[4];
             ob = new object[4];
             ob[0] = p.Lat;          //current latitude
@@ -143,61 +145,99 @@ namespace TrackerWatchServer
 
         private void checkForNewAlarm()
         {
-            List<Alarm> allarmi = AlarmController.SharedInstance.loadAlarm();
-            if (allarmi.Last().Id != lastAlarmID)
-            {
-                if (AlarmController.SharedInstance.ErrorCode == 0)
-                {
-                    foreach (Alarm evento in allarmi)
-                    {
-                        newEvent(evento);
-                        lastAlarmID = evento.Id;
-                    }
+            bool EndThisThread = false;
 
-                    String mapPath = Application.StartupPath + "\\Support\\map.htm";
-                    webBrowser1.Navigate(mapPath);
-                    webBrowser1.Document.InvokeScript("SetMapStyle", new object[] { "VEMapStyle.Hybrid" });
-                    webBrowser1.Invoke(new ClearMapDelegate(ClearMap), null);
+            while (Thread.CurrentThread.ThreadState == ThreadState.Background || EndThisThread)
+            {
+                List<Alarm> allarmi = AlarmController.SharedInstance.loadAlarm();
+                if (allarmi.Last().Id != lastAlarmID)
+                {
+                    if (AlarmController.SharedInstance.ErrorCode == 0)
+                    {
+                        foreach (Alarm evento in allarmi)
+                        {
+                            newEvent(evento);
+                            lastAlarmID = evento.Id;
+                        }
+                    }
+                    else
+                    {
+                        switch (AlarmController.SharedInstance.ErrorCode)
+                        {
+                            case 1:
+                                MessageBox.Show("Cannot Connect to Server. Plese Contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            case 2:
+                                MessageBox.Show("Invalid Database Username or Password, please contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            case 3:
+                                MessageBox.Show("Unable to connect with Database Server", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            default:
+                                MessageBox.Show("Unknow Error: " + AlarmController.SharedInstance.ErrorCode.ToString(), "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                        }
+                        EndThisThread = true;
+                    }
                 }
                 else
                 {
-                    switch (AlarmController.SharedInstance.ErrorCode)
+                    try
                     {
-                        case 1:
-                            MessageBox.Show("Cannot Connect to Server. Plese Contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        case 2:
-                            MessageBox.Show("Invalid Database Username or Password, please contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        case 3:
-                            MessageBox.Show("Unable to connect with Database Server", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        default:
-                            MessageBox.Show("Unknow Error: " + AlarmController.SharedInstance.ErrorCode.ToString(), "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                        Thread.Sleep(2000);
+                    }
+                    catch
+                    {
+                        EndThisThread = true;
                     }
                 }
             }
         }
         
+        private void showHelp()
+        {
+            HelpControl hlp = new HelpControl();
+            splitContainer1.Panel1.Controls.Clear();  //Close all previus control
+            hlp.BorderStyle = BorderStyle.FixedSingle;
+
+            splitContainer1.Panel1.Controls.Add(hlp);
+            hlp.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom;
+            hlp.Dock = DockStyle.Fill;
+            hlp.deselectAll();
+        }
+
         private void frmAlarm_Load(object sender, EventArgs e)
         {
+            showHelp();
+
             AlarmController.SharedInstance.mainAlarmForm = this;
 
-            checkForNewAlarm();
+            ckAlarmThread = new Thread(checkForNewAlarm);
+            ckAlarmThread.Name = "CheckAlarmThread";
+            ckAlarmThread.IsBackground = true;
+            ckAlarmThread.Start();
+
+            String mapPath = Application.StartupPath + "\\Support\\map.htm";
+            webBrowser1.Navigate(mapPath);
+            webBrowser1.Document.InvokeScript("SetMapStyle", new object[] { "VEMapStyle.Hybrid" });
+            webBrowser1.Invoke(new ClearMapDelegate(ClearMap), null);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             //AlarmController.SharedInstance.buildAlarm("1111", "Allarme di prova");
-
-
         }
+
+        private void terminate()
+        {
+            ckAlarmThread.Interrupt();
+            ckAlarmThread = null;
+        }
+
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             this.Close();
-            //AlarmController.SharedInstance.buildAlarm("1111", "Allarme di prova", "37.537211", "15.094644");
         }
 
         private void eventGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -296,7 +336,7 @@ namespace TrackerWatchServer
 
         private void checkAllarmTimer_Tick(object sender, EventArgs e)
         {
-            checkForNewAlarm();
+
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -353,6 +393,17 @@ namespace TrackerWatchServer
         private void gestisciToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openManagementAlarmCtrl();
+        }
+
+        private void chiudiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Sicuro di voler chiudere l'evento?","Seresitter",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                closeAllarm();
+        }
+
+        private void frmAlarm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.terminate();
         }
     }
 }

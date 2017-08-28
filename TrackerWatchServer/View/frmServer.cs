@@ -135,7 +135,6 @@ namespace TrackerWatchServer
 
         void saveDevices(List<Device> listofa)
         {
-
             string dir = Application.StartupPath;
             string serializationFile = Path.Combine(dir, "devices.bin");
 
@@ -145,16 +144,12 @@ namespace TrackerWatchServer
                 var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
                 bformatter.Serialize(stream, devices);
-            }
-
-            
+            }  
         }
 
         List<Device> loadDevices()
         {
-
             return DeviceController.SharedInstance.getDevices(); 
-
         }
 
         List<Device> importDevice()
@@ -285,8 +280,6 @@ namespace TrackerWatchServer
             modem.InitializeBasicGSM();
             log("GSM Initialized success");
 
-
-
             modem.InitializeSMS();
 
             modem.ExecuteCommand("AT+CMGD=1,4", 5000);
@@ -304,8 +297,6 @@ namespace TrackerWatchServer
             refreshDevice();
             log("Command ready");
 
-            testMethod();
-
             if (AppController.SharedInstance.isServer)
             {
                 if (CommandController.SharedInstance.commandAvailable())
@@ -315,9 +306,7 @@ namespace TrackerWatchServer
                 }
                 try
                 {
-
                     startGSM();
-
                 }
                 catch
                 {
@@ -329,12 +318,14 @@ namespace TrackerWatchServer
                 command.useGPRS = false;
                 command.mainForm = this;
 
-                Thread listen = new Thread(listenClient);
-                listen.Start();
+                //Thread listen = new Thread(listenClient);
+                //listen.Start();
 
                 checkCommandThread = new Thread(checkForCommandThread);
                 checkCommandThread.IsBackground = true;
                 checkCommandThread.Start();
+
+                webBrowser.Navigate("https://europe.myaqsh.com:8096/S10PC/index2/login.html");
             }
             else
             {
@@ -348,7 +339,7 @@ namespace TrackerWatchServer
                 sMSToolStripMenuItem.Checked = true;
                 gPRSToolStripMenuItem.Enabled = false;
                 sMSToolStripMenuItem.Enabled = false;
-                log("Programming console as Client");
+                log("Programming Console as Client");
 
                 checkCommandThread = new Thread(checkForCommandThread);
                 checkCommandThread.IsBackground = true;
@@ -358,7 +349,9 @@ namespace TrackerWatchServer
 
         private void NewVoiceCall()
         {
-            Console.WriteLine("New voice call...");
+            Console.WriteLine("New voice call...Aborting it");
+            if(modem != null)
+                modem.ExecuteCommand("AT+CHUP", 2000);
         }
 
         private void checkForCommandThread()
@@ -406,62 +399,14 @@ namespace TrackerWatchServer
             return s;
         }
 
-        void testMethod()
-        {
-         /*   string test1 = @"ID:1208302416,SOS Alarm
-url:http://maps.google.com/maps?q=N37.512393,E15.031840
-Locate date:2017-7-20
-Locate time:12:13:23";*/
-
-           // string test2 = @"apn:internet.wind;user:;passwork:;userdata:22288";
-            string test3 = @"url:
-http://maps.google.com/maps?q=N37.512477,E15.032072
-Locate date:2017-8-24
-Locate time:16:9:4
-";
-
-            string testStr = test3;
-
-            if (testStr.Substring(0, 4).Contains("ver:")  && testStr.Substring(testStr.Length - 20, 20).Contains("GPRS:")) //GetParameters Command
-            {
-                Console.WriteLine("TEST: Get Parameters - PASSED");
-            }
-
-            if (testStr.Substring(0, 4).IndexOf("apn:") > -1 && testStr.Substring(testStr.Length - 5, 5).IndexOf("22288") > -1) //Apn Command
-            {
-                Console.WriteLine("TEST: Apn response - PASSED");
-            }
-
-            if (testStr.Substring(0, 3).IndexOf("ID:") > -1 && testStr.Substring(testStr.Length - 20, 10).IndexOf("Locate") > -1) //SOS Message Command
-            {
-                Console.WriteLine("TEST: SOS Message - PASSED");
-            }
-
-            if (testStr.Substring(0, 4).Contains("url:") && testStr.Substring(testStr.Length - 20, 10).Contains("Locate")) //SOS Message Command
-            {
-                string[] str_tmp = testStr.Split('\r');
-                if(str_tmp[0].Contains("url:") && str_tmp[1].Contains("maps.google.com"))
-                {
-                    string[] location = str_tmp[1].Split('=')[1].Split(',');
-                    string latitude = location[0].Substring(1, location[0].Length-1);
-                    string longitude = location[1].Substring(1, location[1].Length-1);
-                }
-            }
-
-        }
-
         void ReceivedSMS(String Storage, int Number)
         {
             GM862GPS.SMSMessage sms = modem.ReadMessage(Storage, Number);
             string strSMS = sms.Message;
             string telNumber = sms.Orginator;
 
-           
-                if (strSMS.IndexOf("00") >-1 )
-                    strSMS = convertHEXtoString(strSMS);
-            
-
-                   
+            if (strSMS.IndexOf("00") >-1 )
+                strSMS = convertHEXtoString(strSMS);
 
             Console.WriteLine(strSMS);
 
@@ -472,7 +417,7 @@ Locate time:16:9:4
                 else
                     SMSMessage.Add(telNumber, strSMS);
 
-                /*if(strSMS.IndexOf("GPRS:") > -1)        //If parameters command has sent
+                /*if(strSMS.IndexOf("GPRS:") > -1)                          //If parameters command has sent
                 {
                     checkForCommand(SMSMessage[telNumber]);
                     log("Parse new string: " + SMSMessage[telNumber]);
@@ -588,49 +533,37 @@ Locate time:16:9:4
         private void btnSetAPN_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setAPN(cbAPN.Text, currentDevice);
-            }
         }
 
         private void btnSetSOS1_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setSOSNumber_1(cbSOS1.Text, currentDevice);
-            }
         }
 
         private void btnSetSOS2_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setSOSNumber_2(cbSOS2.Text, currentDevice);
-            }
         }
   
         private void btnSetSOS3_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setSOSNumber_3(cbSOS3.Text, currentDevice);
-            }
         }
 
         private void btnSetMonitorNumber_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setMonitorNumber(cbMonitor.Text, currentDevice);
-            }
         }
 
         private void btnSetIMEINumber_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setIMEINumber(cbIMEI.Text, currentDevice);
-            }
         }
 
         private void btnGetPosition_Click(object sender, EventArgs e)
@@ -654,33 +587,25 @@ Locate time:16:9:4
         private void btnResetDevice_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.resetDevice(currentDevice);
-            }
         }
 
         private void btnGetVersion_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.getVersion(currentDevice);
-            }
         }
 
         private void btnRestoreFactorySettings_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.restoreFactorySettings(currentDevice);
-            }
         }
 
         private void btnSetIPandPort_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setIPandPort(tbIP.Text, tbPort.Text,currentDevice);
-            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -700,48 +625,41 @@ Locate time:16:9:4
         private void btnSetCenterNumber_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setCenterNumber( tbCenterNumber.Text, currentDevice);
-            }
         }
 
         private void btnSetAssistantCenterNumber_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setAssistantCenterNumber(tbAssistantCenterNumber.Text, currentDevice);
-            }
         }
 
         private void btnSetUploadTimeInterval_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setUploadTimeInterval(tbUploadTimeInterval.Text, currentDevice);
-            }
         }
 
         private void btnSetLanguageAndTimezone_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.setLanguageAndTimezone(cbLanguage.Text,cbTimezone.Text, currentDevice);
-            }
         }
 
         private void DeleteSOSNumber_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
-            {
                 command.deleteteSOSNumber(cbSOSNumberToDelete.Text, currentDevice);
-            }
         }
 
         private void btnSetThreeSOSNumbers_Click(object sender, EventArgs e)
         {
             if (currentDevice != null)
             {
-                command.setThreeSOSNumbers(cbSOS1.Text,cbSOS2.Text,cbSOS3.Text, currentDevice);
+                if (cbSOS1.Text == "" || cbSOS2.Text == "" || cbSOS3.Text == "")
+                    MessageBox.Show("Per l'invio di questo comando è necessario inserire tutti e 3 i numeri di SOS");
+                else
+                    command.setThreeSOSNumbers(cbSOS1.Text, cbSOS2.Text, cbSOS3.Text, currentDevice);
             }
         }
 
@@ -793,7 +711,6 @@ Locate time:16:9:4
        public void acceptClientConnection(Socket oldsock)
         {
             string sEndPoint = "";
-            //CLIENT_COUNT++;
             Socket sock = new Socket(oldsock.DuplicateAndClose(System.Diagnostics.Process.GetCurrentProcess().Id));
             sEndPoint = sock.RemoteEndPoint.ToString();
             sock.ReceiveTimeout = 1000;
@@ -802,13 +719,13 @@ Locate time:16:9:4
             int base_cnt = 0;
             string currentID = "";
             string rcvString = "";
-            while (SocketConnected(sock)) // sock.Connected)
+            while (SocketConnected(sock))
             {
                 if (st.DataAvailable)
                 {
                     rd = new StreamReader(st);
 
-                    char c = (char)rd.Read();   // rd.ReadLine();
+                    char c = (char)rd.Read(); 
                     rcvString = "";
                     while (c != ']')
                     {
@@ -826,16 +743,7 @@ Locate time:16:9:4
 
                     log("DEBUG: TCP_RCV ->" + rcvString);
 
-                   // rcvString = rcvString.Replace("[", "");
-                   //   rcvString = rcvString.Replace("]", "");
-
-                    /*Separiamo la stringa:
-                    [0] = CS/3G/GS
-                    [1] = ID Dispositivo
-                    [2] = Lunghezza comando
-                    [3] = Comando */
                     string[] rcvData = rcvString.Split('*');
-
 
                     if (rcvString.IndexOf("TKQ2") > -1)
                     {
@@ -863,8 +771,6 @@ Locate time:16:9:4
                         setGPRSText(currentID, rcvString);
                         command.sendACK(currentID);
                     }
-
-                    
                     //gestiamo la risposta
                     manageResponse(currentID, rcvString, rcvData, st);
 
@@ -881,7 +787,6 @@ Locate time:16:9:4
             }
             //  Alla Disconnessione
             deleteConnection(currentID);
-
         }
 
         //Check the kind of response and handle it
@@ -985,7 +890,6 @@ Locate time:16:9:4
                 string baseStationInformation = positionData[17]; //più i seguenti 23 con , in mezzo
                                                                   //string wifiNumber = positionData[41];
                                                                   //string positionAccuracy = positionData[42];
-
             }
             //[CS*YYYYYYYYYY*LEN*AL, the position data] 
             else if (rcvString.IndexOf("AL") > -1)
@@ -1038,7 +942,6 @@ Locate time:16:9:4
                                                                   //string positionAccuracy = positionData[42];
 
                 //command.sendGPRSCommand(st,TrackerCommand.gprsCmdConfirmAlarm);
-
             }
 
 
@@ -1133,7 +1036,6 @@ Locate time:16:9:4
 
         private void alarmCenterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             frmAlarm alarmCenter = new frmAlarm();
             alarmCenter.Show();
         }
@@ -1179,6 +1081,11 @@ Locate time:16:9:4
         }
 
         private void pnlServer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
         {
 
         }

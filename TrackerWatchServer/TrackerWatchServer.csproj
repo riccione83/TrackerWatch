@@ -62,6 +62,12 @@
     <Compile Include="UserControl\AlarmMgmCtrl.Designer.cs">
       <DependentUpon>AlarmMgmCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\HelpControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\HelpControl.Designer.cs">
+      <DependentUpon>HelpControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\SearchControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="View\TextRange.cs" />
     <EmbeddedResource Include="UserControl\AlarmMgmCtrl.resx">
       <DependentUpon>AlarmMgmCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\HelpControl.resx">
+      <DependentUpon>HelpControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\SearchControl.resx">
       <DependentUpon>SearchControl.cs</DependentUpon>
