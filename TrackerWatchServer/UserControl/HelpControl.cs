@@ -15,7 +15,6 @@ namespace TrackerWatchServer
         public HelpControl()
         {
             InitializeComponent();
-            
         }
 
         public void deselectAll()

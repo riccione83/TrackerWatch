@@ -217,6 +217,8 @@ namespace TrackerWatchServer
             ckAlarmThread.IsBackground = true;
             ckAlarmThread.Start();
 
+            eventGrid.Focus();
+
             String mapPath = Application.StartupPath + "\\Support\\map.htm";
             webBrowser1.Navigate(mapPath);
             webBrowser1.Document.InvokeScript("SetMapStyle", new object[] { "VEMapStyle.Hybrid" });
@@ -404,6 +406,22 @@ namespace TrackerWatchServer
         private void frmAlarm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.terminate();
+        }
+
+        private void programmazioneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 programmingForm = new Form1();
+            programmingForm.Show();
+        }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Database.SharedInstance.Backup();
+        }
+
+        private void restoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Database.SharedInstance.Restore();
         }
     }
 }

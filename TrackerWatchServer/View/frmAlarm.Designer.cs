@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -49,15 +49,21 @@
             this.chiudiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripBtnUser = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBtnUser = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBtnSearch = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.avanzateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programmazioneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operazioniSulDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -148,14 +154,14 @@
             this.Latitude,
             this.Longitude});
             this.eventGrid.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.eventGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.eventGrid.DefaultCellStyle = dataGridViewCellStyle6;
             this.eventGrid.Location = new System.Drawing.Point(3, 6);
             this.eventGrid.MultiSelect = false;
             this.eventGrid.Name = "eventGrid";
@@ -188,8 +194,8 @@
             // 
             // Utente
             // 
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Utente.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Utente.DefaultCellStyle = dataGridViewCellStyle4;
             this.Utente.HeaderText = "Utente";
             this.Utente.Name = "Utente";
             this.Utente.ReadOnly = true;
@@ -274,11 +280,32 @@
             this.toolStripSeparator2,
             this.toolStripBtnSearch,
             this.toolStripSeparator3,
+            this.toolStripDropDownButton1,
             this.toolStripButton5});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(286, 53);
+            this.toolStrip1.Size = new System.Drawing.Size(380, 53);
             this.toolStrip1.TabIndex = 0;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 53);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 53);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 53);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 53);
             // 
             // toolStripBtnUser
             // 
@@ -291,11 +318,6 @@
             this.toolStripBtnUser.Size = new System.Drawing.Size(50, 50);
             this.toolStripBtnUser.Text = "Utenti";
             this.toolStripBtnUser.Click += new System.EventHandler(this.toolStripBtnUser_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 53);
             // 
             // toolStripButton2
             // 
@@ -320,11 +342,6 @@
             this.toolStripButton3.Text = "Storico";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 53);
-            // 
             // toolStripBtnSearch
             // 
             this.toolStripBtnSearch.AutoSize = false;
@@ -336,11 +353,6 @@
             this.toolStripBtnSearch.Size = new System.Drawing.Size(50, 50);
             this.toolStripBtnSearch.Text = "Ricerca";
             this.toolStripBtnSearch.Click += new System.EventHandler(this.toolStripBtnSearch_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 53);
             // 
             // toolStripButton5
             // 
@@ -354,10 +366,56 @@
             this.toolStripButton5.Text = "Esci";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
-            // toolStripSeparator4
+            // toolStripDropDownButton1
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 53);
+            this.toolStripDropDownButton1.AutoSize = false;
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.avanzateToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = global::TrackerWatchServer.Properties.Resources.gear;
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(63, 50);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // avanzateToolStripMenuItem
+            // 
+            this.avanzateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.programmazioneToolStripMenuItem,
+            this.operazioniSulDBToolStripMenuItem});
+            this.avanzateToolStripMenuItem.Name = "avanzateToolStripMenuItem";
+            this.avanzateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.avanzateToolStripMenuItem.Text = "Avanzate";
+            // 
+            // programmazioneToolStripMenuItem
+            // 
+            this.programmazioneToolStripMenuItem.Name = "programmazioneToolStripMenuItem";
+            this.programmazioneToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.programmazioneToolStripMenuItem.Text = "Programmazione";
+            this.programmazioneToolStripMenuItem.Click += new System.EventHandler(this.programmazioneToolStripMenuItem_Click);
+            // 
+            // operazioniSulDBToolStripMenuItem
+            // 
+            this.operazioniSulDBToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backupToolStripMenuItem,
+            this.restoreToolStripMenuItem});
+            this.operazioniSulDBToolStripMenuItem.Name = "operazioniSulDBToolStripMenuItem";
+            this.operazioniSulDBToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.operazioniSulDBToolStripMenuItem.Text = "Operazioni sul DB";
+            // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backupToolStripMenuItem.Text = "Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
+            // 
+            // restoreToolStripMenuItem
+            // 
+            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.restoreToolStripMenuItem.Text = "Restore";
+            this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
             // frmAlarm
             // 
@@ -418,5 +476,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem chiudiToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem avanzateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem programmazioneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem operazioniSulDBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restoreToolStripMenuItem;
     }
 }

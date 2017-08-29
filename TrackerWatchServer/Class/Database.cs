@@ -8,6 +8,8 @@ using MySql.Data.MySqlClient;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using Microsoft.Win32;
+using System.Windows.Forms;
 
 namespace TrackerWatchServer
 {
@@ -253,27 +255,34 @@ namespace TrackerWatchServer
                 int second = Time.Second;
                 int millisecond = Time.Millisecond;
 
-                //Save file to C:\ with the current date as a filename
-                string path;
-                path = "C:\\MySqlBackup" + year + "-" + month + "-" + day + "-" + hour + "-" + minute + "-" + second + "-" + millisecond + ".sql";
-                StreamWriter file = new StreamWriter(path);
+                var exportDB = new SaveFileDialog();
+                exportDB.Filter = "SQL File (*.sql)|*.sql";
+                if (exportDB.ShowDialog() == DialogResult.OK)
+                {
 
+                    //Save file to C:\ with the current date as a filename
+                    string path;
+                    path = exportDB.FileName; //"C:\\MySqlBackup" + year + "-" + month + "-" + day + "-" + hour + "-" + minute + "-" + second + "-" + millisecond + ".sql";
+                    StreamWriter file = new StreamWriter(path);
+                    ProcessStartInfo psi = new ProcessStartInfo();
+                    psi.FileName = Application.StartupPath + "\\Support\\mysqldump.exe";
+                    if (File.Exists(psi.FileName))
+                    {
+                        psi.RedirectStandardInput = false;
+                        psi.RedirectStandardOutput = true;
+                        psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", uid, password, server, database);
+                        psi.UseShellExecute = false;
 
-                ProcessStartInfo psi = new ProcessStartInfo();
-                psi.FileName = "mysqldump";
-                psi.RedirectStandardInput = false;
-                psi.RedirectStandardOutput = true;
-                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", uid, password, server, database);
-                psi.UseShellExecute = false;
+                        Process process = Process.Start(psi);
 
-                Process process = Process.Start(psi);
-
-                string output;
-                output = process.StandardOutput.ReadToEnd();
-                file.WriteLine(output);
-                process.WaitForExit();
-                file.Close();
-                process.Close();
+                        string output;
+                        output = process.StandardOutput.ReadToEnd();
+                        file.WriteLine(output);
+                        process.WaitForExit();
+                        file.Close();
+                        process.Close();
+                    }
+                }
             }
             catch (IOException ex)
             {
@@ -286,24 +295,32 @@ namespace TrackerWatchServer
             try
             {
                 //Read file from C:\
-                string path;
-                path = "C:\\MySqlBackup.sql";
-                StreamReader file = new StreamReader(path);
-                string input = file.ReadToEnd();
-                file.Close();
+                var loadDB = new OpenFileDialog();
+                loadDB.Filter = "SQL File (*.sql)|*.sql";
+                if (loadDB.ShowDialog() == DialogResult.OK)
+                {
+                    string path;
+                    path = loadDB.FileName;
+                    StreamReader file = new StreamReader(path);
+                    string input = file.ReadToEnd();
+                    file.Close();
 
-                ProcessStartInfo psi = new ProcessStartInfo();
-                psi.FileName = "mysql";
-                psi.RedirectStandardInput = true;
-                psi.RedirectStandardOutput = false;
-                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}",uid, password, server, database);
-                psi.UseShellExecute = false;
+                    ProcessStartInfo psi = new ProcessStartInfo();
+                    psi.FileName = @"C:\Program Files\MySQL\MySQL Server 5.1\bin\mysql.exe";
+                    if (File.Exists(psi.FileName))
+                    {
+                        psi.RedirectStandardInput = true;
+                        psi.RedirectStandardOutput = false;
+                        psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}", uid, password, server, database);
+                        psi.UseShellExecute = false;
 
-                Process process = Process.Start(psi);
-                process.StandardInput.WriteLine(input);
-                process.StandardInput.Close();
-                process.WaitForExit();
-                process.Close();
+                        Process process = Process.Start(psi);
+                        process.StandardInput.WriteLine(input);
+                        process.StandardInput.Close();
+                        process.WaitForExit();
+                        process.Close();
+                    }
+                }
             }
             catch (IOException ex)
             {

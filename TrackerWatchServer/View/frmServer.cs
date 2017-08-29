@@ -773,7 +773,6 @@ namespace TrackerWatchServer
                     }
                     //gestiamo la risposta
                     manageResponse(currentID, rcvString, rcvData, st);
-
                 }
                 else
                 {
@@ -813,13 +812,9 @@ namespace TrackerWatchServer
                 string date = positionData[1];
                 string time = positionData[2];
                 if (positionData[3] == "A")
-                {
                     log("GpsPositioning is valid");
-                }
                 else if (positionData[3] == "V")
-                {
                     log("No positioning");
-                }
 
                 string latitude = positionData[4];
                 string markOfLatitude = positionData[5];  //N or S

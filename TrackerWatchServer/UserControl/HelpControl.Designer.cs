@@ -37,13 +37,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(240, 417);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Inserire l\'HELP\r\n\r\nCTRL + 1  - Per chiudere un allarme\r\nF4 o Doppio Click - Per a" +
-    "prire la pagina di gestione allarme\r\n";
+            this.textBox1.Text = "** HELP **\r\n\r\nCTRL + 1  - Per chiudere un allarme\r\n\r\nF4 o Doppio Click - Per apri" +
+    "re la pagina di gestione allarme";
             // 
             // HelpControl
             // 
