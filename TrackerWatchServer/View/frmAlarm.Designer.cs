@@ -51,13 +51,13 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnUser = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnDevice = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBtnSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -268,7 +268,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripBtnUser,
             this.toolStripSeparator1,
-            this.toolStripButton2,
+            this.toolStripBtnDevice,
             this.toolStripSeparator4,
             this.toolStripButton3,
             this.toolStripSeparator2,
@@ -277,7 +277,7 @@
             this.toolStripButton5});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(286, 53);
+            this.toolStrip1.Size = new System.Drawing.Size(317, 53);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripBtnUser
@@ -297,16 +297,22 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 53);
             // 
-            // toolStripButton2
+            // toolStripBtnDevice
             // 
-            this.toolStripButton2.AutoSize = false;
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::TrackerWatchServer.Properties.Resources.watch;
-            this.toolStripButton2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(50, 50);
-            this.toolStripButton2.Text = "Dispositivi";
+            this.toolStripBtnDevice.AutoSize = false;
+            this.toolStripBtnDevice.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtnDevice.Image = global::TrackerWatchServer.Properties.Resources.watch;
+            this.toolStripBtnDevice.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.toolStripBtnDevice.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnDevice.Name = "toolStripBtnDevice";
+            this.toolStripBtnDevice.Size = new System.Drawing.Size(50, 50);
+            this.toolStripBtnDevice.Text = "Dispositivi";
+            this.toolStripBtnDevice.Click += new System.EventHandler(this.toolStripBtnDevice_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 53);
             // 
             // toolStripButton3
             // 
@@ -354,11 +360,6 @@
             this.toolStripButton5.Text = "Esci";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 53);
-            // 
             // frmAlarm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -398,7 +399,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripBtnUser;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripBtnDevice;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripBtnSearch;

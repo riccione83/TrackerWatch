@@ -7,34 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TrackerWatchServer.View;
 
 namespace TrackerWatchServer
 {
-    public partial class SearchControl : UserControl
+    public partial class SearchDeviceControl : UserControl
     {
         List<User> users = new List<User>();
         List<Device> devices = new List<Device>();
 
-        public SearchControl()
+        public SearchDeviceControl()
         {
             InitializeComponent();
-            //If users aren't loaded Update users list
-            if (!UserController.SharedInstance.usersLoaded)
-            {
-                refreshData();
-            }
+            refreshData();
         }
 
         public void refreshData()
         {
-            //I show all the user in the list
-            users = UserController.SharedInstance.loadUsers();
+            //I show all the devices in the list
+            devices = DeviceController.SharedInstance.getDevices();
             updateSearchWithResults(users, devices);
         }
 
-        //This text works like a filter
-        private void txtSearchText_TextChanged(object sender, EventArgs e)
+        private void lstUser_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (txtSearchText.Text.Length > 0)
             {
@@ -43,8 +37,8 @@ namespace TrackerWatchServer
             }
             else
             {
-                //I show all the user in the list
-                users = UserController.SharedInstance.loadUsers();
+                //I show all the device in the list
+                devices = DeviceController.SharedInstance.getDevices();
             }
             updateSearchWithResults(users, devices);
         }
@@ -55,22 +49,10 @@ namespace TrackerWatchServer
             lstUser.Items.Clear();
             lstDevice.Items.Clear();
 
-            foreach (User user in users)
+            foreach (Device device in devices)
             {
-                lstUser.Items.Add(user.Name + " - " + user.Address + " (" + user.City + ")");
-            }   
-        }
-      
-
-        private void lstUser_DoubleClick(object sender, EventArgs e)
-        {
-            if (lstUser.SelectedIndex > -1)
-            {              
-                Console.WriteLine("User selected: " + users[lstUser.SelectedIndex]);
-                //pass the user selected to the UserDetails Form
-                frmUserDetails frmdetails = new frmUserDetails(users[lstUser.SelectedIndex]);
-                frmdetails.Show();
-            }      
+                lstDevice.Items.Add(device.Note + " [" + device.DeviceID + " - " + device.TelephoneNumber + "]");
+            }
         }
 
         private void lstDevice_DoubleClick(object sender, EventArgs e)
@@ -84,21 +66,16 @@ namespace TrackerWatchServer
             }
         }
 
-        private void lstUser_SelectedIndexChanged(object sender, EventArgs e)
+        private void lstUser_DoubleClick(object sender, EventArgs e)
         {
             if (lstUser.SelectedIndex > -1)
             {
                 Console.WriteLine("User selected: " + users[lstUser.SelectedIndex]);
-                devices = DeviceController.SharedInstance.getDevicesByUserID(users[lstUser.SelectedIndex].Id);
-                lstDevice.Items.Clear();
-                foreach (Device device in devices)
-                {
-                    lstDevice.Items.Add(device.Note + " [" + device.DeviceID + " - " + device.TelephoneNumber + "]");
-                }
+                //pass the user selected to the UserDetails Form
+                frmUserDetails frmdetails = new frmUserDetails(users[lstUser.SelectedIndex]);
+                frmdetails.Show();
             }
         }
-
-      
 
         private void txtSearchText_Enter(object sender, EventArgs e)
         {
@@ -106,6 +83,18 @@ namespace TrackerWatchServer
             {
                 txtSearchText.Text = "";
                 txtSearchText.ForeColor = Color.Black;
+            }
+        }
+
+        private void lstDevice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstDevice.SelectedIndex > -1)
+            {
+                Console.WriteLine("Device selected: " + devices[lstDevice.SelectedIndex]);
+                User user = UserController.SharedInstance.getUserByDeviceId(devices[lstDevice.SelectedIndex].DeviceID);
+                lstUser.Items.Clear();
+                users.Add(user);
+                lstUser.Items.Add(user.Name + " - " + user.Address + " (" + user.City + ")");
             }
         }
     }
