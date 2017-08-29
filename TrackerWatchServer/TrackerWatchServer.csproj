@@ -94,6 +94,12 @@
     <Compile Include="UserControl\SearchControl.Designer.cs">
       <DependentUpon>SearchControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\SearchDeviceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\SearchDeviceControl.Designer.cs">
+      <DependentUpon>SearchDeviceControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmAlarm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\SearchControl.resx">
       <DependentUpon>SearchControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\SearchDeviceControl.resx">
+      <DependentUpon>SearchDeviceControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmDevice.resx">
       <DependentUpon>frmDevice.cs</DependentUpon>

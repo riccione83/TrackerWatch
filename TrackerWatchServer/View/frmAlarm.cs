@@ -14,6 +14,7 @@ namespace TrackerWatchServer
     public partial class frmAlarm: Form
     {
         SearchControl searchControl;
+        SearchDeviceControl searchDeviceControl;
         AlarmMgmCtrl alarmManagementControl;
         Thread ckAlarmThread;
         string lastAlarmID;
@@ -408,6 +409,7 @@ namespace TrackerWatchServer
             this.terminate();
         }
 
+
         private void programmazioneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1 programmingForm = new Form1();
@@ -422,6 +424,23 @@ namespace TrackerWatchServer
         private void restoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Database.SharedInstance.Restore();
+        }
+
+        private void toolStripBtnDevice_Click(object sender, EventArgs e)
+        {
+
+            if (splitContainer1.Panel1.Controls.Contains(searchDeviceControl))
+                searchDeviceControl.refreshData();
+            else
+            {
+                searchDeviceControl = new SearchDeviceControl();
+                splitContainer1.Panel1.Controls.Clear();  //Close all previus control
+                searchDeviceControl.BorderStyle = BorderStyle.FixedSingle;
+
+                splitContainer1.Panel1.Controls.Add(searchDeviceControl);
+                searchDeviceControl.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom;
+                searchDeviceControl.Dock = DockStyle.Fill;
+            }
         }
     }
 }

@@ -58,12 +58,9 @@ namespace TrackerWatchServer
             foreach (User user in users)
             {
                 lstUser.Items.Add(user.Name + " - " + user.Address + " (" + user.City + ")");
-            }
-
-            
+            }   
         }
-
-        
+      
 
         private void lstUser_DoubleClick(object sender, EventArgs e)
         {
@@ -101,10 +98,7 @@ namespace TrackerWatchServer
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void txtSearchText_Enter(object sender, EventArgs e)
         {
