@@ -97,5 +97,21 @@ namespace TrackerWatchServer
                 lstUser.Items.Add(user.Name + " - " + user.Address + " (" + user.City + ")");
             }
         }
+
+        //This text works like a filter
+        private void txtSearchText_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchText.Text.Length > 0)
+            {
+                users = UserController.SharedInstance.search(txtSearchText.Text);
+                devices = DeviceController.SharedInstance.search(txtSearchText.Text);
+            }
+            else
+            {
+                //I show all the devices in the list
+                devices = DeviceController.SharedInstance.getDevices();
+            }
+            updateSearchWithResults(users, devices);
+        }
     }
 }

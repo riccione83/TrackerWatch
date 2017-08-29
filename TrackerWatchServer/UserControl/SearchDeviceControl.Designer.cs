@@ -112,6 +112,7 @@
             this.txtSearchText.Size = new System.Drawing.Size(270, 24);
             this.txtSearchText.TabIndex = 1;
             this.txtSearchText.Text = "Termine Ricerca";
+            this.txtSearchText.TextChanged += new System.EventHandler(this.txtSearchText_TextChanged);
             this.txtSearchText.Enter += new System.EventHandler(this.txtSearchText_Enter);
             // 
             // SearchDeviceControl
