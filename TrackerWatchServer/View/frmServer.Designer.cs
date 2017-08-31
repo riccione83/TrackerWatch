@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.deviceList = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtLastComunication = new System.Windows.Forms.Label();
@@ -39,51 +40,55 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlProgrammazione = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnDeleteSOSNumber = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnGetParameters = new System.Windows.Forms.Button();
-            this.cbSOSNumberToDelete = new System.Windows.Forms.ComboBox();
-            this.btnGetPosition = new System.Windows.Forms.Button();
-            this.cbTimezone = new System.Windows.Forms.ComboBox();
-            this.btnSetIMEI = new System.Windows.Forms.Button();
-            this.cbLanguage = new System.Windows.Forms.ComboBox();
-            this.cbIMEI = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.btnSetMonitor = new System.Windows.Forms.Button();
-            this.btnSetLanguageAndTimezone = new System.Windows.Forms.Button();
-            this.btnSetSOS3 = new System.Windows.Forms.Button();
-            this.btnSetIPandPort = new System.Windows.Forms.Button();
-            this.cbMonitor = new System.Windows.Forms.ComboBox();
-            this.tbPort = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.cbSOS3 = new System.Windows.Forms.ComboBox();
+            this.btnGetPosition = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btnDeleteSOSNumber = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cbSOSNumberToDelete = new System.Windows.Forms.ComboBox();
+            this.cbAPN = new System.Windows.Forms.ComboBox();
+            this.btnSetIPandPort = new System.Windows.Forms.Button();
+            this.btnSetAPN = new System.Windows.Forms.Button();
+            this.cbTimezone = new System.Windows.Forms.ComboBox();
+            this.tbPort = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbSOS1 = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbLanguage = new System.Windows.Forms.ComboBox();
             this.tbIP = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.btnSetSOS1 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cbSOS2 = new System.Windows.Forms.ComboBox();
             this.btnSetSOS2 = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnSetSOS3 = new System.Windows.Forms.Button();
+            this.btnSetLanguageAndTimezone = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnRestoreFactorySettings = new System.Windows.Forms.Button();
             this.btnResetDevice = new System.Windows.Forms.Button();
-            this.cbSOS2 = new System.Windows.Forms.ComboBox();
+            this.btnSetIMEI = new System.Windows.Forms.Button();
             this.btnGetVersion = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbUploadTimeInterval = new System.Windows.Forms.TextBox();
-            this.btnSetSOS1 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.cbSOS1 = new System.Windows.Forms.ComboBox();
-            this.btnSetTimeInterval = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnSetAPN = new System.Windows.Forms.Button();
-            this.btnSetAssistantCenterNumber = new System.Windows.Forms.Button();
-            this.tbAssistantCenterNumber = new System.Windows.Forms.TextBox();
-            this.cbAPN = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.tbCenterNumber = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.btnSetCenterNumber = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.cbIMEI = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbCenterNumber = new System.Windows.Forms.TextBox();
+            this.btnSetMonitor = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbMonitor = new System.Windows.Forms.ComboBox();
+            this.tbAssistantCenterNumber = new System.Windows.Forms.TextBox();
+            this.btnSetAssistantCenterNumber = new System.Windows.Forms.Button();
+            this.btnSetTimeInterval = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tbUploadTimeInterval = new System.Windows.Forms.TextBox();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -99,17 +104,17 @@
             this.alarmCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlServer = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.qualitàSegnaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cancellaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.pnlProgrammazione.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.pnlServer.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.pnlServer.SuspendLayout();
+            this.logMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // deviceList
@@ -220,16 +225,93 @@
             this.pnlProgrammazione.TabStop = false;
             this.pnlProgrammazione.Text = "Programmazione";
             // 
-            // button1
+            // tabControl1
             // 
-            this.button1.Location = new System.Drawing.Point(101, 141);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 34);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Set All SOS Numbers";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnSetThreeSOSNumbers_Click);
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(0, 19);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(290, 449);
+            this.tabControl1.TabIndex = 30;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.PowderBlue;
+            this.tabPage1.Controls.Add(this.btnGetParameters);
+            this.tabPage1.Controls.Add(this.cbSOS3);
+            this.tabPage1.Controls.Add(this.btnGetPosition);
+            this.tabPage1.Controls.Add(this.label20);
+            this.tabPage1.Controls.Add(this.btnDeleteSOSNumber);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.cbSOSNumberToDelete);
+            this.tabPage1.Controls.Add(this.cbAPN);
+            this.tabPage1.Controls.Add(this.btnSetIPandPort);
+            this.tabPage1.Controls.Add(this.btnSetAPN);
+            this.tabPage1.Controls.Add(this.cbTimezone);
+            this.tabPage1.Controls.Add(this.tbPort);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.cbSOS1);
+            this.tabPage1.Controls.Add(this.label17);
+            this.tabPage1.Controls.Add(this.cbLanguage);
+            this.tabPage1.Controls.Add(this.tbIP);
+            this.tabPage1.Controls.Add(this.btnSetSOS1);
+            this.tabPage1.Controls.Add(this.label16);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.label19);
+            this.tabPage1.Controls.Add(this.cbSOS2);
+            this.tabPage1.Controls.Add(this.btnSetSOS2);
+            this.tabPage1.Controls.Add(this.label18);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.btnSetSOS3);
+            this.tabPage1.Controls.Add(this.btnSetLanguageAndTimezone);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(282, 423);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Basic Config";
+            // 
+            // btnGetParameters
+            // 
+            this.btnGetParameters.Location = new System.Drawing.Point(6, 383);
+            this.btnGetParameters.Name = "btnGetParameters";
+            this.btnGetParameters.Size = new System.Drawing.Size(75, 34);
+            this.btnGetParameters.TabIndex = 16;
+            this.btnGetParameters.Text = "Get Parameters";
+            this.btnGetParameters.UseVisualStyleBackColor = true;
+            this.btnGetParameters.Click += new System.EventHandler(this.BtnGetParameters_Click);
+            // 
+            // cbSOS3
+            // 
+            this.cbSOS3.FormattingEnabled = true;
+            this.cbSOS3.Location = new System.Drawing.Point(50, 106);
+            this.cbSOS3.Name = "cbSOS3";
+            this.cbSOS3.Size = new System.Drawing.Size(163, 21);
+            this.cbSOS3.TabIndex = 10;
+            // 
+            // btnGetPosition
+            // 
+            this.btnGetPosition.Location = new System.Drawing.Point(199, 383);
+            this.btnGetPosition.Name = "btnGetPosition";
+            this.btnGetPosition.Size = new System.Drawing.Size(75, 34);
+            this.btnGetPosition.TabIndex = 15;
+            this.btnGetPosition.Text = "Get Position";
+            this.btnGetPosition.UseVisualStyleBackColor = true;
+            this.btnGetPosition.Click += new System.EventHandler(this.btnGetPosition_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(3, 192);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(116, 13);
+            this.label20.TabIndex = 29;
+            this.label20.Text = "SOS Position to delete:";
             // 
             // btnDeleteSOSNumber
             // 
@@ -242,15 +324,25 @@
             this.btnDeleteSOSNumber.UseVisualStyleBackColor = true;
             this.btnDeleteSOSNumber.Click += new System.EventHandler(this.DeleteSOSNumber_Click);
             // 
-            // btnGetParameters
+            // label5
             // 
-            this.btnGetParameters.Location = new System.Drawing.Point(6, 383);
-            this.btnGetParameters.Name = "btnGetParameters";
-            this.btnGetParameters.Size = new System.Drawing.Size(75, 34);
-            this.btnGetParameters.TabIndex = 16;
-            this.btnGetParameters.Text = "Get Parameters";
-            this.btnGetParameters.UseVisualStyleBackColor = true;
-            this.btnGetParameters.Click += new System.EventHandler(this.BtnGetParameters_Click);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(-1, 28);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "APN: ";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(101, 141);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 34);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Set All SOS Numbers";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnSetThreeSOSNumbers_Click);
             // 
             // cbSOSNumberToDelete
             // 
@@ -265,15 +357,39 @@
             this.cbSOSNumberToDelete.Size = new System.Drawing.Size(90, 21);
             this.cbSOSNumberToDelete.TabIndex = 27;
             // 
-            // btnGetPosition
+            // cbAPN
             // 
-            this.btnGetPosition.Location = new System.Drawing.Point(199, 383);
-            this.btnGetPosition.Name = "btnGetPosition";
-            this.btnGetPosition.Size = new System.Drawing.Size(75, 34);
-            this.btnGetPosition.TabIndex = 15;
-            this.btnGetPosition.Text = "Get Position";
-            this.btnGetPosition.UseVisualStyleBackColor = true;
-            this.btnGetPosition.Click += new System.EventHandler(this.btnGetPosition_Click);
+            this.cbAPN.FormattingEnabled = true;
+            this.cbAPN.Items.AddRange(new object[] {
+            "internet.wind",
+            "web.omnitel.it",
+            "ibox.tim.it"});
+            this.cbAPN.Location = new System.Drawing.Point(50, 22);
+            this.cbAPN.Name = "cbAPN";
+            this.cbAPN.Size = new System.Drawing.Size(163, 21);
+            this.cbAPN.TabIndex = 1;
+            this.cbAPN.Text = "internet.wind";
+            // 
+            // btnSetIPandPort
+            // 
+            this.btnSetIPandPort.Location = new System.Drawing.Point(220, 275);
+            this.btnSetIPandPort.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetIPandPort.Name = "btnSetIPandPort";
+            this.btnSetIPandPort.Size = new System.Drawing.Size(56, 20);
+            this.btnSetIPandPort.TabIndex = 21;
+            this.btnSetIPandPort.Text = "Set";
+            this.btnSetIPandPort.UseVisualStyleBackColor = true;
+            this.btnSetIPandPort.Click += new System.EventHandler(this.btnSetIPandPort_Click);
+            // 
+            // btnSetAPN
+            // 
+            this.btnSetAPN.Location = new System.Drawing.Point(221, 20);
+            this.btnSetAPN.Name = "btnSetAPN";
+            this.btnSetAPN.Size = new System.Drawing.Size(55, 23);
+            this.btnSetAPN.TabIndex = 2;
+            this.btnSetAPN.Text = "Set";
+            this.btnSetAPN.UseVisualStyleBackColor = true;
+            this.btnSetAPN.Click += new System.EventHandler(this.btnSetAPN_Click);
             // 
             // cbTimezone
             // 
@@ -310,15 +426,41 @@
             this.cbTimezone.Size = new System.Drawing.Size(43, 21);
             this.cbTimezone.TabIndex = 26;
             // 
-            // btnSetIMEI
+            // tbPort
             // 
-            this.btnSetIMEI.Location = new System.Drawing.Point(223, 54);
-            this.btnSetIMEI.Name = "btnSetIMEI";
-            this.btnSetIMEI.Size = new System.Drawing.Size(55, 23);
-            this.btnSetIMEI.TabIndex = 14;
-            this.btnSetIMEI.Text = "Set";
-            this.btnSetIMEI.UseVisualStyleBackColor = true;
-            this.btnSetIMEI.Click += new System.EventHandler(this.btnSetIMEINumber_Click);
+            this.tbPort.Location = new System.Drawing.Point(176, 275);
+            this.tbPort.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPort.Name = "tbPort";
+            this.tbPort.Size = new System.Drawing.Size(39, 20);
+            this.tbPort.TabIndex = 20;
+            this.tbPort.Text = "8001";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(-1, 56);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "SOS1:";
+            // 
+            // cbSOS1
+            // 
+            this.cbSOS1.FormattingEnabled = true;
+            this.cbSOS1.Location = new System.Drawing.Point(50, 50);
+            this.cbSOS1.Name = "cbSOS1";
+            this.cbSOS1.Size = new System.Drawing.Size(163, 21);
+            this.cbSOS1.TabIndex = 4;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(149, 278);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(29, 13);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "Port:";
             // 
             // cbLanguage
             // 
@@ -332,13 +474,42 @@
             this.cbLanguage.Size = new System.Drawing.Size(48, 21);
             this.cbLanguage.TabIndex = 25;
             // 
-            // cbIMEI
+            // tbIP
             // 
-            this.cbIMEI.FormattingEnabled = true;
-            this.cbIMEI.Location = new System.Drawing.Point(52, 56);
-            this.cbIMEI.Name = "cbIMEI";
-            this.cbIMEI.Size = new System.Drawing.Size(166, 21);
-            this.cbIMEI.TabIndex = 13;
+            this.tbIP.Location = new System.Drawing.Point(48, 275);
+            this.tbIP.Margin = new System.Windows.Forms.Padding(2);
+            this.tbIP.Name = "tbIP";
+            this.tbIP.Size = new System.Drawing.Size(97, 20);
+            this.tbIP.TabIndex = 18;
+            // 
+            // btnSetSOS1
+            // 
+            this.btnSetSOS1.Location = new System.Drawing.Point(221, 48);
+            this.btnSetSOS1.Name = "btnSetSOS1";
+            this.btnSetSOS1.Size = new System.Drawing.Size(55, 23);
+            this.btnSetSOS1.TabIndex = 5;
+            this.btnSetSOS1.Text = "Set";
+            this.btnSetSOS1.UseVisualStyleBackColor = true;
+            this.btnSetSOS1.Click += new System.EventHandler(this.btnSetSOS1_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 278);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(20, 13);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "IP:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(-1, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "SOS2:";
             // 
             // label19
             // 
@@ -350,14 +521,23 @@
             this.label19.TabIndex = 24;
             this.label19.Text = "Timezone:";
             // 
-            // label10
+            // cbSOS2
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 56);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 13);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "IMEI:";
+            this.cbSOS2.FormattingEnabled = true;
+            this.cbSOS2.Location = new System.Drawing.Point(50, 78);
+            this.cbSOS2.Name = "cbSOS2";
+            this.cbSOS2.Size = new System.Drawing.Size(163, 21);
+            this.cbSOS2.TabIndex = 7;
+            // 
+            // btnSetSOS2
+            // 
+            this.btnSetSOS2.Location = new System.Drawing.Point(221, 76);
+            this.btnSetSOS2.Name = "btnSetSOS2";
+            this.btnSetSOS2.Size = new System.Drawing.Size(55, 23);
+            this.btnSetSOS2.TabIndex = 8;
+            this.btnSetSOS2.Text = "Set";
+            this.btnSetSOS2.UseVisualStyleBackColor = true;
+            this.btnSetSOS2.Click += new System.EventHandler(this.btnSetSOS2_Click);
             // 
             // label18
             // 
@@ -370,15 +550,24 @@
             this.label18.Text = "Language:";
             this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
-            // btnSetMonitor
+            // label8
             // 
-            this.btnSetMonitor.Location = new System.Drawing.Point(223, 16);
-            this.btnSetMonitor.Name = "btnSetMonitor";
-            this.btnSetMonitor.Size = new System.Drawing.Size(55, 23);
-            this.btnSetMonitor.TabIndex = 8;
-            this.btnSetMonitor.Text = "Set";
-            this.btnSetMonitor.UseVisualStyleBackColor = true;
-            this.btnSetMonitor.Click += new System.EventHandler(this.btnSetMonitorNumber_Click);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(-1, 112);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "SOS3:";
+            // 
+            // btnSetSOS3
+            // 
+            this.btnSetSOS3.Location = new System.Drawing.Point(221, 104);
+            this.btnSetSOS3.Name = "btnSetSOS3";
+            this.btnSetSOS3.Size = new System.Drawing.Size(55, 23);
+            this.btnSetSOS3.TabIndex = 11;
+            this.btnSetSOS3.Text = "Set";
+            this.btnSetSOS3.UseVisualStyleBackColor = true;
+            this.btnSetSOS3.Click += new System.EventHandler(this.btnSetSOS3_Click);
             // 
             // btnSetLanguageAndTimezone
             // 
@@ -391,43 +580,33 @@
             this.btnSetLanguageAndTimezone.UseVisualStyleBackColor = true;
             this.btnSetLanguageAndTimezone.Click += new System.EventHandler(this.btnSetLanguageAndTimezone_Click);
             // 
-            // btnSetSOS3
+            // tabPage2
             // 
-            this.btnSetSOS3.Location = new System.Drawing.Point(221, 104);
-            this.btnSetSOS3.Name = "btnSetSOS3";
-            this.btnSetSOS3.Size = new System.Drawing.Size(55, 23);
-            this.btnSetSOS3.TabIndex = 11;
-            this.btnSetSOS3.Text = "Set";
-            this.btnSetSOS3.UseVisualStyleBackColor = true;
-            this.btnSetSOS3.Click += new System.EventHandler(this.btnSetSOS3_Click);
-            // 
-            // btnSetIPandPort
-            // 
-            this.btnSetIPandPort.Location = new System.Drawing.Point(220, 275);
-            this.btnSetIPandPort.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetIPandPort.Name = "btnSetIPandPort";
-            this.btnSetIPandPort.Size = new System.Drawing.Size(56, 20);
-            this.btnSetIPandPort.TabIndex = 21;
-            this.btnSetIPandPort.Text = "Set";
-            this.btnSetIPandPort.UseVisualStyleBackColor = true;
-            this.btnSetIPandPort.Click += new System.EventHandler(this.btnSetIPandPort_Click);
-            // 
-            // cbMonitor
-            // 
-            this.cbMonitor.FormattingEnabled = true;
-            this.cbMonitor.Location = new System.Drawing.Point(52, 18);
-            this.cbMonitor.Name = "cbMonitor";
-            this.cbMonitor.Size = new System.Drawing.Size(166, 21);
-            this.cbMonitor.TabIndex = 7;
-            // 
-            // tbPort
-            // 
-            this.tbPort.Location = new System.Drawing.Point(176, 275);
-            this.tbPort.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPort.Name = "tbPort";
-            this.tbPort.Size = new System.Drawing.Size(39, 20);
-            this.tbPort.TabIndex = 20;
-            this.tbPort.Text = "8001";
+            this.tabPage2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.btnRestoreFactorySettings);
+            this.tabPage2.Controls.Add(this.btnResetDevice);
+            this.tabPage2.Controls.Add(this.btnSetIMEI);
+            this.tabPage2.Controls.Add(this.btnGetVersion);
+            this.tabPage2.Controls.Add(this.btnSetCenterNumber);
+            this.tabPage2.Controls.Add(this.cbIMEI);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.tbCenterNumber);
+            this.tabPage2.Controls.Add(this.btnSetMonitor);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.cbMonitor);
+            this.tabPage2.Controls.Add(this.tbAssistantCenterNumber);
+            this.tabPage2.Controls.Add(this.btnSetAssistantCenterNumber);
+            this.tabPage2.Controls.Add(this.btnSetTimeInterval);
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.tbUploadTimeInterval);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(282, 423);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Advanced Config";
             // 
             // label9
             // 
@@ -437,61 +616,6 @@
             this.label9.Size = new System.Drawing.Size(45, 13);
             this.label9.TabIndex = 6;
             this.label9.Text = "Monitor:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(149, 278);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(29, 13);
-            this.label17.TabIndex = 19;
-            this.label17.Text = "Port:";
-            // 
-            // cbSOS3
-            // 
-            this.cbSOS3.FormattingEnabled = true;
-            this.cbSOS3.Location = new System.Drawing.Point(50, 106);
-            this.cbSOS3.Name = "cbSOS3";
-            this.cbSOS3.Size = new System.Drawing.Size(163, 21);
-            this.cbSOS3.TabIndex = 10;
-            // 
-            // tbIP
-            // 
-            this.tbIP.Location = new System.Drawing.Point(48, 275);
-            this.tbIP.Margin = new System.Windows.Forms.Padding(2);
-            this.tbIP.Name = "tbIP";
-            this.tbIP.Size = new System.Drawing.Size(97, 20);
-            this.tbIP.TabIndex = 18;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(-1, 112);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "SOS3:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 278);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(20, 13);
-            this.label16.TabIndex = 17;
-            this.label16.Text = "IP:";
-            // 
-            // btnSetSOS2
-            // 
-            this.btnSetSOS2.Location = new System.Drawing.Point(221, 76);
-            this.btnSetSOS2.Name = "btnSetSOS2";
-            this.btnSetSOS2.Size = new System.Drawing.Size(55, 23);
-            this.btnSetSOS2.TabIndex = 8;
-            this.btnSetSOS2.Text = "Set";
-            this.btnSetSOS2.UseVisualStyleBackColor = true;
-            this.btnSetSOS2.Click += new System.EventHandler(this.btnSetSOS2_Click);
             // 
             // btnRestoreFactorySettings
             // 
@@ -515,13 +639,15 @@
             this.btnResetDevice.UseVisualStyleBackColor = true;
             this.btnResetDevice.Click += new System.EventHandler(this.btnResetDevice_Click);
             // 
-            // cbSOS2
+            // btnSetIMEI
             // 
-            this.cbSOS2.FormattingEnabled = true;
-            this.cbSOS2.Location = new System.Drawing.Point(50, 78);
-            this.cbSOS2.Name = "cbSOS2";
-            this.cbSOS2.Size = new System.Drawing.Size(163, 21);
-            this.cbSOS2.TabIndex = 7;
+            this.btnSetIMEI.Location = new System.Drawing.Point(223, 54);
+            this.btnSetIMEI.Name = "btnSetIMEI";
+            this.btnSetIMEI.Size = new System.Drawing.Size(55, 23);
+            this.btnSetIMEI.TabIndex = 14;
+            this.btnSetIMEI.Text = "Set";
+            this.btnSetIMEI.UseVisualStyleBackColor = true;
+            this.btnSetIMEI.Click += new System.EventHandler(this.btnSetIMEINumber_Click);
             // 
             // btnGetVersion
             // 
@@ -534,80 +660,87 @@
             this.btnGetVersion.UseVisualStyleBackColor = true;
             this.btnGetVersion.Click += new System.EventHandler(this.btnGetVersion_Click);
             // 
-            // label7
+            // btnSetCenterNumber
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(-1, 84);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "SOS2:";
+            this.btnSetCenterNumber.Location = new System.Drawing.Point(222, 92);
+            this.btnSetCenterNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetCenterNumber.Name = "btnSetCenterNumber";
+            this.btnSetCenterNumber.Size = new System.Drawing.Size(56, 23);
+            this.btnSetCenterNumber.TabIndex = 5;
+            this.btnSetCenterNumber.Text = "Set";
+            this.btnSetCenterNumber.UseVisualStyleBackColor = true;
+            this.btnSetCenterNumber.Click += new System.EventHandler(this.btnSetCenterNumber_Click);
             // 
-            // tbUploadTimeInterval
+            // cbIMEI
             // 
-            this.tbUploadTimeInterval.Location = new System.Drawing.Point(133, 170);
-            this.tbUploadTimeInterval.Margin = new System.Windows.Forms.Padding(2);
-            this.tbUploadTimeInterval.Name = "tbUploadTimeInterval";
-            this.tbUploadTimeInterval.Size = new System.Drawing.Size(85, 20);
-            this.tbUploadTimeInterval.TabIndex = 13;
+            this.cbIMEI.FormattingEnabled = true;
+            this.cbIMEI.Location = new System.Drawing.Point(52, 56);
+            this.cbIMEI.Name = "cbIMEI";
+            this.cbIMEI.Size = new System.Drawing.Size(166, 21);
+            this.cbIMEI.TabIndex = 13;
             // 
-            // btnSetSOS1
+            // label13
             // 
-            this.btnSetSOS1.Location = new System.Drawing.Point(221, 48);
-            this.btnSetSOS1.Name = "btnSetSOS1";
-            this.btnSetSOS1.Size = new System.Drawing.Size(55, 23);
-            this.btnSetSOS1.TabIndex = 5;
-            this.btnSetSOS1.Text = "Set";
-            this.btnSetSOS1.UseVisualStyleBackColor = true;
-            this.btnSetSOS1.Click += new System.EventHandler(this.btnSetSOS1_Click);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 94);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(81, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Center Number:";
             // 
-            // label15
+            // label10
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 173);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(107, 13);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "Upload Time interval:";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 13);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "IMEI:";
             // 
-            // cbSOS1
+            // tbCenterNumber
             // 
-            this.cbSOS1.FormattingEnabled = true;
-            this.cbSOS1.Location = new System.Drawing.Point(50, 50);
-            this.cbSOS1.Name = "cbSOS1";
-            this.cbSOS1.Size = new System.Drawing.Size(163, 21);
-            this.cbSOS1.TabIndex = 4;
+            this.tbCenterNumber.Location = new System.Drawing.Point(133, 94);
+            this.tbCenterNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.tbCenterNumber.Name = "tbCenterNumber";
+            this.tbCenterNumber.Size = new System.Drawing.Size(85, 20);
+            this.tbCenterNumber.TabIndex = 9;
             // 
-            // btnSetTimeInterval
+            // btnSetMonitor
             // 
-            this.btnSetTimeInterval.Location = new System.Drawing.Point(222, 168);
-            this.btnSetTimeInterval.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetTimeInterval.Name = "btnSetTimeInterval";
-            this.btnSetTimeInterval.Size = new System.Drawing.Size(56, 23);
-            this.btnSetTimeInterval.TabIndex = 11;
-            this.btnSetTimeInterval.Text = "Set";
-            this.btnSetTimeInterval.UseVisualStyleBackColor = true;
-            this.btnSetTimeInterval.Click += new System.EventHandler(this.btnSetUploadTimeInterval_Click);
+            this.btnSetMonitor.Location = new System.Drawing.Point(223, 16);
+            this.btnSetMonitor.Name = "btnSetMonitor";
+            this.btnSetMonitor.Size = new System.Drawing.Size(55, 23);
+            this.btnSetMonitor.TabIndex = 8;
+            this.btnSetMonitor.Text = "Set";
+            this.btnSetMonitor.UseVisualStyleBackColor = true;
+            this.btnSetMonitor.Click += new System.EventHandler(this.btnSetMonitorNumber_Click);
             // 
-            // label6
+            // label14
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(-1, 56);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "SOS1:";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 132);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(126, 13);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Assistant Center Number:";
             // 
-            // btnSetAPN
+            // cbMonitor
             // 
-            this.btnSetAPN.Location = new System.Drawing.Point(221, 20);
-            this.btnSetAPN.Name = "btnSetAPN";
-            this.btnSetAPN.Size = new System.Drawing.Size(55, 23);
-            this.btnSetAPN.TabIndex = 2;
-            this.btnSetAPN.Text = "Set";
-            this.btnSetAPN.UseVisualStyleBackColor = true;
-            this.btnSetAPN.Click += new System.EventHandler(this.btnSetAPN_Click);
+            this.cbMonitor.FormattingEnabled = true;
+            this.cbMonitor.Location = new System.Drawing.Point(52, 18);
+            this.cbMonitor.Name = "cbMonitor";
+            this.cbMonitor.Size = new System.Drawing.Size(166, 21);
+            this.cbMonitor.TabIndex = 7;
+            // 
+            // tbAssistantCenterNumber
+            // 
+            this.tbAssistantCenterNumber.Location = new System.Drawing.Point(133, 132);
+            this.tbAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.tbAssistantCenterNumber.Name = "tbAssistantCenterNumber";
+            this.tbAssistantCenterNumber.Size = new System.Drawing.Size(85, 20);
+            this.tbAssistantCenterNumber.TabIndex = 10;
             // 
             // btnSetAssistantCenterNumber
             // 
@@ -620,74 +753,34 @@
             this.btnSetAssistantCenterNumber.UseVisualStyleBackColor = true;
             this.btnSetAssistantCenterNumber.Click += new System.EventHandler(this.btnSetAssistantCenterNumber_Click);
             // 
-            // tbAssistantCenterNumber
+            // btnSetTimeInterval
             // 
-            this.tbAssistantCenterNumber.Location = new System.Drawing.Point(133, 132);
-            this.tbAssistantCenterNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.tbAssistantCenterNumber.Name = "tbAssistantCenterNumber";
-            this.tbAssistantCenterNumber.Size = new System.Drawing.Size(85, 20);
-            this.tbAssistantCenterNumber.TabIndex = 10;
+            this.btnSetTimeInterval.Location = new System.Drawing.Point(222, 168);
+            this.btnSetTimeInterval.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetTimeInterval.Name = "btnSetTimeInterval";
+            this.btnSetTimeInterval.Size = new System.Drawing.Size(56, 23);
+            this.btnSetTimeInterval.TabIndex = 11;
+            this.btnSetTimeInterval.Text = "Set";
+            this.btnSetTimeInterval.UseVisualStyleBackColor = true;
+            this.btnSetTimeInterval.Click += new System.EventHandler(this.btnSetUploadTimeInterval_Click);
             // 
-            // cbAPN
+            // label15
             // 
-            this.cbAPN.FormattingEnabled = true;
-            this.cbAPN.Items.AddRange(new object[] {
-            "internet.wind",
-            "web.omnitel.it",
-            "ibox.tim.it"});
-            this.cbAPN.Location = new System.Drawing.Point(50, 22);
-            this.cbAPN.Name = "cbAPN";
-            this.cbAPN.Size = new System.Drawing.Size(163, 21);
-            this.cbAPN.TabIndex = 1;
-            this.cbAPN.Text = "internet.wind";
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(5, 173);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(107, 13);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "Upload Time interval:";
             // 
-            // label14
+            // tbUploadTimeInterval
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(3, 132);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(126, 13);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Assistant Center Number:";
-            // 
-            // tbCenterNumber
-            // 
-            this.tbCenterNumber.Location = new System.Drawing.Point(133, 94);
-            this.tbCenterNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.tbCenterNumber.Name = "tbCenterNumber";
-            this.tbCenterNumber.Size = new System.Drawing.Size(85, 20);
-            this.tbCenterNumber.TabIndex = 9;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 94);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "Center Number:";
-            // 
-            // btnSetCenterNumber
-            // 
-            this.btnSetCenterNumber.Location = new System.Drawing.Point(222, 92);
-            this.btnSetCenterNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetCenterNumber.Name = "btnSetCenterNumber";
-            this.btnSetCenterNumber.Size = new System.Drawing.Size(56, 23);
-            this.btnSetCenterNumber.TabIndex = 5;
-            this.btnSetCenterNumber.Text = "Set";
-            this.btnSetCenterNumber.UseVisualStyleBackColor = true;
-            this.btnSetCenterNumber.Click += new System.EventHandler(this.btnSetCenterNumber_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(-1, 28);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "APN: ";
+            this.tbUploadTimeInterval.Location = new System.Drawing.Point(133, 170);
+            this.tbUploadTimeInterval.Margin = new System.Windows.Forms.Padding(2);
+            this.tbUploadTimeInterval.Name = "tbUploadTimeInterval";
+            this.tbUploadTimeInterval.Size = new System.Drawing.Size(85, 20);
+            this.tbUploadTimeInterval.TabIndex = 13;
             // 
             // webBrowser
             // 
@@ -704,6 +797,7 @@
             // 
             this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLog.ContextMenuStrip = this.logMenuStrip;
             this.txtLog.Location = new System.Drawing.Point(230, 515);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
@@ -727,7 +821,8 @@
             this.gPRSToolStripMenuItem,
             this.sMSToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.resetModemToolStripMenuItem});
+            this.resetModemToolStripMenuItem,
+            this.qualitàSegnaleToolStripMenuItem});
             this.comunicazioneùToolStripMenuItem.Name = "comunicazioneùToolStripMenuItem";
             this.comunicazioneùToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
             this.comunicazioneùToolStripMenuItem.Text = "&Comunicazione";
@@ -737,7 +832,7 @@
             // 
             this.gPRSToolStripMenuItem.Name = "gPRSToolStripMenuItem";
             this.gPRSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.gPRSToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.gPRSToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.gPRSToolStripMenuItem.Text = "&GPRS";
             this.gPRSToolStripMenuItem.Click += new System.EventHandler(this.gPRSToolStripMenuItem_Click);
             // 
@@ -747,19 +842,19 @@
             this.sMSToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sMSToolStripMenuItem.Name = "sMSToolStripMenuItem";
             this.sMSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.sMSToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.sMSToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.sMSToolStripMenuItem.Text = "&SMS";
             this.sMSToolStripMenuItem.Click += new System.EventHandler(this.sMSToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(144, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(153, 6);
             // 
             // resetModemToolStripMenuItem
             // 
             this.resetModemToolStripMenuItem.Name = "resetModemToolStripMenuItem";
-            this.resetModemToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.resetModemToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.resetModemToolStripMenuItem.Text = "Reset Modem";
             this.resetModemToolStripMenuItem.Click += new System.EventHandler(this.resetModemToolStripMenuItem_Click);
             // 
@@ -824,93 +919,26 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(734, 442);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // label20
+            // qualitàSegnaleToolStripMenuItem
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(3, 192);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(116, 13);
-            this.label20.TabIndex = 29;
-            this.label20.Text = "SOS Position to delete:";
+            this.qualitàSegnaleToolStripMenuItem.Name = "qualitàSegnaleToolStripMenuItem";
+            this.qualitàSegnaleToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.qualitàSegnaleToolStripMenuItem.Text = "Qualità Segnale";
+            this.qualitàSegnaleToolStripMenuItem.Click += new System.EventHandler(this.qualitàSegnaleToolStripMenuItem_Click);
             // 
-            // tabControl1
+            // logMenuStrip
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(0, 19);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(290, 449);
-            this.tabControl1.TabIndex = 30;
+            this.logMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cancellaToolStripMenuItem});
+            this.logMenuStrip.Name = "logMenuStrip";
+            this.logMenuStrip.Size = new System.Drawing.Size(153, 48);
             // 
-            // tabPage1
+            // cancellaToolStripMenuItem
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.PowderBlue;
-            this.tabPage1.Controls.Add(this.btnGetParameters);
-            this.tabPage1.Controls.Add(this.cbSOS3);
-            this.tabPage1.Controls.Add(this.btnGetPosition);
-            this.tabPage1.Controls.Add(this.label20);
-            this.tabPage1.Controls.Add(this.btnDeleteSOSNumber);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.cbSOSNumberToDelete);
-            this.tabPage1.Controls.Add(this.cbAPN);
-            this.tabPage1.Controls.Add(this.btnSetIPandPort);
-            this.tabPage1.Controls.Add(this.btnSetAPN);
-            this.tabPage1.Controls.Add(this.cbTimezone);
-            this.tabPage1.Controls.Add(this.tbPort);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.cbSOS1);
-            this.tabPage1.Controls.Add(this.label17);
-            this.tabPage1.Controls.Add(this.cbLanguage);
-            this.tabPage1.Controls.Add(this.tbIP);
-            this.tabPage1.Controls.Add(this.btnSetSOS1);
-            this.tabPage1.Controls.Add(this.label16);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.label19);
-            this.tabPage1.Controls.Add(this.cbSOS2);
-            this.tabPage1.Controls.Add(this.btnSetSOS2);
-            this.tabPage1.Controls.Add(this.label18);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.btnSetSOS3);
-            this.tabPage1.Controls.Add(this.btnSetLanguageAndTimezone);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(282, 423);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Basic Config";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.btnRestoreFactorySettings);
-            this.tabPage2.Controls.Add(this.btnResetDevice);
-            this.tabPage2.Controls.Add(this.btnSetIMEI);
-            this.tabPage2.Controls.Add(this.btnGetVersion);
-            this.tabPage2.Controls.Add(this.btnSetCenterNumber);
-            this.tabPage2.Controls.Add(this.cbIMEI);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.tbCenterNumber);
-            this.tabPage2.Controls.Add(this.btnSetMonitor);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.cbMonitor);
-            this.tabPage2.Controls.Add(this.tbAssistantCenterNumber);
-            this.tabPage2.Controls.Add(this.btnSetAssistantCenterNumber);
-            this.tabPage2.Controls.Add(this.btnSetTimeInterval);
-            this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.tbUploadTimeInterval);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(282, 423);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Advanced Config";
+            this.cancellaToolStripMenuItem.Name = "cancellaToolStripMenuItem";
+            this.cancellaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cancellaToolStripMenuItem.Text = "Cancella";
+            this.cancellaToolStripMenuItem.Click += new System.EventHandler(this.cancellaToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -932,14 +960,15 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlProgrammazione.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.pnlServer.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.pnlServer.ResumeLayout(false);
+            this.logMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1022,6 +1051,9 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ToolStripMenuItem qualitàSegnaleToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip logMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem cancellaToolStripMenuItem;
     }
 }
 

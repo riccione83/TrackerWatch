@@ -409,7 +409,6 @@ namespace TrackerWatchServer
             this.terminate();
         }
 
-
         private void programmazioneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1 programmingForm = new Form1();
@@ -428,7 +427,6 @@ namespace TrackerWatchServer
 
         private void toolStripBtnDevice_Click(object sender, EventArgs e)
         {
-
             if (splitContainer1.Panel1.Controls.Contains(searchDeviceControl))
                 searchDeviceControl.refreshData();
             else

@@ -389,6 +389,37 @@ namespace ElzeKool.Devices
             return RecievedData;
         }
 
+        public int getPowerPercentage(int power)
+        {
+            const int MIN_DBM = -109;
+            int i = 0;
+            if (power <= MIN_DBM)
+            {
+                i = 0;
+            }
+            else
+            {
+                i = 100 + power;
+            }
+
+            return i;
+        }
+
+        public int GetSignalPower()
+        {
+
+            String GPSResponseBody = "";
+            if (ExecuteCommand("AT+CSQ", 1000, out GPSResponseBody) != ResponseCodes.OK)
+                throw new Exception("Failed to get GPS information");
+            else
+            {
+                string value = GPSResponseBody.Replace("\r\n", "");
+                value = value.Replace(" ", "");
+                string rssi = value.Split(':')[1].Split(',')[0];
+                string ber = value.Split(':')[1].Split(',')[1];
+                return (int.Parse(rssi));
+            }
+        }
 
         /// <summary>
         /// Get GPS Location and Fix Data 

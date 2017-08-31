@@ -259,6 +259,50 @@ namespace TrackerWatchServer
             }
         }
 
+        /*
+         * 
+2	-109	Marginal
+3	-107	Marginal
+4	-105	Marginal
+5	-103	Marginal
+6	-101	Marginal
+7	-99	Marginal
+8	-97	Marginal
+9	-95	Marginal
+10	-93	OK
+11	-91	OK
+12	-89	OK
+13	-87	OK
+14	-85	OK
+15	-83	Good
+16	-81	Good
+17	-79	Good
+18	-77	Good
+19	-75	Good
+20	-73	Excellent
+21	-71	Excellent
+22	-69	Excellent
+23	-67	Excellent
+24	-65	Excellent
+25	-63	Excellent
+26	-61	Excellent
+27	-59	Excellent
+28	-57	Excellent
+29	-55	Excellent
+30	-53	Excellent
+*/
+        private string signalQuality(int GSMPower)
+        {
+            if (GSMPower >= 2 && GSMPower <= 9)
+                return "Scarso";
+            else if (GSMPower >= 10 && GSMPower <= 14)
+                return "Sufficiente";
+            else if (GSMPower >= 15 && GSMPower <= 19)
+                return "Buono";
+            else if (GSMPower >= 10 && GSMPower <= 14)
+                return "Eccellente";
+            else return "";
+        }
         private void startGSM()
         {
             if(modem != null)
@@ -270,11 +314,23 @@ namespace TrackerWatchServer
             modem = new GM862GPS(AppController.SharedInstance.COM_PORT);
             log("Modem active on " + AppController.SharedInstance.COM_PORT);
 
-            if (!modem.RegisteredOnNetwork(true))
+            try
             {
-                //modem.ExecuteCommand("AT+CFUN=0", 1000);
-                //modem.ExecuteCommand("AT+CFUN=1", 1000);
-                modem.ExecuteCommand("ATZ", 1000);
+                if (!modem.RegisteredOnNetwork(true))
+                {
+                    //modem.ExecuteCommand("AT+CFUN=0", 1000);
+                    //modem.ExecuteCommand("AT+CFUN=1", 1000);
+                    modem.ExecuteCommand("ATZ", 1000);
+                }
+                else
+                {
+                    int signalPower = modem.GetSignalPower();
+                    log("GSM Power signal RSSI: " + signalQuality(signalPower) + " (" + signalPower + ")");
+                }
+            }
+            catch
+            {
+                log("Modem not registered on the Network. Please reset.");
             }
 
             modem.InitializeBasicGSM();
@@ -325,7 +381,7 @@ namespace TrackerWatchServer
                 checkCommandThread.IsBackground = true;
                 checkCommandThread.Start();
 
-                webBrowser.Navigate("https://europe.myaqsh.com:8096/S10PC/index2/login.html");
+               // webBrowser.Navigate("https://europe.myaqsh.com:8096/S10PC/index2/login.html");
             }
             else
             {
@@ -451,7 +507,7 @@ namespace TrackerWatchServer
                 else if (SMSMessage[telNumber].Substring(0, 4).Contains("ID:") && SMSMessage[telNumber].Substring(SMSMessage[telNumber].Length - 20, 15).Contains("time:")) //SOS Message Command
                 {
                     string[] str_tmp = SMSMessage[telNumber].Split('\n');
-                    if (str_tmp[0].Contains("ID:") && str_tmp[4].Contains("time:"))
+                    if (str_tmp[0].Contains("ID:") && str_tmp[3].Contains("time:"))
                     {
                         string typeMessage = str_tmp[0].Split(',')[1];
                       
@@ -1083,6 +1139,17 @@ namespace TrackerWatchServer
         private void label18_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void qualitàSegnaleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int signalPower = modem.GetSignalPower();
+            log("GSM Power signal RSSI: " + signalQuality(signalPower) + " (" + signalPower + ")");
+        }
+
+        private void cancellaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtLog.Text = "";
         }
     }
 }
