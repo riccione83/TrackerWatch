@@ -34,6 +34,9 @@ namespace TrackerWatchServer
             cmd = cmd.Replace("{1}", deviceID);
 
             int cnt = Database.SharedInstance.Insert(cmd);
+
+            AppController.SharedInstance.connectToServer();
+
             return cnt == 1 ? true : false;
         }
 

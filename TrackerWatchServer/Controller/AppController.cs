@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,11 +19,21 @@ namespace TrackerWatchServer
         public string DB_USER;
         public string DB_PASSWORD;
 
+        public string SERVER_IP;
+        public string SERVER_PORT;
+
         private static AppController sharedInstance;
 
         private AppController()
         {
             loadOptions();
+        }
+
+
+        public void connectToServer()
+        {
+            TcpClient tcpClient = new TcpClient();
+            tcpClient.Connect(SERVER_IP, int.Parse(SERVER_PORT));
         }
 
         public bool loadOptions()
@@ -56,6 +67,12 @@ namespace TrackerWatchServer
                                 break;
                             case "IS_SERVER":
                                 isServer = Boolean.Parse(par[1]);
+                                break;
+                            case "SERVER_IP":
+                                SERVER_IP = par[1];
+                                break;
+                            case "SERVER_PORT":
+                                SERVER_PORT = par[1];
                                 break;
                         }
                     }

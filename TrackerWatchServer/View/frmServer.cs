@@ -377,6 +377,9 @@ namespace TrackerWatchServer
                 //Thread listen = new Thread(listenClient);
                 //listen.Start();
 
+                Thread listen = new Thread(listenForAClient);
+                listen.Start();
+
                 checkCommandThread = new Thread(checkForCommandThread);
                 checkCommandThread.IsBackground = true;
                 checkCommandThread.Start();
@@ -412,18 +415,19 @@ namespace TrackerWatchServer
             try
             {
                 Thread.CurrentThread.Name = "Command Thread";
-                while (Thread.CurrentThread.ThreadState == ThreadState.Background)
+                // while (Thread.CurrentThread.ThreadState == ThreadState.Background)
+                while (CommandController.SharedInstance.commandAvailable())
                 {
-                    if (CommandController.SharedInstance.commandAvailable())
-                    {
+                    //if (CommandController.SharedInstance.commandAvailable())
+                   // {
                         Command cmd = CommandController.SharedInstance.getLastCommand();
                         command.sendCommand(cmd.CommandText, cmd.DeviceID);
                         Console.WriteLine("Send a queued command: " + cmd.CommandText + " to: " + cmd.DeviceID);
-                    }
-                    else
-                    {
-                        Thread.Sleep(4000);
-                    }
+                    //}
+                   // else
+                   // {
+                        Thread.Sleep(1000);
+                   // }
                 }
             }
             catch
@@ -717,6 +721,40 @@ namespace TrackerWatchServer
                     command.setThreeSOSNumbers(cbSOS1.Text, cbSOS2.Text, cbSOS3.Text, currentDevice);
             }
         }
+
+
+        private void listenForAClient()
+        {
+            Thread.CurrentThread.Name = "Command Client Thread";
+            TcpListener tcpListener = new TcpListener(IPAddress.Any, int.Parse(AppController.SharedInstance.SERVER_PORT));
+            try
+            {
+                tcpListener.Start();
+                while (this.Visible == true)
+                {
+                    if (tcpListener.Pending())
+                    {
+                        Socket soTcp = tcpListener.AcceptSocket();
+
+                        //Start new thread for commands
+                        checkCommandThread = new Thread(checkForCommandThread);
+                        checkCommandThread.IsBackground = true;
+                        checkCommandThread.Start();
+                        soTcp.Close();
+                        tcpListener.Stop();
+                        tcpListener.Start();
+                    }
+                    else
+                        Thread.Sleep(500);
+                }
+                tcpListener.Stop();
+            }
+            catch (SocketException se)
+            {
+                Console.WriteLine("A Socket Exception has occurred!" + se.ToString());
+            }
+        }
+
 
         private void listenClient()
         {
