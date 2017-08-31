@@ -397,9 +397,6 @@ namespace TrackerWatchServer
                 sMSToolStripMenuItem.Enabled = false;
                 log("Programming Console as Client");
 
-                checkCommandThread = new Thread(checkForCommandThread);
-                checkCommandThread.IsBackground = true;
-                checkCommandThread.Start();
             }
         }
 
@@ -425,7 +422,7 @@ namespace TrackerWatchServer
                     }
                     else
                     {
-                        Thread.Sleep(1000);
+                        Thread.Sleep(4000);
                     }
                 }
             }
@@ -502,12 +499,13 @@ namespace TrackerWatchServer
                         device.LastPositionLongitude = longitude;
                         DeviceController.SharedInstance.updateDevice(device);
                         AlarmController.SharedInstance.buildAlarm(AlarmTypeCode.Message, device.DeviceID, "Nuova posizione GPS", latitude, longitude);
+                        SMSMessage.Remove(telNumber);
                     }
                 }
                 else if (SMSMessage[telNumber].Substring(0, 4).Contains("ID:") && SMSMessage[telNumber].Substring(SMSMessage[telNumber].Length - 20, 15).Contains("time:")) //SOS Message Command
                 {
                     string[] str_tmp = SMSMessage[telNumber].Split('\n');
-                    if (str_tmp[0].Contains("ID:") && str_tmp[3].Contains("time:"))
+                    if (str_tmp[0].Contains("ID:") && str_tmp[str_tmp.Length-1].Contains("time:"))
                     {
                         string typeMessage = str_tmp[0].Split(',')[1];
                       
@@ -520,6 +518,7 @@ namespace TrackerWatchServer
                         device.LastPositionLongitude = longitude;
                         DeviceController.SharedInstance.updateDevice(device);
                         AlarmController.SharedInstance.buildAlarm(AlarmTypeCode.Message, device.DeviceID, typeMessage, latitude, longitude);
+                        SMSMessage.Remove(telNumber);
                     }
                 }
             }

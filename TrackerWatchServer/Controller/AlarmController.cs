@@ -79,16 +79,24 @@ namespace TrackerWatchServer
         {
             List<Alarm> alarms = new List<Alarm>();
 
-            List<Dictionary<String, Object>> returnedData = Database.SharedInstance.getData(cmdGetAlarm);
+            if (DeviceController.SharedInstance.devices.Count == 0 || !DeviceController.SharedInstance.devicesLoaded)
+                DeviceController.SharedInstance.getDevices();
+
+            if (UserController.SharedInstance.users.Count == 0 || !UserController.SharedInstance.usersLoaded)
+                UserController.SharedInstance.loadUsers();
+
+                List<Dictionary<String, Object>> returnedData = Database.SharedInstance.getData(cmdGetAlarm);
             ErrorCode = Database.SharedInstance.Error;
 
             foreach (Dictionary<String, Object> alarm in returnedData)
             {
                 Alarm _alarm = new Alarm();
                 _alarm.Id = alarm["ID"].ToString();
-                _alarm.Device = DeviceController.SharedInstance.getDeviceById(alarm["DeviceID"].ToString());
-                _alarm.User = UserController.SharedInstance.getUserByDeviceId(_alarm.Device.DeviceID);
-                switch(alarm["Type"].ToString())
+                _alarm.Device = DeviceController.SharedInstance.devices.Find(x => x.DeviceID == alarm["DeviceID"].ToString());
+                _alarm.User = UserController.SharedInstance.users.Find(x => x.Id == _alarm.Device.User);
+             //   _alarm.Device = DeviceController.SharedInstance.getDeviceById(alarm["DeviceID"].ToString());
+             // _alarm.User = UserController.SharedInstance.getUserByDeviceId(_alarm.Device.DeviceID);
+                switch (alarm["Type"].ToString())
                 {
                     case "High":
                         _alarm.AlarmType = AlarmTypeCode.High;

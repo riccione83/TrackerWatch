@@ -18,6 +18,8 @@ namespace TrackerWatchServer
         AlarmMgmCtrl alarmManagementControl;
         Thread ckAlarmThread;
         string lastAlarmID;
+        bool EndAlarmCheckThread = false;
+
 
 
         delegate void dl(Alarm evento);
@@ -146,54 +148,55 @@ namespace TrackerWatchServer
 
         private void checkForNewAlarm()
         {
-            bool EndThisThread = false;
-
-            while (Thread.CurrentThread.ThreadState == ThreadState.Background || EndThisThread)
+            //Thread.CurrentThread.Name = "CheckForAlarmThread";
+            while(!EndAlarmCheckThread) //(Thread.CurrentThread.ThreadState == ThreadState.Background || EndAlarmCheckThread)
             {
                 List<Alarm> allarmi = AlarmController.SharedInstance.loadAlarm();
-                if (allarmi.Count == 0) return;
-
-                if (allarmi.Last().Id != lastAlarmID)
+                if (allarmi.Count > 0)
                 {
-                    if (AlarmController.SharedInstance.ErrorCode == 0)
+
+                    if (allarmi.Last().Id != lastAlarmID)
                     {
-                        foreach (Alarm evento in allarmi)
+                        if (AlarmController.SharedInstance.ErrorCode == 0)
                         {
-                            newEvent(evento);
-                            lastAlarmID = evento.Id;
+                            foreach (Alarm evento in allarmi)
+                            {
+                                newEvent(evento);
+                                lastAlarmID = evento.Id;
+                            }
                         }
-                    }
-                    else
-                    {
-                        switch (AlarmController.SharedInstance.ErrorCode)
+                        else
                         {
-                            case 1:
-                                MessageBox.Show("Cannot Connect to Server. Plese Contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                break;
-                            case 2:
-                                MessageBox.Show("Invalid Database Username or Password, please contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                break;
-                            case 3:
-                                MessageBox.Show("Unable to connect with Database Server", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                break;
-                            default:
-                                MessageBox.Show("Unknow Error: " + AlarmController.SharedInstance.ErrorCode.ToString(), "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                break;
+                            switch (AlarmController.SharedInstance.ErrorCode)
+                            {
+                                case 1:
+                                    MessageBox.Show("Cannot Connect to Server. Plese Contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                case 2:
+                                    MessageBox.Show("Invalid Database Username or Password, please contact Administrator", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                case 3:
+                                    MessageBox.Show("Unable to connect with Database Server", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                default:
+                                    MessageBox.Show("Unknow Error: " + AlarmController.SharedInstance.ErrorCode.ToString(), "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                            }
+                            EndAlarmCheckThread = true;
                         }
-                        EndThisThread = true;
                     }
                 }
-                else
-                {
+               // else
+              //  {
                     try
                     {
-                        Thread.Sleep(2000);
+                        Thread.Sleep(3000);
                     }
                     catch
                     {
-                        EndThisThread = true;
+                        EndAlarmCheckThread = true;
                     }
-                }
+             //   }
             }
         }
         
@@ -217,7 +220,7 @@ namespace TrackerWatchServer
 
             ckAlarmThread = new Thread(checkForNewAlarm);
             ckAlarmThread.Name = "CheckAlarmThread";
-            ckAlarmThread.IsBackground = true;
+         //   ckAlarmThread.IsBackground = true;
             ckAlarmThread.Start();
 
             eventGrid.Focus();
@@ -408,6 +411,7 @@ namespace TrackerWatchServer
 
         private void frmAlarm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.EndAlarmCheckThread = true;
             this.terminate();
         }
 

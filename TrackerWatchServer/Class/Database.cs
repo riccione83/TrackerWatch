@@ -23,6 +23,7 @@ namespace TrackerWatchServer
         private string uid;
         private string password;
         public int Error = 0;
+        private bool busy = false;
 
         public static Database SharedInstance
         {
@@ -59,12 +60,13 @@ namespace TrackerWatchServer
         {
             try
             {
-                while (connection.State == System.Data.ConnectionState.Open)
+                while (busy) // connection.State == System.Data.ConnectionState.Open)
                 {
                      Thread.Sleep(10);
-
                 }
                 connection.Open();
+                busy = true;
+                Console.WriteLine("Thread: " + Thread.CurrentThread.Name + " - DB Occupato");
                 return true;
             }
             catch (MySqlException ex)
@@ -103,6 +105,8 @@ namespace TrackerWatchServer
             try
             {
                 connection.Close();
+                busy = false;
+                Console.WriteLine("Thread: " + Thread.CurrentThread.GetHashCode() + " - DB Liberato");
                 return true;
             }
             catch (MySqlException ex)
