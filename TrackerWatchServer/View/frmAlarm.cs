@@ -151,6 +151,8 @@ namespace TrackerWatchServer
             while (Thread.CurrentThread.ThreadState == ThreadState.Background || EndThisThread)
             {
                 List<Alarm> allarmi = AlarmController.SharedInstance.loadAlarm();
+                if (allarmi.Count == 0) return;
+
                 if (allarmi.Last().Id != lastAlarmID)
                 {
                     if (AlarmController.SharedInstance.ErrorCode == 0)
