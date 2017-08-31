@@ -81,6 +81,9 @@ namespace TrackerWatchServer
 
                 cnt = Database.SharedInstance.Update(cmd);
             }
+
+            usersLoaded = false;
+
             return cnt == 1 ? true : false;
         }
 
@@ -100,6 +103,8 @@ namespace TrackerWatchServer
 
             int cnt = Database.SharedInstance.Insert(cmd);
 
+            usersLoaded = false;
+
             return cnt == 1 ? true : false;
         }
 
@@ -107,6 +112,8 @@ namespace TrackerWatchServer
         {
             String cmd = cmdDeleteUser.Replace("{0}", id);
             int cnt = Database.SharedInstance.Delete(cmd);
+
+            usersLoaded = false;
 
             //Check if user has deleted or not
             return cnt == 1 ? true : false;

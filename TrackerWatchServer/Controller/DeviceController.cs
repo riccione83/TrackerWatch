@@ -69,6 +69,8 @@ namespace TrackerWatchServer
             cmd = cmd.Replace("{16}", device.LastPositionLongitude);
             cmd = cmd.Replace("{17}", device.DeviceID);
 
+            devicesLoaded = false;
+
             int cn1 = Database.SharedInstance.Update(cmd);
             //int cn2 = Database.SharedInstance.Update(cmd2);
             return (cn1 == 1) ? true : false;
